@@ -1,0 +1,237 @@
+.btn {
+	cursor:default;
+	vertical-align: middle;   	
+	margin:2px;
+	white-space: nowrap;
+	text-align: center;
+	padding: 0px 3px;
+	border-width: 1px;
+   	border-style: solid;
+	border-radius: 3px;
+}
+
+span.btn {
+	display:inline-block;
+}
+
+.btn:empty,
+.btn.icon {
+	padding: 0px;
+}
+
+[label].btn::before {
+	display: inline-block; 
+	box-sizing: border-box;
+	content: attr(label);
+   	vertical-align: center;
+}
+
+/* ============================================== [group] ============================================== */
+
+.btn-grp {
+	box-sizing: border-box;
+	margin:2px;
+	padding:0px;
+	vertical-align: middle;
+	border-radius: 3px;
+	justify-content:flex-start;
+    align-items:stretch;
+}
+
+.btn-grp>.btn {
+	border-radius:0px;
+	margin:0px;
+}
+
+span.btn-grp {
+	display:inline-flex;
+}
+
+div.btn-grp {
+	display:flex;
+}
+
+.btn-grp.x {
+	flex-flow:row nowrap; 
+}
+
+.btn-grp.y {
+	flex-flow:column nowrap;
+}
+
+.btn-grp.x>.btn:first-child {
+	border-top-left-radius: inherit;
+	border-bottom-left-radius: inherit;
+}
+
+.btn-grp.x>.btn:last-child {
+	border-top-right-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
+
+.btn-grp.y>.btn:first-child {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+
+.btn-grp.y>.btn:last-child {
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
+
+
+
+/* ============================================== [theme] ============================================== */
+
+.btn {
+    color: rgb(85,85,85);
+	text-shadow: 0 1px rgba(255,255,255,0.8);
+	box-shadow: inset 0 1px rgb(252,252,252),0 1px 1px rgba(0,0,0,0.05);
+	background: rgb(241,241,241) linear-gradient(to bottom, rgba(255,255,255,0.4),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.05));
+    border-color: rgb(204,204,204) rgb(197,197,197) rgb(187,187,187);
+}
+
+.btn-grp.x>.btn+.btn:not(.selected) {
+	border-left-color:rgb(249,249,249);
+}
+
+.btn-grp.y>.btn+.btn:not(.selected) {
+	border-top-color:rgb(249,249,249);
+}
+
+.btn.selected {
+	color: rgb(250,250,250);
+	text-shadow: 0 -1px rgba(0,0,0,0.5);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.15),0 1px rgba(255,255,255,0.8);
+	background: rgb(107,107,107) linear-gradient(to bottom, rgb(113,113,113),rgb(154,154,154));
+	background: rgb(107,107,107) linear-gradient(to bottom, rgb(163,163,163),rgb(204,204,204));
+	border-color: rgb(56,56,56) rgb(89,89,89) rgb(119,119,119);
+}
+
+.btn.active {
+	text-shadow: 0 1px rgba(255,255,255,0.4);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.07),0 1px 1px rgba(0,0,0,0.05);
+	background: rgb(225,227,227) linear-gradient(to bottom, rgb(224,225,224),rgb(241,244,244));
+	border-color: rgb(187,187,187) rgb(197,197,197) rgb(193,193,193);
+}
+
+/* ============================================== [theme](flat) ============================================== */
+
+.btn.ui-flat {
+	background: rgba(241,241,241,0);
+	box-shadow: none;
+	border-color: transparent;
+}
+
+.btn.ui-flat.selected {
+	background: rgba(241,241,241,0);
+	/*box-shadow: inset 0 0 0px 1px rgba(100,50,255,1);*/
+	/*border-color: rgb(56,56,56) rgb(89,89,89) rgb(119,119,119);*/
+}
+
+/* ============================================== [theme](dark) ============================================== */
+
+.btn.ui-dark {
+	color: #ddd;
+	text-shadow: 0 1px rgba(0,0,0,0.8);
+	box-shadow: inset 0 1px rgba(255,255,255,0.1),inset 0 -1px 3px rgba(0,0,0,0.3),inset 0 0 0 1px rgba(255,255,255,0.08),0 1px 2px rgba(0,0,0,0.15);
+	background: #464a4f linear-gradient(to bottom, rgba(255,255,255,0.08),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.25));
+	border-color: #111 #111 black #111;
+}
+	
+/* ============================================== [theme](vib) ============================================== */
+
+.btn.ui-vib {
+	color: rgb(102,102,102);
+	text-shadow: 0 1px rgba(255,255,255,0.5);
+	box-shadow: inset 0 1px rgb(255,255,255),inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05);
+	background: rgb(238,238,238) linear-gradient(to bottom, (252,252,252),rgb(232,232,232));
+	border-color: rgb(207,207,207) rgb(204,204,204) rgb(198,198,198);
+}
+
+.btn.ui-vib.selected {
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px rgba(255,255,255,0.1);
+	background: rgb(232,232,232) linear-gradient(to bottom, rgb(232,232,232),rgb(250,250,250));
+	border-color: rgb(191,191,191) rgb(200,200,200) rgb(214,214,214);
+}
+
+/* ============================================== [theme](blue) ============================================== */
+
+.btn.ui-blue {
+	color: rgb(255,255,255);
+	text-shadow: 0 -1px rgba(0,0,0,0.3);
+	box-shadow: inset 0 1px rgba(255,255,255,0.2),inset 0 0 0 1px rgba(255,255,255,0.1),0 1px 1px rgba(0,0,0,0.06);
+	background: rgb(39,140,216) linear-gradient(to bottom, rgb(51,160,232),rgb(27,122,202));
+	border-color: rgb(27,116,188) rgb(24,103,168) rgb(22,95,155);
+}
+
+.btn.ui-blue.selected {
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px rgba(255,255,255,0.1);
+	background: rgb(33,128,206) linear-gradient(to bottom, rgb(33,128,206),rgb(51,160,232));
+	border-color: rgb(20,91,150) rgb(21,102,175) rgb(26,118,194);
+}
+
+/* ============================================== [toggle] ============================================== */
+
+.btn.toggle {
+	position: relative;	
+	padding: 0px;
+	border-width:0px;
+	border-radius: 8px;
+	width: 24px;
+	height: 13px;
+	max-height: 13px;
+}
+.btn.toggle.square {
+	border-radius: 3px;
+}
+.btn.toggle::before,
+.btn.toggle::after {
+	content: '';
+	display: block;
+	position: absolute;
+	border-radius: inherit;
+	box-sizing: border-box;
+	border: 1px solid;
+}
+
+.btn.toggle::before {
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	transition: background 200ms linear;
+}
+.btn.toggle::after {
+	top: 1px;
+	bottom: 1px;
+	left: 1px;
+	right: calc(40% + 2px);
+	transition: left 400ms, right 340ms;
+}
+.btn.toggle.checked::after {
+	left: calc(40% + 2px);
+	right: 1px;
+	transition: left 400ms, right 400ms;
+}
+
+/* ============================================== [theme](toggle) ============================================== */
+
+.btn.toggle::after {
+	border-color: rgb(204,204,204) rgb(197,197,197) rgb(187,187,187);
+	background: rgb(241,241,241) linear-gradient(to bottom, rgba(255,255,255,0.4),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.05));
+	box-shadow: inset 0 1px rgba(255,255,255,0.2),inset 0 0 0 1px rgba(255,255,255,0.1),0 1px 1px rgba(0,0,0,0.06);
+}
+.btn.toggle::before {
+	color: rgb(110,82,79);
+	text-shadow: 0 1px rgba(255,255,255,0.5);
+	background: rgb(241,191,188) linear-gradient(to bottom, rgb(244,206,208),rgb(238,178,170));
+	border-color: rgb(207,152,159) rgb(207,152,159) rgb(195,142,151);
+    box-shadow: inset 0 1px rgba(255,255,255,0.4),inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.04);
+}
+.btn.toggle.checked::before {
+	color: rgb(82,110,79);
+	border-color: rgb(152,207,159) rgb(152,207,159) rgb(142,195,151);
+    background: rgb(191,241,188);
+	background-image: linear-gradient(to bottom, rgb(206,244,208),rgb(178,238,170));
+}
