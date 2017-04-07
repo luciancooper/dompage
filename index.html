@@ -21,13 +21,22 @@
         background:#D5DBDB;
         font-family:monospace;
     }
+    td > section {
+        display:flex;
+        flex-flow:column nowrap;
+        justify-content: center;
+        align-items:center;
+    }
     .icon {
         width:20px;
         height:20px;
     }
     </style>
-     <script>
-        function toggleChecked(event) { event.target.classList.toggle('checked'); }
+    <script>
+        function toggle(event,cls) {
+            if (cls===undefined) cls = 'selected';
+            event.target.classList.toggle(cls); 
+        }
     </script>
 </head>
 <body>
@@ -38,345 +47,486 @@
             <th colspan='2'>ui-vib</th>
             <th colspan='2'>ui-blue</th>
             <th colspan='2'>ui-dark</th>
+            <th colspan='2'>ui-flat</th>
         </tr>
         <tr>
             <th>toggle</th>
-            <td colspan='8'>
-                <span class='btn toggle' onclick='toggleChecked(event)'></span>
+            <td colspan='10'>
+                <span class='btn toggle' onclick="toggle(event,'checked')"></span>
             </td>
         </tr>
         <tr>
             <th rowspan='2'>btn</th>
             <td colspan='2'>
-                <span>
-                    <svg class="btn icon">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span>
-                    <svg class="btn ui-vib icon">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn ui-vib icon">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn ui-vib icon selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn ui-vib icon">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn ui-vib icon">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span>
-                    <svg class="btn ui-blue icon">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn ui-blue icon">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn ui-blue icon selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn ui-blue icon">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn ui-blue icon">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span>
-                    <svg class="btn ui-dark icon">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn ui-dark icon">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn ui-dark icon selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn ui-dark icon">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn ui-dark icon">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                </span>
-            </td>
-        </tr>
-        <tr>
-            <td colspan='2'>
-                <span>
-                    <span class='btn'>Button 1</span>
-                    <span class='btn selected'>Button 2</span>
-                    <span class='btn'>Button 3</span>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span>
-                    <span class='btn ui-vib'>Button 1</span>
-                    <span class='btn ui-vib selected'>Button 2</span>
-                    <span class='btn ui-vib'>Button 3</span>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span>
-                    <span class='btn ui-blue'>Button 1</span>
-                    <span class='btn ui-blue selected'>Button 2</span>
-                    <span class='btn ui-blue'>Button 3</span>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span>
-                    <span class='btn ui-dark'>Button 1</span>
-                    <span class='btn ui-dark selected'>Button 2</span>
-                    <span class='btn ui-dark'>Button 3</span>
-                </span>
-            </td>
-        </tr>
-        <tr>
-            <th rowspan='2'>btn-grp.x</th>
-            <td colspan='2'>
-                <span class='btn-grp x'>
-                    <svg class="btn icon">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span class='btn-grp x'>
-                    <svg class="btn icon ui-vib">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-vib">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-vib selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-vib">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-vib">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span class='btn-grp x'>
-                    <svg class="btn icon ui-blue">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-blue">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-blue selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-blue">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-blue">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span class='btn-grp x'>
-                    <svg class="btn icon ui-dark">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn icon ui-dark">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn icon ui-dark selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn icon ui-dark">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn icon ui-dark">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                </span>
-            </td>
-        </tr>
-        <tr>
-            <td colspan='2'>
-                <span class='btn-grp x'>
-                    <span class='btn'>Button 1</span>
-                    <span class='btn selected'>Button 2</span>
-                    <span class='btn'>Button 3</span>
-                    
-                </span>
-            </td>
-            <td colspan='2'>
-                <span class='btn-grp x'>
-                    <span class='btn ui-vib'>Button 1</span>
-                    <span class='btn ui-vib selected'>Button 2</span>
-                    <span class='btn ui-vib'>Button 3</span>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span class='btn-grp x'>
-                    <span class='btn ui-blue'>Button 1</span>
-                    <span class='btn ui-blue selected'>Button 2</span>
-                    <span class='btn ui-blue'>Button 3</span>
-                </span>
-            </td>
-            <td colspan='2'>
-                <span class='btn-grp x'>
-                    <span class='btn ui-dark'>Button 1</span>
-                    <span class='btn ui-dark selected'>Button 2</span>
-                    <span class='btn ui-dark'>Button 3</span>
-                </span>
-            </td>
-        </tr>
-        <tr>
-            <th>btn-grp.y</th>
-            <td>
-                <span class='btn-grp y'>
-                    <svg class="btn icon">
+                <section>
+                    <span>
+                        <svg class="btn icon" onclick="toggle(event)">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
+                        </svg>
+                        <svg class="btn icon" onclick="toggle(event)">
                             <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="selected btn icon">
+                        </svg>
+                        <svg class="btn icon selected" onclick="toggle(event)">
                             <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
+                        </svg>
+                        <svg class="btn icon" onclick="toggle(event)">
                             <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon">
+                        </svg>
+                        <svg class="btn icon" onclick="toggle(event)">
                             <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <svg class="btn ui-vib icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-vib icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-vib icon selected" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-vib icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-vib icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <svg class="btn ui-blue icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-blue icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-blue icon selected" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-blue icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-blue icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <svg class="btn ui-dark icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn ui-dark icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn ui-dark icon selected" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn ui-dark icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn ui-dark icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <svg class="btn ui-flat icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-flat icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-flat icon selected" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-flat icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn ui-flat icon" onclick="toggle(event)">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <span class='btn' onclick="toggle(event)">Button 1</span>
+                        <span class='btn selected' onclick="toggle(event)">Button 2</span>
+                        <span class='btn' onclick="toggle(event)">Button 3</span>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <span class='btn ui-vib' onclick="toggle(event)">Button 1</span>
+                        <span class='btn ui-vib selected' onclick="toggle(event)">Button 2</span>
+                        <span class='btn ui-vib' onclick="toggle(event)">Button 3</span>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <span class='btn ui-blue' onclick="toggle(event)">Button 1</span>
+                        <span class='btn ui-blue selected' onclick="toggle(event)">Button 2</span>
+                        <span class='btn ui-blue' onclick="toggle(event)">Button 3</span>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <span class='btn ui-dark' onclick="toggle(event)">Button 1</span>
+                        <span class='btn ui-dark selected' onclick="toggle(event)">Button 2</span>
+                        <span class='btn ui-dark' onclick="toggle(event)">Button 3</span>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span>
+                        <span class='btn ui-flat' onclick="toggle(event)">Button 1</span>
+                        <span class='btn ui-flat selected' onclick="toggle(event)">Button 2</span>
+                        <span class='btn ui-flat' onclick="toggle(event)">Button 3</span>
+                    </span>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <th rowspan='2'>btn-grp x</th>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x ui-vib' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x ui-blue' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x ui-dark' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x ui-flat' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span> 
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x ui-vib' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x ui-blue' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x ui-dark' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                    </span>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <span class='btn-grp x ui-flat' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                    </span>
+                </section>
+            </td>
+
+        </tr>
+        <tr>
+            <th>btn-grp y</th>
+            <td>
+                <section>
+                    <span class='btn-grp y' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="selected btn icon">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
             </td>
             <td>
-                <span class='btn-grp y'>
-                    <span class='btn'>Button 1</span>
-                    <span class='btn selected'>Button 2</span>
-                    <span class='btn'>Button 3</span>
-                    <span class='btn'>Button 4</span>
-                    <span class='btn'>Button 5</span>
-                </span>
+                <section>
+                    <span class='btn-grp y' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                        <span class='btn'>Button 4</span>
+                        <span class='btn'>Button 5</span>
+                    </span>
+                </section>
             </td>
             <td>
-                <span class='btn-grp y'>
-                    <svg class="btn icon ui-vib">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-vib">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-vib selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-vib">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-vib">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
+                <section>
+                    <span class='btn-grp y ui-vib' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
             </td>
             <td>
-                <span class='btn-grp y'>
-                    <span class='btn ui-vib'>Button 1</span>
-                    <span class='btn ui-vib selected'>Button 2</span>
-                    <span class='btn ui-vib'>Button 3</span>
-                    <span class='btn ui-vib'>Button 4</span>
-                    <span class='btn ui-vib'>Button 5</span>
-                </span>
+                <section>
+                    <span class='btn-grp y ui-vib' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                        <span class='btn'>Button 4</span>
+                        <span class='btn'>Button 5</span>
+                    </span>
+                </section>
             </td>
             <td>
-                <span class='btn-grp y'>
-                    <svg class="btn icon ui-blue">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-blue">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use> 
-                    </svg>
-                    <svg class="btn icon ui-blue selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                    </svg>
-                    <svg class="btn icon ui-blue">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use> 
-                    </svg>
-                    <svg class="btn icon ui-blue">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                    </svg>
-                </span>
+                <section>
+                    <span class='btn-grp y ui-blue' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
             </td>
             <td>
-                <span class='btn-grp y'>
-                    <span class='btn ui-blue'>Button 1</span>
-                    <span class='btn ui-blue selected'>Button 2</span>
-                    <span class='btn ui-blue'>Button 3</span>
-                    <span class='btn ui-blue'>Button 4</span>
-                    <span class='btn ui-blue'>Button 5</span>
-                </span>
+                <section>
+                    <span class='btn-grp y ui-blue' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                        <span class='btn'>Button 4</span>
+                        <span class='btn'>Button 5</span>
+                    </span>
+                </section>
             </td>
             <td>
-                <span class='btn-grp y'>
-                    <svg class="btn icon ui-dark">
-                        <use href='dist/icons.svg#flow-tree' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn icon ui-dark">
-                        <use href='dist/icons.svg#flow-parallel' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn icon ui-dark selected">
-                        <use href='dist/icons.svg#flow-line' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn icon ui-dark">
-                        <use href='dist/icons.svg#flow-cascade' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                    <svg class="btn icon ui-dark">
-                        <use href='dist/icons.svg#flow-branch' width='100%' height='100%' fill='#FFF'></use>
-                    </svg>
-                </span>
+                <section>
+                    <span class='btn-grp y ui-dark' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%' fill='#FFF'></use>
+                        </svg>
+                    </span>
+                </section>
             </td>
             <td>
-                <span class='btn-grp y'>
-                    <span class='btn ui-dark'>Button 1</span>
-                    <span class='btn ui-dark selected'>Button 2</span>
-                    <span class='btn ui-dark'>Button 3</span>
-                    <span class='btn ui-dark'>Button 4</span>
-                    <span class='btn ui-dark'>Button 5</span>
-                </span>
+                <section>
+                    <span class='btn-grp y ui-dark' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                        <span class='btn'>Button 4</span>
+                        <span class='btn'>Button 5</span>
+                    </span>
+                </section>
+            </td>
+            <td>
+                <section>
+                    <span class='btn-grp y ui-flat' onclick="toggle(event)">
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon selected">
+                            <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                        </svg>
+                        <svg class="btn icon">
+                            <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                        </svg>
+                    </span>
+                </section>
+            </td>
+            <td>
+                <section>
+                    <span class='btn-grp y ui-flat' onclick="toggle(event)">
+                        <span class='btn'>Button 1</span>
+                        <span class='btn selected'>Button 2</span>
+                        <span class='btn'>Button 3</span>
+                        <span class='btn'>Button 4</span>
+                        <span class='btn'>Button 5</span>
+                    </span>
+                </section>
             </td>
         </tr>
     </table>
