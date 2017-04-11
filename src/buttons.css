@@ -95,7 +95,12 @@ div.btn-grp>*:last-child,
 	border-bottom-color:inherit;
 }
 
+/* ============================================== [disabled] ============================================== */
 
+.btn.disabled,
+.btn-grp>*.disabled {
+	cursor:not-allowed;
+}
 
 /* ============================================== [theme] ============================================== */
 
@@ -137,6 +142,19 @@ div.btn-grp>.btn+.btn:not(.selected),
 	border-color: rgb(187,187,187) rgb(197,197,197) rgb(193,193,193);
 }
 
+.btn.disabled,
+.btn-grp>*.disabled {
+	background: rgb(250,250,250);
+	box-shadow: none!important;
+	border-color: rgb(224,224,224);
+	color: rgb(145,145,145);
+	text-shadow:none;
+}
+
+svg.btn.disabled {
+	fill:rgb(145,145,145);
+}
+
 /* ============================================== [theme](flat) ============================================== */
 
 .btn.ui-flat,
@@ -170,6 +188,14 @@ div.btn-grp>.btn+.btn:not(.selected),
 	border-color: #111 #111 black #111;
 }
 
+.btn.ui-dark.disabled,
+.btn-grp.ui-dark>*.disabled {
+	color: rgb(200,200,200);
+	text-shadow:none;
+	border-color:#111;
+	background:#464a4f;
+}
+	
 /* ============================================== [theme](vib) ============================================== */
 
 .btn.ui-vib,
@@ -192,6 +218,11 @@ div.btn-grp>.btn+.btn:not(.selected),
 	border-color: rgb(191,191,191) rgb(200,200,200) rgb(214,214,214);
 }
 
+.btn.ui-vib.disabled,
+.btn-grp.ui-vib>*.disabled {
+	color: rgb(145,145,145);
+}
+
 /* ============================================== [theme](blue) ============================================== */
 
 .btn.ui-blue,
@@ -212,6 +243,14 @@ div.btn-grp>.btn+.btn:not(.selected),
 	box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px rgba(255,255,255,0.1);
 	background: rgb(33,128,206) linear-gradient(to bottom, rgb(33,128,206),rgb(51,160,232));
 	border-color: rgb(20,91,150) rgb(21,102,175) rgb(26,118,194);
+}
+
+.btn.ui-blue.disabled,
+.btn-grp.ui-blue>*.disabled {
+	background: rgb(57, 137, 198);
+	color: rgb(200,200,200);
+	text-shadow:none;
+	border-color:rgb(59, 112, 155);
 }
 
 /* ============================================== [toggle] ============================================== */
