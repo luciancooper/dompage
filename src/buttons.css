@@ -26,6 +26,10 @@ span.btn {
    	vertical-align: center;
 }
 
+svg.btn>* {
+    pointer-events:none;
+}
+
 /* ============================================== [group] ============================================== */
 
 .btn-grp {
@@ -126,6 +130,11 @@ div.btn-grp>.btn+.btn:not(.selected),
 	border-top-color:rgb(249,249,249);
 }
 
+svg.btn,
+.btn-grp>svg {
+	fill:#000;
+}
+
 .btn.selected {
 	color: rgb(250,250,250);
 	text-shadow: 0 -1px rgba(0,0,0,0.5);
@@ -188,6 +197,11 @@ svg.btn.disabled {
 	border-color: #111 #111 black #111;
 }
 
+svg.btn.ui-dark,
+.btn-grp.ui-dark>svg {
+	fill:#FFF;
+}
+
 .btn.ui-dark.disabled,
 .btn-grp.ui-dark>*.disabled {
 	color: rgb(200,200,200);
@@ -196,6 +210,11 @@ svg.btn.disabled {
 	background:#464a4f;
 }
 	
+svg.btn.ui-dark.disabled,
+.btn-grp.ui-dark>svg.disabled {
+	fill:rgb(200,200,200);
+}
+
 /* ============================================== [theme](vib) ============================================== */
 
 .btn.ui-vib,
@@ -238,6 +257,11 @@ svg.btn.disabled {
 	border-color: rgb(27,116,188) rgb(24,103,168) rgb(22,95,155);
 }
 
+svg.btn.ui-blue,
+.btn-grp.ui-blue>svg {
+	fill:#FFF;
+}
+
 .btn.ui-blue.selected,
 .btn-grp.ui-blue>.btn.selected {
 	box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px rgba(255,255,255,0.1);
@@ -251,6 +275,11 @@ svg.btn.disabled {
 	color: rgb(200,200,200);
 	text-shadow:none;
 	border-color:rgb(59, 112, 155);
+}
+
+svg.btn.ui-blue.disabled,
+.btn-grp.ui-blue>svg.disabled {
+	fill:rgb(200,200,200);
 }
 
 /* ============================================== [toggle] ============================================== */
