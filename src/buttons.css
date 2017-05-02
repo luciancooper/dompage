@@ -8,6 +8,7 @@
 	border-width: 1px;
    	border-style: solid;
 	border-radius: 3px;
+	background-clip:padding-box;
 }
 
 span.btn {
@@ -26,77 +27,101 @@ span.btn {
    	vertical-align: center;
 }
 
-svg.btn>* {
+svg.btn>*,
+.btn-grp>svg>* {
     pointer-events:none;
 }
 
 /* ============================================== [group] ============================================== */
 
 .btn-grp {
+    display:flex;
 	box-sizing: border-box;
 	margin:2px;
 	padding:0px;
-	vertical-align: middle;
 	border-radius: 3px;
+    border:solid 0px transparent;
 	justify-content:flex-start;
     align-items:stretch;
-	border-style:solid;
-	border-width:0px;
+    flex-wrap:nowrap;
+    flex-direction:inherit;
 }
 
-.btn-grp>.btn {
-	border-radius:0px;
+.btn-grp>* {
+	cursor:default;
+	vertical-align: middle;
 	margin:0px;
+	white-space: nowrap;
+	text-align: center;
+	padding: 0px 3px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius:0px;
+	background-clip:padding-box;
 }
 
 span.btn-grp {
 	display:inline-flex;
 }
 
-div.btn-grp {
-	display:flex;
-}
-
 span.btn-grp,
 .btn-grp.x {
-	flex-flow:row nowrap; 
+	flex-direction:row;
 }
 
 div.btn-grp,
 .btn-grp.y {
-	flex-flow:column nowrap;
+	flex-direction:column;
 }
 
-.btn-grp.x>input {
-	flex-grow:1;
+div.btn-grp:not(.x)>*+*,
+.btn-grp.y>*+* {
+    margin-top:-1px;
 }
 
-span.btn-grp>*:first-child,
+span.btn-grp:not(.y)>*+*,
+.btn-grp.x>*+* {
+    margin-left:-1px;
+}
+
+div.btn-grp:not(.x)>*.selected+*,
+.btn-grp.y>*.selected+* {
+    border-top-color:transparent!important;
+}
+
+span.btn-grp:not(.y)>*.selected+*,
+.btn-grp.x>*.selected+* {
+    border-left-color:transparent!important;
+}
+
+/* ============================================== [border-radius] ============================================== */
+
+.btn-grp>*:first-child {
+    border-top-left-radius: inherit;
+}
+
+.btn-grp>*:last-child {
+    border-bottom-right-radius: inherit;
+}
+
+span.btn-grp:not(.y)>*:first-child,
 .btn-grp.x>*:first-child {
-	border-top-left-radius: inherit;
 	border-bottom-left-radius: inherit;
-	border-left-color:inherit;
 }
 
-span.btn-grp>*:last-child,
+span.btn-grp:not(.y)>*:last-child,
 .btn-grp.x>*:last-child {
 	border-top-right-radius: inherit;
-	border-bottom-right-radius: inherit;
-	border-right-color:inherit;
 }
 
-div.btn-grp>*:first-child,
+div.btn-grp:not(.x)>*:first-child,
 .btn-grp.y>*:first-child {
-	border-top-left-radius: inherit;
 	border-top-right-radius: inherit;
-	border-top-color:inherit;
 }
 
-div.btn-grp>*:last-child,
+div.btn-grp:not(.x)>*:last-child,
 .btn-grp.y>*:last-child {
 	border-bottom-left-radius: inherit;
-	border-bottom-right-radius: inherit;
-	border-bottom-color:inherit;
 }
 
 /* ============================================== [disabled] ============================================== */
@@ -108,26 +133,14 @@ div.btn-grp>*:last-child,
 
 /* ============================================== [theme] ============================================== */
 
-.btn {
+.btn,
+.btn-grp>* {
     color: rgb(85,85,85);
 	text-shadow: 0 1px rgba(255,255,255,0.8);
-	box-shadow: inset 0 1px rgb(252,252,252),0 1px 1px rgba(0,0,0,0.05);
-	background: rgb(241,241,241) linear-gradient(to bottom, rgba(255,255,255,0.4),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.05));
-}
-
-.btn,
-.btn-grp {
-	border-color: rgb(204,204,204) rgb(197,197,197) rgb(187,187,187);
-}
-
-span.btn-grp>.btn+.btn:not(.selected),
-.btn-grp.x>.btn+.btn:not(.selected) {
-	border-left-color:rgb(249,249,249);
-}
-
-div.btn-grp>.btn+.btn:not(.selected),
-.btn-grp.y>.btn+.btn:not(.selected) {
-	border-top-color:rgb(249,249,249);
+	box-shadow: inset 1px 1px 1px rgba(252,252,252,1);
+    background-color:rgb(241,241,241);
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.4),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.05));
+    border-color:rgb(204,204,204) rgb(197,197,197) rgb(187,187,187);
 }
 
 svg.btn,
@@ -135,16 +148,17 @@ svg.btn,
 	fill:#000;
 }
 
-.btn.selected {
+.btn.selected,
+.btn-grp>*.selected {
 	color: rgb(250,250,250);
 	text-shadow: 0 -1px rgba(0,0,0,0.5);
-	box-shadow: inset 0 1px 2px rgba(0,0,0,0.15),0 1px rgba(255,255,255,0.8);
-	background: rgb(107,107,107) linear-gradient(to bottom, rgb(113,113,113),rgb(154,154,154));
+	box-shadow: -1px -1px rgba(255,255,255,0);
 	background: rgb(107,107,107) linear-gradient(to bottom, rgb(163,163,163),rgb(204,204,204));
-	border-color: rgb(56,56,56) rgb(89,89,89) rgb(119,119,119);
+	border-color: rgb(56,56,56) rgb(150,150,150) rgb(150,150,150) rgb(89,89,89);
 }
 
-.btn.active {
+.btn.active,
+.btn-grp>*.active {
 	text-shadow: 0 1px rgba(255,255,255,0.4);
 	box-shadow: inset 0 1px 1px rgba(0,0,0,0.07),0 1px 1px rgba(0,0,0,0.05);
 	background: rgb(225,227,227) linear-gradient(to bottom, rgb(224,225,224),rgb(241,244,244));
@@ -153,48 +167,55 @@ svg.btn,
 
 .btn.disabled,
 .btn-grp>*.disabled {
-	background: rgb(250,250,250);
-	box-shadow: none!important;
-	border-color: rgb(224,224,224);
+	background: rgb(241,241,241);
+	box-shadow: none;
 	color: rgb(145,145,145);
-	text-shadow:none;
 }
 
-svg.btn.disabled {
+svg.btn.disabled,
+.btn-grp>svg.disabled {
 	fill:rgb(145,145,145);
 }
 
 /* ============================================== [theme](flat) ============================================== */
 
 .btn.ui-flat,
-.btn-grp.ui-flat>.btn {
+.btn-grp.ui-flat>* {
 	background: rgba(241,241,241,0);
 	box-shadow: none;
-}
-
-.btn.ui-flat,
-.btn-grp.ui-flat {
 	border-color: rgb(150,150,150);
+	color: rgb(85,85,85);
+	text-shadow: none;
 }
 
 .btn.ui-flat.selected,
-.btn-grp.ui-flat>.btn.selected {
+.btn-grp.ui-flat>*.selected {
 	background: rgb(153, 204, 255);
+}
+
+.btn.ui-flat.disabled,
+.btn-grp.ui-flat>*.disabled {
+	color: rgb(145,145,145);
 }
 
 /* ============================================== [theme](dark) ============================================== */
 
 .btn.ui-dark,
-.btn-grp.ui-dark>.btn {
-	color: #ddd;
+.btn-grp.ui-dark>* {
+	color: #FFF;
 	text-shadow: 0 1px rgba(0,0,0,0.8);
 	box-shadow: inset 0 1px rgba(255,255,255,0.1),inset 0 -1px 3px rgba(0,0,0,0.3),inset 0 0 0 1px rgba(255,255,255,0.08),0 1px 2px rgba(0,0,0,0.15);
 	background: #464a4f linear-gradient(to bottom, rgba(255,255,255,0.08),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.25));
+	border-color: #111 #111 black #111;
 }
 
-.btn.ui-dark,
-.btn-grp.ui-dark {
-	border-color: #111 #111 black #111;
+.btn.ui-dark.selected,
+.btn-grp.ui-dark>*.selected {
+	color: rgb(250,250,250);
+    background: #323538;
+	border-color: black #111 #111;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.1),transparent 50%,rgba(255,255,255,0.07));
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.25), 0 1px rgba(255,255,255,0.08);
 }
 
 svg.btn.ui-dark,
@@ -206,8 +227,8 @@ svg.btn.ui-dark,
 .btn-grp.ui-dark>*.disabled {
 	color: rgb(200,200,200);
 	text-shadow:none;
-	border-color:#111;
-	background:#464a4f;
+	box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+	background:rgb(51, 51, 51);
 }
 	
 svg.btn.ui-dark.disabled,
@@ -218,20 +239,16 @@ svg.btn.ui-dark.disabled,
 /* ============================================== [theme](vib) ============================================== */
 
 .btn.ui-vib,
-.btn-grp.ui-vib>.btn {
+.btn-grp.ui-vib>* {
 	color: rgb(102,102,102);
 	text-shadow: 0 1px rgba(255,255,255,0.5);
 	box-shadow: inset 0 1px rgb(255,255,255),inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05);
 	background: rgb(238,238,238) linear-gradient(to bottom, (252,252,252),rgb(232,232,232));
-}
-
-.btn.ui-vib,
-.btn-grp.ui-vib {
 	border-color: rgb(207,207,207) rgb(204,204,204) rgb(198,198,198);
 }
 
 .btn.ui-vib.selected,
-.btn-grp.ui-vib>.btn.selected {
+.btn-grp.ui-vib>*.selected {
 	box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px rgba(255,255,255,0.1);
 	background: rgb(232,232,232) linear-gradient(to bottom, rgb(232,232,232),rgb(250,250,250));
 	border-color: rgb(191,191,191) rgb(200,200,200) rgb(214,214,214);
@@ -245,15 +262,11 @@ svg.btn.ui-dark.disabled,
 /* ============================================== [theme](blue) ============================================== */
 
 .btn.ui-blue,
-.btn-grp.ui-blue>.btn {
+.btn-grp.ui-blue>* {
 	color: rgb(255,255,255);
 	text-shadow: 0 -1px rgba(0,0,0,0.3);
 	box-shadow: inset 0 1px rgba(255,255,255,0.2),inset 0 0 0 1px rgba(255,255,255,0.1),0 1px 1px rgba(0,0,0,0.06);
 	background: rgb(39,140,216) linear-gradient(to bottom, rgb(51,160,232),rgb(27,122,202));
-}
-
-.btn.ui-blue,
-.btn-grp.ui-blue {
 	border-color: rgb(27,116,188) rgb(24,103,168) rgb(22,95,155);
 }
 
@@ -263,7 +276,7 @@ svg.btn.ui-blue,
 }
 
 .btn.ui-blue.selected,
-.btn-grp.ui-blue>.btn.selected {
+.btn-grp.ui-blue>*.selected {
 	box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px rgba(255,255,255,0.1);
 	background: rgb(33,128,206) linear-gradient(to bottom, rgb(33,128,206),rgb(51,160,232));
 	border-color: rgb(20,91,150) rgb(21,102,175) rgb(26,118,194);
@@ -271,10 +284,10 @@ svg.btn.ui-blue,
 
 .btn.ui-blue.disabled,
 .btn-grp.ui-blue>*.disabled {
-	background: rgb(57, 137, 198);
+	background: rgb(39,140,216);
 	color: rgb(200,200,200);
 	text-shadow:none;
-	border-color:rgb(59, 112, 155);
+	box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 svg.btn.ui-blue.disabled,
