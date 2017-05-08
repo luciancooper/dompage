@@ -9,6 +9,7 @@
    	border-style: solid;
 	border-radius: 3px;
 	background-clip:padding-box;
+	pointer-events:all;
 }
 
 span.btn {
@@ -16,7 +17,9 @@ span.btn {
 }
 
 .btn:empty,
-.btn.icon {
+.btn.icon,
+.btn-grp>*:empty,
+.btn-grp>*.icon {
 	padding: 0px;
 }
 
@@ -27,13 +30,19 @@ span.btn {
    	vertical-align: center;
 }
 
+a.btn,
+.btn-grp>a {
+	text-decoration: none;
+}
+
 svg.btn>*,
 .btn-grp>svg>* {
     pointer-events:none;
 }
 
-/* ============================================== [group] ============================================== */
+/* ============================================== [group & set] ============================================== */
 
+.btn-set,
 .btn-grp {
     display:flex;
 	box-sizing: border-box;
@@ -45,12 +54,13 @@ svg.btn>*,
     align-items:stretch;
     flex-wrap:nowrap;
     flex-direction:inherit;
+	overflow:visible;
+	pointer-events:none;
 }
 
 .btn-grp>* {
 	cursor:default;
 	vertical-align: middle;
-	margin:0px;
 	white-space: nowrap;
 	text-align: center;
 	padding: 0px 3px;
@@ -58,43 +68,66 @@ svg.btn>*,
 	border-style: solid;
 	border-radius:0px;
 	background-clip:padding-box;
+	pointer-events:all;
 }
 
+span.btn-set,
 span.btn-grp {
 	display:inline-flex;
 }
 
+.btn-set.x,
 span.btn-grp,
 .btn-grp.x {
 	flex-direction:row;
 }
 
+.btn-set.y,
 div.btn-grp,
 .btn-grp.y {
 	flex-direction:column;
 }
 
+.btn-set .btn-grp,
+.btn-set .btn-set {
+	flex-direction:inherit;
+}
+
+/* ============================================== [margin] ============================================== */
+
+.btn-grp>*,
+.btn-set>* {
+	margin:0px;
+}
+
+.btn-set.y .btn-grp>*+*,
 div.btn-grp:not(.x)>*+*,
 .btn-grp.y>*+* {
-    margin-top:-1px;
+    margin:-1px 0px 0px 0px;
 }
 
+.btn-set.x .btn-grp>*+*,
 span.btn-grp:not(.y)>*+*,
 .btn-grp.x>*+* {
-    margin-left:-1px;
+    margin:0px 0px 0px -1px;
 }
 
-div.btn-grp:not(.x)>*.selected+*,
-.btn-grp.y>*.selected+* {
-    border-top-color:transparent!important;
+.btn-set.y>*+*,
+.btn-set.y .btn-set>*+* {
+    margin:3px 0px 0px 0px;
 }
 
-span.btn-grp:not(.y)>*.selected+*,
-.btn-grp.x>*.selected+* {
-    border-left-color:transparent!important;
+.btn-set.x>*+*,
+.btn-set.x .btn-set>*+* {
+    margin:0px 0px 0px 3px;
 }
 
 /* ============================================== [border-radius] ============================================== */
+
+.btn-set>*,
+.btn-set .btn-set {
+	border-radius:inherit;
+}
 
 .btn-grp>*:first-child {
     border-top-left-radius: inherit;
@@ -104,24 +137,32 @@ span.btn-grp:not(.y)>*.selected+*,
     border-bottom-right-radius: inherit;
 }
 
+.btn-set.x .btn-grp>*:first-child,
 span.btn-grp:not(.y)>*:first-child,
-.btn-grp.x>*:first-child {
+.btn-grp.x>*:first-child,
+.btn-set.y .btn-grp>*:last-child,
+div.btn-grp:not(.x)>*:last-child,
+.btn-grp.y>*:last-child {
 	border-bottom-left-radius: inherit;
 }
 
+.btn-set.x .btn-grp>*:last-child,
 span.btn-grp:not(.y)>*:last-child,
-.btn-grp.x>*:last-child {
-	border-top-right-radius: inherit;
-}
-
+.btn-grp.x>*:last-child,
+.btn-set.y .btn-grp>*:first-child,
 div.btn-grp:not(.x)>*:first-child,
 .btn-grp.y>*:first-child {
 	border-top-right-radius: inherit;
 }
 
-div.btn-grp:not(.x)>*:last-child,
-.btn-grp.y>*:last-child {
-	border-bottom-left-radius: inherit;
+.btn-set.x .btn-grp>*:first-child,
+.btn-set.y .btn-grp>*:last-child {
+	border-top-right-radius:0px;
+}
+
+.btn-set.x .btn-grp>*:last-child,
+.btn-set.y .btn-grp>*:first-child {
+	border-bottom-left-radius:0px;
 }
 
 /* ============================================== [disabled] ============================================== */
@@ -137,7 +178,6 @@ div.btn-grp:not(.x)>*:last-child,
 .btn-grp>* {
     color: rgb(85,85,85);
 	text-shadow: 0 1px rgba(255,255,255,0.8);
-	box-shadow: inset 1px 1px 1px rgba(252,252,252,1);
     background-color:rgb(241,241,241);
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.4),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.05));
     border-color:rgb(204,204,204) rgb(197,197,197) rgb(187,187,187);
@@ -180,8 +220,10 @@ svg.btn.disabled,
 /* ============================================== [theme](flat) ============================================== */
 
 .btn.ui-flat,
-.btn-grp.ui-flat>* {
-	background: rgba(241,241,241,0);
+.btn-grp.ui-flat>*,
+.btn-set.ui-flat .btn,
+.btn-set.ui-flat .btn-grp>* {
+	background: rgba(241,241,241,1);
 	box-shadow: none;
 	border-color: rgb(150,150,150);
 	color: rgb(85,85,85);
@@ -189,19 +231,25 @@ svg.btn.disabled,
 }
 
 .btn.ui-flat.selected,
-.btn-grp.ui-flat>*.selected {
+.btn-grp.ui-flat>*.selected,
+.btn-set.ui-flat .btn.selected,
+.btn-set.ui-flat .btn-grp>*.selected {
 	background: rgb(153, 204, 255);
 }
 
 .btn.ui-flat.disabled,
-.btn-grp.ui-flat>*.disabled {
+.btn-grp.ui-flat>*.disabled,
+.btn-set.ui-flat .btn.disabled,
+.btn-set.ui-flat .btn-grp>*.disabled {
 	color: rgb(145,145,145);
 }
 
 /* ============================================== [theme](dark) ============================================== */
 
 .btn.ui-dark,
-.btn-grp.ui-dark>* {
+.btn-grp.ui-dark>*,
+.btn-set.ui-dark .btn,
+.btn-set.ui-dark .btn-grp>* {
 	color: #FFF;
 	text-shadow: 0 1px rgba(0,0,0,0.8);
 	box-shadow: inset 0 1px rgba(255,255,255,0.1),inset 0 -1px 3px rgba(0,0,0,0.3),inset 0 0 0 1px rgba(255,255,255,0.08),0 1px 2px rgba(0,0,0,0.15);
@@ -210,7 +258,9 @@ svg.btn.disabled,
 }
 
 .btn.ui-dark.selected,
-.btn-grp.ui-dark>*.selected {
+.btn-grp.ui-dark>*.selected,
+.btn-set.ui-dark .btn.selected,
+.btn-set.ui-dark .btn-grp>*.selected {
 	color: rgb(250,250,250);
     background: #323538;
 	border-color: black #111 #111;
@@ -219,12 +269,16 @@ svg.btn.disabled,
 }
 
 svg.btn.ui-dark,
-.btn-grp.ui-dark>svg {
+.btn-grp.ui-dark>svg,
+.btn-set.ui-dark svg.btn,
+.btn-set.ui-dark .btn-grp>svg {
 	fill:#FFF;
 }
 
 .btn.ui-dark.disabled,
-.btn-grp.ui-dark>*.disabled {
+.btn-grp.ui-dark>*.disabled,
+.btn-set.ui-dark .btn.disabled,
+.btn-set.ui-dark .btn-grp>*.disabled {
 	color: rgb(200,200,200);
 	text-shadow:none;
 	box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
@@ -232,14 +286,18 @@ svg.btn.ui-dark,
 }
 	
 svg.btn.ui-dark.disabled,
-.btn-grp.ui-dark>svg.disabled {
+.btn-grp.ui-dark>svg.disabled,
+.btn-set.ui-dark svg.btn.disabled,
+.btn-set.ui-dark .btn-grp>svg.disabled {
 	fill:rgb(200,200,200);
 }
 
 /* ============================================== [theme](vib) ============================================== */
 
 .btn.ui-vib,
-.btn-grp.ui-vib>* {
+.btn-grp.ui-vib>*,
+.btn-set.ui-vib .btn,
+.btn-set.ui-vib .btn-grp>* {
 	color: rgb(102,102,102);
 	text-shadow: 0 1px rgba(255,255,255,0.5);
 	box-shadow: inset 0 1px rgb(255,255,255),inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05);
@@ -248,21 +306,27 @@ svg.btn.ui-dark.disabled,
 }
 
 .btn.ui-vib.selected,
-.btn-grp.ui-vib>*.selected {
+.btn-grp.ui-vib>*.selected,
+.btn-set.ui-vib .btn.selected,
+.btn-set.ui-vib .btn-grp>*.selected {
 	box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px rgba(255,255,255,0.1);
 	background: rgb(232,232,232) linear-gradient(to bottom, rgb(232,232,232),rgb(250,250,250));
 	border-color: rgb(191,191,191) rgb(200,200,200) rgb(214,214,214);
 }
 
 .btn.ui-vib.disabled,
-.btn-grp.ui-vib>*.disabled {
+.btn-grp.ui-vib>*.disabled,
+.btn-set.ui-vib .btn.disabled,
+.btn-set.ui-vib .btn-grp>*.disabled {
 	color: rgb(145,145,145);
 }
 
 /* ============================================== [theme](blue) ============================================== */
 
 .btn.ui-blue,
-.btn-grp.ui-blue>* {
+.btn-grp.ui-blue>*,
+.btn-set.ui-blue .btn,
+.btn-set.ui-blue .btn-grp>* {
 	color: rgb(255,255,255);
 	text-shadow: 0 -1px rgba(0,0,0,0.3);
 	box-shadow: inset 0 1px rgba(255,255,255,0.2),inset 0 0 0 1px rgba(255,255,255,0.1),0 1px 1px rgba(0,0,0,0.06);
@@ -271,19 +335,25 @@ svg.btn.ui-dark.disabled,
 }
 
 svg.btn.ui-blue,
-.btn-grp.ui-blue>svg {
+.btn-grp.ui-blue>svg,
+.btn-set.ui-blue svg.btn,
+.btn-set.ui-blue .btn-grp>svg {
 	fill:#FFF;
 }
 
 .btn.ui-blue.selected,
-.btn-grp.ui-blue>*.selected {
+.btn-grp.ui-blue>*.selected,
+.btn-set.ui-blue .btn.selected,
+.btn-set.ui-blue .btn-grp>*.selected {
 	box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px rgba(255,255,255,0.1);
 	background: rgb(33,128,206) linear-gradient(to bottom, rgb(33,128,206),rgb(51,160,232));
 	border-color: rgb(20,91,150) rgb(21,102,175) rgb(26,118,194);
 }
 
 .btn.ui-blue.disabled,
-.btn-grp.ui-blue>*.disabled {
+.btn-grp.ui-blue>*.disabled,
+.btn-set.ui-blue .btn.disabled,
+.btn-set.ui-blue .btn-grp>*.disabled {
 	background: rgb(39,140,216);
 	color: rgb(200,200,200);
 	text-shadow:none;
@@ -291,7 +361,9 @@ svg.btn.ui-blue,
 }
 
 svg.btn.ui-blue.disabled,
-.btn-grp.ui-blue>svg.disabled {
+.btn-grp.ui-blue>svg.disabled,
+.btn-set.ui-blue svg.btn.disabled,
+.btn-set.ui-blue .btn-grp>svg.disabled {
 	fill:rgb(200,200,200);
 }
 
