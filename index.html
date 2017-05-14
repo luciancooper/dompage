@@ -46,7 +46,7 @@
 <body>
     <table>
         <tr>
-            <th></th>
+            <th colspan='2'></th>
             <th colspan='2'>default</th>
             <th colspan='2'>ui-vib</th>
             <th colspan='2'>ui-blue</th>
@@ -54,12 +54,20 @@
             <th colspan='2'>ui-flat</th>
         </tr>
         <tr>
-            <th>toggle</th>
-            <td colspan='10'>
-                <span class='btn toggle' onclick="toggle(event,'checked')"></span>
+            <th colspan='2'>toggle</th>
+            <td colspan='5'>
+                <section>
+                    <span class='btn toggle' onclick="toggle(event,'checked')"></span>
+                </section>
+            </td>
+            <td colspan='5'>
+                <section>
+                    <input type='checkbox' class='toggle'/>
+                </section>
             </td>
         </tr>
         <tr>
+            <th rowspan='8'>span</th>
             <th rowspan='2'>btn</th>
             <td colspan='2'>
                 <section>
@@ -215,10 +223,10 @@
             </td>
         </tr>
         <tr>
-            <th rowspan='2'>btn-grp.x</th>
+            <th rowspan='2'>btn-grp</th>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x' onclick="toggle(event)">
+                    <span class='btn-grp' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -239,7 +247,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x ui-vib' onclick="toggle(event)">
+                    <span class='btn-grp ui-vib' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -260,7 +268,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x ui-blue' onclick="toggle(event)">
+                    <span class='btn-grp ui-blue' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -281,7 +289,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x ui-dark' onclick="toggle(event)">
+                    <span class='btn-grp ui-dark' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -302,7 +310,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x ui-flat' onclick="toggle(event)">
+                    <span class='btn-grp ui-flat' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -325,7 +333,7 @@
         <tr>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x' onclick="toggle(event)">
+                    <span class='btn-grp' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span class='disabled'>Disabled</span> 
@@ -334,7 +342,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x ui-vib' onclick="toggle(event)">
+                    <span class='btn-grp ui-vib' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span class='disabled'>Disabled</span>
@@ -343,7 +351,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x ui-blue' onclick="toggle(event)">
+                    <span class='btn-grp ui-blue' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span class='disabled'>Disabled</span>
@@ -352,7 +360,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x ui-dark' onclick="toggle(event)">
+                    <span class='btn-grp ui-dark' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span class='disabled'>Disabled</span>
@@ -361,7 +369,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <span class='btn-grp x ui-flat' onclick="toggle(event)">
+                    <span class='btn-grp ui-flat' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span class='disabled'>Disabled</span>
@@ -371,10 +379,10 @@
 
         </tr>
         <tr>
-            <th>btn-grp.y</th>
+            <th>btn-grp.col</th>
             <td>
                 <section>
-                    <span class='btn-grp y' onclick="toggle(event)">
+                    <span class='btn-grp col' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -395,7 +403,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y' onclick="toggle(event)">
+                    <span class='btn-grp col' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span>Button 3</span>
@@ -406,7 +414,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y ui-vib' onclick="toggle(event)">
+                    <span class='btn-grp col ui-vib' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -427,7 +435,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y ui-vib' onclick="toggle(event)">
+                    <span class='btn-grp col ui-vib' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span>Button 3</span>
@@ -438,7 +446,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y ui-blue' onclick="toggle(event)">
+                    <span class='btn-grp col ui-blue' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -459,7 +467,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y ui-blue' onclick="toggle(event)">
+                    <span class='btn-grp col ui-blue' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span>Button 3</span>
@@ -470,7 +478,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y ui-dark' onclick="toggle(event)">
+                    <span class='btn-grp col ui-dark' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -491,7 +499,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y ui-dark' onclick="toggle(event)">
+                    <span class='btn-grp col ui-dark' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span>Button 3</span>
@@ -502,7 +510,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y ui-flat' onclick="toggle(event)">
+                    <span class='btn-grp col ui-flat' onclick="toggle(event)">
                         <svg class="icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -523,7 +531,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-grp y ui-flat' onclick="toggle(event)">
+                    <span class='btn-grp col ui-flat' onclick="toggle(event)">
                         <span>Button 1</span>
                         <span class='selected'>Button 2</span>
                         <span>Button 3</span>
@@ -535,10 +543,10 @@
         </tr>
         <!-- btn-set -->
         <tr>
-            <th rowspan='2'>btn-set.x</th>
+            <th rowspan='2'>btn-set</th>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x' onclick='toggle(event)'>
+                    <div class='btn-set' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -561,7 +569,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x ui-vib' onclick='toggle(event)'>
+                    <div class='btn-set ui-vib' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -584,7 +592,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x ui-blue' onclick='toggle(event)'>
+                    <div class='btn-set ui-blue' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -607,7 +615,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x ui-dark' onclick='toggle(event)'>
+                    <div class='btn-set ui-dark' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -630,7 +638,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x ui-flat' onclick='toggle(event)'>
+                    <div class='btn-set ui-flat' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -655,7 +663,7 @@
         <tr>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x' onclick='toggle(event)'>
+                    <div class='btn-set' onclick='toggle(event)'>
                         <span class='btn'>B1</span>
                         <span class='btn selected'>B2</span>
                         <div class='btn-grp'>
@@ -668,7 +676,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x ui-vib' onclick='toggle(event)'>
+                    <div class='btn-set ui-vib' onclick='toggle(event)'>
                         <span class='btn'>B1</span>
                         <span class='btn selected'>B2</span>
                         <div class='btn-grp'>
@@ -681,7 +689,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x ui-blue' onclick='toggle(event)'>
+                    <div class='btn-set ui-blue' onclick='toggle(event)'>
                         <span class='btn'>B1</span>
                         <span class='btn selected'>B2</span>
                         <div class='btn-grp'>
@@ -694,7 +702,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x ui-dark' onclick='toggle(event)'>
+                    <div class='btn-set ui-dark' onclick='toggle(event)'>
                         <span class='btn'>B1</span>
                         <span class='btn selected'>B2</span>
                         <div class='btn-grp'>
@@ -707,7 +715,7 @@
             </td>
             <td colspan='2'>
                 <section>
-                    <div class='btn-set x ui-flat' onclick='toggle(event)'>
+                    <div class='btn-set ui-flat' onclick='toggle(event)'>
                         <span class='btn'>B1</span>
                         <span class='btn selected'>B2</span>
                         <div class='btn-grp'>
@@ -721,10 +729,10 @@
 
         </tr>
         <tr>
-            <th>btn-set.y</th>
+            <th>btn-set.col</th>
             <td>
                 <section>
-                    <span class='btn-set y' onclick='toggle(event)'>
+                    <span class='btn-set col' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -747,7 +755,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y' onclick='toggle(event)'>
+                    <span class='btn-set col' onclick='toggle(event)'>
                         <span class='btn'>Button 1</span>
                         <span class='btn selected'>Button 2</span>
                         <span class='btn-grp'>
@@ -760,7 +768,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y ui-vib' onclick='toggle(event)'>
+                    <span class='btn-set col ui-vib' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -783,7 +791,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y ui-vib' onclick='toggle(event)'>
+                    <span class='btn-set col ui-vib' onclick='toggle(event)'>
                         <span class='btn'>Button 1</span>
                         <span class='btn selected'>Button 2</span>
                         <span class='btn-grp'>
@@ -796,7 +804,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y ui-blue' onclick='toggle(event)'>
+                    <span class='btn-set col ui-blue' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -819,7 +827,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y ui-blue' onclick='toggle(event)'>
+                    <span class='btn-set col ui-blue' onclick='toggle(event)'>
                         <span class='btn'>Button 1</span>
                         <span class='btn selected'>Button 2</span>
                         <span class='btn-grp'>
@@ -832,7 +840,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y ui-dark' onclick='toggle(event)'>
+                    <span class='btn-set col ui-dark' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -855,7 +863,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y ui-dark' onclick='toggle(event)'>
+                    <span class='btn-set col ui-dark' onclick='toggle(event)'>
                         <span class='btn'>Button 1</span>
                         <span class='btn selected'>Button 2</span>
                         <span class='btn-grp'>
@@ -868,7 +876,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y ui-flat' onclick='toggle(event)'>
+                    <span class='btn-set col ui-flat' onclick='toggle(event)'>
                         <svg class="btn icon">
                             <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
                         </svg>
@@ -891,7 +899,7 @@
             </td>
             <td>
                 <section>
-                    <span class='btn-set y ui-flat' onclick='toggle(event)'>
+                    <span class='btn-set col ui-flat' onclick='toggle(event)'>
                         <span class='btn'>Button 1</span>
                         <span class='btn selected'>Button 2</span>
                         <span class='btn-grp'>
@@ -900,6 +908,396 @@
                         </span>
                         <span class='btn'>Button 4</span>
                     </span>
+                </section>
+            </td>
+        </tr>
+        <!-- (input) btn-grp-->
+        <tr>
+            <th rowspan='4'>input</th>
+            <th>btn-grp</th>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp'>
+                        <input type='radio' value='Button-1' name='btn-grp-input' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp ui-vib'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-vib' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-vib'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-vib' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp ui-blue'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-blue' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-blue'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-blue' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp ui-dark'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-dark' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-dark'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-dark' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp ui-flat'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-flat' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-flat'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-flat' disabled/>
+                    </div>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <th>btn-grp.col</th>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-col' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-col'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-col' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col ui-vib'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-col-vib' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-col-vib'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-col-vib' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col ui-blue'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-col-blue' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-col-blue'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-col-blue' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col ui-dark'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-col-dark' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-col-dark'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-col-dark' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col ui-flat'>
+                        <input type='radio' value='Button-1' name='btn-grp-input-col-flat' checked/>
+                        <input type='radio' value='Button-2' name='btn-grp-input-col-flat'/>
+                        <input type='radio' value='Button-3' name='btn-grp-input-col-flat' disabled/>
+                    </div>
+                </section>
+            </td>
+        </tr>
+        <!-- (input) tab-grp-->
+        <tr>
+            <th>tab-grp</th>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp ui-vib'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-vib' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-vib'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-vib' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp ui-blue'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-blue' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-blue'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-blue' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp ui-dark'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-dark' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-dark'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-dark' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp ui-flat'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-flat' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-flat'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-flat' disabled/>
+                    </div>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <th>tab-grp.col</th>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-col' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-col'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-col' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col ui-vib'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-col-vib' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-col-vib'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-col-vib' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col ui-blue'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-col-blue' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-col-blue'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-col-blue' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col ui-dark'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-col-dark' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-col-dark'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-col-dark' disabled/>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col ui-flat'>
+                        <input type='radio' value='Tab-1' name='tab-grp-input-col-flat' checked/>
+                        <input type='radio' value='Tab-2' name='tab-grp-input-col-flat'/>
+                        <input type='radio' value='Tab-3' name='tab-grp-input-col-flat' disabled/>
+                    </div>
+                </section>
+            </td>
+        </tr>
+        <!-- (labels) btn-grp-->
+        <tr>
+            <th rowspan='4'>label</th>
+            <th>btn-grp</th>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp ui-vib'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-vib' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-vib'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-vib' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp ui-blue'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-blue' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-blue'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-blue' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp ui-dark'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-dark' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-dark'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-dark' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp ui-flat'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-flat' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-flat'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-flat' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <th>btn-grp.col</th>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-col' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-col'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-col' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col ui-vib'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-col-vib' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-col-vib'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-col-vib' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col ui-blue'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-col-blue' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-col-blue'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-col-blue' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col ui-dark'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-col-dark' checked/><span>Button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-col-dark'/><span>Button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-col-dark' disabled/><span>Button-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='btn-grp col ui-flat'>
+                        <label><input type='radio' value='button-1' name='btn-grp-label-col-flat'/><span>button-1</span></label>
+                        <label><input type='radio' value='button-2' name='btn-grp-label-col-flat'/><span>button-2</span></label>
+                        <label><input type='radio' value='button-3' name='btn-grp-label-col-flat'/><span>button-3</span></label>
+                    </div>
+                </section>
+            </td>
+        </tr>
+        <!-- (labels) tab-grp-->
+        <tr>
+            <th>tab-grp</th>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp ui-vib'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-vib' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-vib'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-vib' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp ui-blue'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-blue' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-blue'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-blue' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp ui-dark'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-dark' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-dark'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-dark' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp ui-flat'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-flat' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-flat'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-flat' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <th>tab-grp.col</th>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-col' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-col'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-col' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col ui-vib'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-col-vib' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-col-vib'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-col-vib' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col ui-blue'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-col-blue' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-col-blue'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-col-blue' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col ui-dark'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-col-dark' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-col-dark'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-col-dark' disabled/><span>Tab-3</span></label>
+                    </div>
+                </section>
+            </td>
+            <td colspan='2'>
+                <section>
+                    <div class='tab-grp col ui-flat'>
+                        <label><input type='radio' value='tab-1' name='tab-grp-label-col-flat' checked/><span>Tab-1</span></label>
+                        <label><input type='radio' value='tab-2' name='tab-grp-label-col-flat'/><span>Tab-2</span></label>
+                        <label><input type='radio' value='tab-3' name='tab-grp-label-col-flat' disabled/><span>Tab-3</span></label>
+                    </div>
                 </section>
             </td>
         </tr>
