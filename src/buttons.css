@@ -1,5 +1,9 @@
 .btn,
 button {
+	display:inline-flex;
+	flex-flow:row nowrap;
+	align-items:center;
+	justify-content:center;
 	cursor:default;
 	vertical-align: middle;
 	white-space: nowrap;
@@ -10,19 +14,17 @@ button {
 	text-decoration: none;
 	pointer-events:all;
 	box-sizing:border-box;
+	line-height:1.2;
+	font-size:12px;
 }
 
-span.btn {
-	display:inline-block;
+div.btn {
+	display:flex;
 }
 
 label.btn,
 .btn-grp>label,
 .tab-grp>label {
-	display:inline-flex;
-	flex-flow:row nowrap;
-	justify-content:flex-start;
-	align-items:center;
 	position:relative;
 	padding:0px;
 	overflow:visible;
@@ -127,12 +129,13 @@ svg.icon {
 	height:20px;
 }
 
-label.btn>svg,
-button>svg,
+.btn svg>*,
+button svg>*,
 svg.btn>*,
+.btn-grp>*>svg>*,
+.tab-grp>*>svg>*,
 .btn-grp>svg>*,
-.tab-grp>svg>*,
-.btn-grp>label>svg {
+.tab-grp>svg>* {
     pointer-events:none;
 }
 
@@ -149,7 +152,6 @@ svg.btn>*,
     align-items:stretch;
     flex-wrap:nowrap;
     flex-direction:inherit;
-	overflow:visible;
 	pointer-events:none;
 	list-style:none;
 	align-self:center;
@@ -161,6 +163,10 @@ svg.btn>*,
 
 .tab-grp>*,
 .btn-grp>* {
+	display:inline-flex;
+	flex-flow:row nowrap;
+	align-items:center;
+	justify-content:center;
 	cursor:default;
 	vertical-align: middle;
 	white-space: nowrap;
@@ -172,6 +178,16 @@ svg.btn>*,
 	pointer-events:all;
 	box-sizing:border-box;
 	text-decoration: none;
+	line-height:1.2;
+	font-size:12px;
+}
+
+.tab-grp>* {
+	justify-content: flex-start;
+}
+
+.btn-set>* {
+	align-self:stretch;
 }
 
 span.tab-grp,
@@ -313,19 +329,12 @@ label.btn>input ~ *,
 .tab-grp>*,
 .btn-grp>label>input ~ *,
 .tab-grp>label>input ~ * {
+	font-family:"Courier New";
     color: rgb(85,85,85);
 	text-shadow: 0 1px rgba(255,255,255,0.8);
     background-color:rgb(241,241,241);
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.4),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.05));
-    border-color:rgb(204,204,204) rgb(197,197,197) rgb(187,187,187);
-}
-
-svg.btn,
-button>svg,
-.btn-grp>svg,
-.tab-grp>svg,
-.btn-grp>label>svg,
-.tab-grp>label>svg {
+	border-color:rgb(204,204,204) rgb(197,197,197) rgb(187,187,187);
 	stroke:#6d6d6d;
 	fill:#6d6d6d;
 }
@@ -360,13 +369,8 @@ label.btn>input:disabled ~ *,
 	background: rgb(241,241,241);
 	box-shadow: none;
 	color: rgb(145,145,145);
-}
-
-svg.btn.disabled,
-button:disabled>svg,
-.btn-grp>svg.disabled,
-.tab-grp>svg.disabled {
 	fill:rgb(145,145,145);
+	stroke:rgb(145,145,145);
 }
 
 /* ============================================== [theme](flat) ============================================== */
@@ -378,7 +382,9 @@ label.btn.ui-flat>input ~ *,
 .tab-grp.ui-flat>*,
 .btn-set.ui-flat .btn,
 .btn-set.ui-flat button,
+.btn-set.ui-flat label.btn>input ~ *,
 .btn-set.ui-flat .btn-grp>*,
+.btn-set.ui-flat .btn-grp>label>input ~ *,
 .btn-grp.ui-flat>label>input ~ *,
 .tab-grp.ui-flat>label>input ~ * {
 	background: rgba(241,241,241,1);
@@ -395,8 +401,12 @@ label.btn.ui-flat>input:checked ~ *,
 .btn-grp.ui-flat>*.selected,
 .tab-grp.ui-flat>*.selected,
 .btn-set.ui-flat .btn.selected,
+.btn-set.ui-flat .btn:checked,
 .btn-set.ui-flat button.selected,
+.btn-set.ui-flat label.btn>input:checked ~ *,
 .btn-set.ui-flat .btn-grp>*.selected,
+.btn-set.ui-flat .btn-grp>*:checked,
+.btn-set.ui-flat .btn-grp>label>input:checked ~ *,
 .btn-grp.ui-flat>input:checked,
 .tab-grp.ui-flat>input:checked,
 .btn-grp.ui-flat>label>input:checked ~ *,
@@ -411,8 +421,12 @@ label.btn.ui-flat>input:disabled ~ *,
 .btn-grp.ui-flat>*.disabled,
 .tab-grp.ui-flat>*.disabled,
 .btn-set.ui-flat .btn.disabled,
+.btn-set.ui-flat .btn:disabled,
 .btn-set.ui-flat button:disabled,
+.btn-set.ui-flat label.btn>input:disabled ~ *,
 .btn-set.ui-flat .btn-grp>*.disabled,
+.btn-set.ui-flat .btn-grp>*:disabled,
+.btn-set.ui-flat .btn-grp>label>input:disabled ~ *,
 .btn-grp.ui-flat>*:disabled,
 .tab-grp.ui-flat>*:disabled,
 .btn-grp.ui-flat>label>input:disabled ~ *,
@@ -429,7 +443,9 @@ label.btn.ui-dark>input ~ *,
 .tab-grp.ui-dark>*,
 .btn-set.ui-dark .btn,
 .btn-set.ui-dark button,
+.btn-set.ui-dark label.btn>input ~ *,
 .btn-set.ui-dark .btn-grp>*,
+.btn-set.ui-dark .btn-grp>label>input ~ *,
 .btn-grp.ui-dark>label>input ~ *,
 .tab-grp.ui-dark>label>input ~ * {
 	color: #FFF;
@@ -437,6 +453,8 @@ label.btn.ui-dark>input ~ *,
 	box-shadow: inset 0 1px rgba(255,255,255,0.1),inset 0 -1px 3px rgba(0,0,0,0.3),inset 0 0 0 1px rgba(255,255,255,0.08),0 1px 2px rgba(0,0,0,0.15);
 	background: #464a4f linear-gradient(to bottom, rgba(255,255,255,0.08),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.25));
 	border-color: #111 #111 black #111;
+	fill:#FFF;
+	stroke:#FFF;
 }
 
 .btn.ui-dark.selected,
@@ -446,8 +464,12 @@ label.btn.ui-dark>input:checked ~ *,
 .btn-grp.ui-dark>*.selected,
 .tab-grp.ui-dark>*.selected,
 .btn-set.ui-dark .btn.selected,
+.btn-set.ui-dark .btn:checked,
 .btn-set.ui-dark button.selected,
+.btn-set.ui-dark label.btn>input:checked ~ *,
 .btn-set.ui-dark .btn-grp>*.selected,
+.btn-set.ui-dark .btn-grp>*:checked,
+.btn-set.ui-dark .btn-grp>label>input:checked ~ *,
 .btn-grp.ui-dark>input:checked,
 .tab-grp.ui-dark>input:checked,
 .btn-grp.ui-dark>label>input:checked ~ *,
@@ -459,18 +481,6 @@ label.btn.ui-dark>input:checked ~ *,
 	box-shadow: inset 0 1px 2px rgba(0,0,0,0.25), 0 1px rgba(255,255,255,0.08);
 }
 
-svg.btn.ui-dark,
-button.ui-dark>svg,
-.btn-grp.ui-dark>svg,
-.tab-grp.ui-dark>svg,
-.btn-grp.ui-dark>button>svg,
-.tab-grp.ui-dark>button>svg,
-.btn-set.ui-dark svg.btn,
-.btn-set.ui-dark button>svg,
-.btn-set.ui-dark .btn-grp>svg {
-	fill:#FFF;
-}
-
 .btn.ui-dark.disabled,
 button.ui-dark:disabled,
 input.btn.ui-dark:disabled,
@@ -478,8 +488,12 @@ label.btn.ui-dark>input:disabled ~ *,
 .btn-grp.ui-dark>*.disabled,
 .tab-grp.ui-dark>*.disabled,
 .btn-set.ui-dark .btn.disabled,
+.btn-set.ui-dark .btn:disabled,
 .btn-set.ui-dark button:disabled,
+.btn-set.ui-dark label.btn>input:disabled ~ *,
 .btn-set.ui-dark .btn-grp>*.disabled,
+.btn-set.ui-dark .btn-grp>*:disabled,
+.btn-set.ui-dark .btn-grp>label>input:disabled ~ *,
 .btn-grp.ui-dark>*:disabled,
 .tab-grp.ui-dark>*:disabled,
 .btn-grp.ui-dark>label>input:disabled ~ *,
@@ -488,18 +502,8 @@ label.btn.ui-dark>input:disabled ~ *,
 	text-shadow:none;
 	box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
 	background:rgb(51, 51, 51);
-}
-	
-svg.btn.ui-dark.disabled,
-button.ui-dark:disabled>svg,
-.btn-grp.ui-dark>svg.disabled,
-.tab-grp.ui-dark>svg.disabled,
-.btn-grp.ui-dark>button:disabled>svg,
-.tab-grp.ui-dark>button:disabled>svg,
-.btn-set.ui-dark svg.btn.disabled,
-.btn-set.ui-dark button:disabled>svg,
-.btn-set.ui-dark .btn-grp>svg.disabled {
 	fill:rgb(200,200,200);
+	stroke:rgb(200,200,200);
 }
 
 /* ============================================== [theme](vib) ============================================== */
@@ -511,7 +515,9 @@ label.btn.ui-vib>input ~ *,
 .tab-grp.ui-vib>*,
 .btn-set.ui-vib .btn,
 .btn-set.ui-vib button,
+.btn-set.ui-vib label.btn>input ~ *,
 .btn-set.ui-vib .btn-grp>*,
+.btn-set.ui-vib .btn-grp>label>input ~ *,
 .btn-grp.ui-vib>label>input ~ *,
 .tab-grp.ui-vib>label>input ~ * {
 	color: rgb(102,102,102);
@@ -528,8 +534,12 @@ label.btn.ui-vib>input:checked ~ *,
 .btn-grp.ui-vib>*.selected,
 .tab-grp.ui-vib>*.selected,
 .btn-set.ui-vib .btn.selected,
+.btn-set.ui-vib .btn:checked,
 .btn-set.ui-vib button.selected,
+.btn-set.ui-vib label.btn>input:checked ~ *,
 .btn-set.ui-vib .btn-grp>*.selected,
+.btn-set.ui-vib .btn-grp>*:checked,
+.btn-set.ui-vib .btn-grp>label>input:checked ~ *,
 .btn-grp.ui-vib>input:checked,
 .tab-grp.ui-vib>input:checked,
 .btn-grp.ui-vib>label>input:checked ~ *,
@@ -548,8 +558,12 @@ label.btn.ui-vib>input:disabled ~ *,
 .btn-grp.ui-vib>*.disabled,
 .tab-grp.ui-vib>*.disabled,
 .btn-set.ui-vib .btn.disabled,
-.btn-set.ui-vib button:disabled>svg,
+.btn-set.ui-vib .btn:disabled,
+.btn-set.ui-vib button:disabled,
+.btn-set.ui-vib label.btn>input:disabled ~ *,
 .btn-set.ui-vib .btn-grp>*.disabled,
+.btn-set.ui-vib .btn-grp>*:disabled,
+.btn-set.ui-vib .btn-grp>label>input:disabled ~ *,
 .btn-grp.ui-vib>*:disabled,
 .tab-grp.ui-vib>*:disabled,
 .btn-grp.ui-vib>label>input:disabled ~ *,
@@ -566,7 +580,9 @@ label.btn.ui-blue>input ~ *,
 .tab-grp.ui-blue>*,
 .btn-set.ui-blue .btn,
 .btn-set.ui-blue button,
+.btn-set.ui-blue label.btn>input ~ *,
 .btn-set.ui-blue .btn-grp>*,
+.btn-set.ui-blue .btn-grp>label>input ~ *,
 .btn-grp.ui-blue>label>input ~ *,
 .tab-grp.ui-blue>label>input ~ * {
 	color: rgb(255,255,255);
@@ -574,18 +590,8 @@ label.btn.ui-blue>input ~ *,
 	box-shadow: inset 0 1px rgba(255,255,255,0.2),inset 0 0 0 1px rgba(255,255,255,0.1),0 1px 1px rgba(0,0,0,0.06);
 	background: rgb(39,140,216) linear-gradient(to bottom, rgb(51,160,232),rgb(27,122,202));
 	border-color: rgb(27,116,188) rgb(24,103,168) rgb(22,95,155);
-}
-
-svg.btn.ui-blue,
-button.ui-blue>svg,
-.btn-grp.ui-blue>svg,
-.tab-grp.ui-blue>svg,
-.btn-grp.ui-blue>button>svg,
-.tab-grp.ui-blue>button>svg,
-.btn-set.ui-blue svg.btn,
-.btn-set.ui-blue button>svg,
-.btn-set.ui-blue .btn-grp>svg {
 	fill:#FFF;
+	stroke:#FFF;
 }
 
 .btn.ui-blue.selected,
@@ -595,8 +601,12 @@ label.btn.ui-blue>input:checked ~ *,
 .btn-grp.ui-blue>*.selected,
 .tab-grp.ui-blue>*.selected,
 .btn-set.ui-blue .btn.selected,
+.btn-set.ui-blue .btn:checked,
 .btn-set.ui-blue button.selected,
+.btn-set.ui-blue label.btn>input:checked ~ *,
 .btn-set.ui-blue .btn-grp>*.selected,
+.btn-set.ui-blue .btn-grp>*:checked,
+.btn-set.ui-blue .btn-grp>label>input:checked ~ *,
 .btn-grp.ui-blue>input:checked,
 .tab-grp.ui-blue>input:checked,
 .btn-grp.ui-blue>label>input:checked ~ *,
@@ -615,8 +625,12 @@ label.btn.ui-blue>input:disabled ~ *,
 .btn-grp.ui-blue>*.disabled,
 .tab-grp.ui-blue>*.disabled,
 .btn-set.ui-blue .btn.disabled,
+.btn-set.ui-blue .btn:disabled,
 .btn-set.ui-blue .button:disabled,
+.btn-set.ui-blue label.btn>input:disabled ~ *,
 .btn-set.ui-blue .btn-grp>*.disabled,
+.btn-set.ui-blue .btn-grp>*:disabled,
+.btn-set.ui-blue .btn-grp>label>input:disabled ~ *,
 .btn-grp.ui-blue>*:disabled,
 .tab-grp.ui-blue>*:disabled,
 .btn-grp.ui-blue>label>input:disabled ~ *,
@@ -625,18 +639,8 @@ label.btn.ui-blue>input:disabled ~ *,
 	color: rgb(200,200,200);
 	text-shadow:none;
 	box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
-}
-
-svg.btn.ui-blue.disabled,
-button.ui-blue:disabled>svg,
-.btn-grp.ui-blue>svg.disabled,
-.tab-grp.ui-blue>svg.disabled,
-.btn-grp.ui-blue>button:disabled>svg,
-.tab-grp.ui-blue>button:disabled>svg,
-.btn-set.ui-blue svg.btn.disabled,
-.btn-set.ui-blue button:disabled>svg,
-.btn-set.ui-blue .btn-grp>svg.disabled {
 	fill:rgb(200,200,200);
+	stroke:rgb(200,200,200);
 }
 
 /* ============================================== [toggle] ============================================== */
