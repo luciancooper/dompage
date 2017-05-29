@@ -4,6 +4,8 @@
 	<meta charset="UTF-8" http-equiv="Cache-control" content="no-cache">
 	<title>dompage</title>
 	<link rel="stylesheet" href="src/buttons.css">
+    <link rel="stylesheet" href="src/syntax/syntax.css">
+    <script src='src/syntax/syntax.js'></script>
     <style type="text/css">
     html {
         font-size:12px;
@@ -16,24 +18,140 @@
         margin:5px;
     }
     td,th {
-        padding:5px;
         border:1px solid rgb(200,200,200);
         text-align:center;
     }
     th {
+        padding:5px;
         background:#f1f3f3;
         font-family:monospace;
         white-space:pre;
+    }
+    td {
+        padding:0px;
+        position:relative;
     }
     td > section {
         display:flex;
         flex-flow:column nowrap;
         justify-content: center;
         align-items:center;
+        padding:5px;
     }
     td:empty {
         visibility: hidden;
     }
+    .hover-icon {
+        position:absolute;
+        top:0px;
+        right:0px;
+        fill:none;
+        z-index:1000;
+    }
+    *:hover > .hover-icon {
+        fill:#737373;
+    }
+    .hover-icon:hover {
+        fill:#000;
+    }
+
+    /* =========================================== Modal =========================================== */
+
+    .modal-open {
+        overflow: hidden;
+    }
+    .modal-open .modal {
+        overflow-x: hidden;
+        overflow-y: auto;
+        display:block;
+    }
+    .modal {
+        font-size: 1rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        width:100vw;
+        height:100vh;
+        overflow: hidden;
+        outline: 0;
+        background:transparent;
+    }
+    .modal > .close-pane {
+        position:fixed;
+        width:100vw;
+        height:100vh;
+        z-index:1;
+        background-color: #000;
+        opacity: 0.5;
+    }
+    .modal-window {
+        position: relative;
+        z-index:2;
+        margin: 1.75rem auto;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        max-width: 75%;
+        height: calc(100% - 2 * 1.75rem);
+        overflow:hidden;
+    }
+    .modal-content {
+        position: relative;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        outline: 0;
+        max-height:100%;
+        overflow:hidden;
+    }
+    .modal-content>* {
+        padding: 0;
+        border-radius:0px;
+    }
+    .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+    }
+    .modal-header>* {
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+    .modal-header>h5 {
+        margin:0px;
+        font-family: Consolas, 'Liberation Mono', Courier, monospace;
+        font-weight: 700;
+    }
+    .modal-header>.close {
+        cursor: pointer;
+        font-weight: 700;
+        color: rgba(0,0,0,0.5);
+        text-shadow: 0 1px 0 #fff;
+    }
+    .modal-body {
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+        overflow:hidden;
+        padding:0rem 0.5rem 0.5rem 0.5rem;
+        box-sizing:border-box;
+        max-height:calc(100vh - 2 * 0.5rem - 2 * 1.75rem - 1.5rem);
+        position:relative;
+    }
+    .modal-body>code {
+        pointer-events:auto;
+        margin:0px;
+        max-height:calc(100vh - 2 * 0.5rem - 2 * 1.75rem - 1.5rem - 0.5rem);
+        position:relative;
+    }
+    
     </style>
     <script>
         function toggle(event,cls) {
@@ -41,6 +159,69 @@
             if (cls===undefined) cls = 'selected';
             event.target.classList.toggle(cls); 
         }
+
+        document.addEventListener('DOMContentLoaded',(function(){
+            // Dismiss Modal
+            function dismiss() {
+                let e = document.getElementById('syntax-modal');
+                e.parentNode.removeChild(e);
+                document.body.classList.remove('modal-open');
+            }
+            // Create Element 
+            function dom(tag,cls) {
+                let e = document.createElement(tag);
+                e.className = cls;
+                return e;
+            }
+            // Initialize Syntax Modal
+            function syntax_modal() {
+                let modal = dom('div','modal');
+                modal.id = 'syntax-modal';
+                modal.tabIndex = '-1';
+                let closepane = modal.appendChild(dom('div','close-pane'));
+                closepane.addEventListener('click',dismiss);
+                let panel = modal.appendChild(dom('div','modal-window'));
+                let content = panel.appendChild(dom('div','modal-content'));
+                let head = content.appendChild(dom('div','modal-header'));
+                head.innerHTML = "<h5>Source</h5>";
+                let close = head.appendChild(dom('span','close'));
+                close.innerHTML = '&times;';
+                close.addEventListener('click',dismiss);
+                let body = content.appendChild(dom('div','modal-body'));
+                // Clipboard Button
+                let svg = body.appendChild(document.createElementNS('http://www.w3.org/2000/svg','svg'));
+                svg.innerHTML = "<g transform='translate(-2,3)'><use href='dist/icons.svg#clipboard' width='100%' height='100%'></use><use href='dist/icons.svg#text' fill='white' y='22%' x='10%' width='80%' height='80%'></use></g>";
+                svg.setAttribute('width','20');
+                svg.setAttribute('height','20');
+                svg.style.right = '0.5rem';
+                svg.setAttribute('overflow','visible');
+                svg.classList.add('hover-icon');
+                let code = body.appendChild(codeSyntax.createHTML(this.nextElementSibling));
+                svg.onclick = function(event) {
+                    var range = document.createRange();
+                    range.selectNodeContents(code);
+                    var selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    var success = document.execCommand("copy", false, null);
+                    window.getSelection().removeAllRanges();
+                }
+                document.body.appendChild(modal);
+                document.body.classList.add("modal-open");
+            }
+
+            return function(event) {
+                [].slice.call(document.getElementsByTagName('td')).forEach((e) => {
+                    let svg = e.insertBefore(document.createElementNS('http://www.w3.org/2000/svg','svg'),e.firstElementChild);
+                    svg.innerHTML = "<use href='dist/icons.svg#code' width='100%' height='100%'></use>";
+                    svg.setAttribute('width','15');
+                    svg.setAttribute('height','15');
+                    svg.onclick = syntax_modal;
+                    svg.classList.add('hover-icon');
+                });
+            }
+        }()));
+
     </script>
 </head>
 <body>
