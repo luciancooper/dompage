@@ -1,0 +1,49 @@
+code[code-snippet] {
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    font-size: 13px;
+    line-height:19px;
+    display: block;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding: 0;
+    box-sizing:border-box;
+    color: #333;
+    background: #f8f8f8;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+code[code-snippet]>pre {
+    white-space: pre; 
+    margin:0px;
+    word-wrap: break-word;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    tab-size: 4;
+    hyphens: none;
+    margin:0.5em;
+}
+
+code[code-snippet].error {
+    font-weight:bold;
+    color:#bc2e29;
+    text-shadow: 0 1px white;
+}
+
+code[code-snippet='html'] .comment {
+    color: #998;
+    font-style: italic;
+}
+code[code-snippet='html'] .attr {
+    color: #999;
+}
+code[code-snippet='html'] .attr-name {
+    color: #008080
+}
+code[code-snippet='html'] .attr-value {
+    color: #d14
+}
+code[code-snippet='html'] .tag {
+    color: #000080;
+}
