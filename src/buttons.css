@@ -175,13 +175,23 @@ label.btn>input ~ *.icon,
 }
 
 .btn.icon>svg,
+.btn.icon>i,
 button.icon>svg,
+button.icon>i,
 .btn-grp>*.icon>svg,
+.btn-grp>*.icon>i,
 .tab-grp>*.icon>svg,
+.tab-grp>*.icon>i,
 label.btn>input ~ *.icon>svg,
+label.btn>input ~ *.icon>i,
 .btn-grp>label>input ~ *.icon>svg,
+.btn-grp>label>input ~ *.icon>i,
 .tab-grp>label>input ~ *.icon>svg,
-svg.icon {
+.tab-grp>label>input ~ *.icon>i,
+button.icon:empty,
+.btn.icon:empty,
+svg.icon,
+i.icon {
 	width:1.6em;
 	height:1.6em;
 }
@@ -209,6 +219,47 @@ svg.btn>*,
 .tab-grp>svg>* {
     pointer-events:none;
 }
+
+/* ============================================== [icon](hamburger) ============================================== */
+/*
+ * +------+------------------------+------------------------+
+ * |      |         1.6 em         | 1.1818181818181817 em  |
+ * +------+------------------------+------------------------+
+ * |  2px | 0.24615384615384617 em | 0.1818181818181818 em  |
+ * |  3px | 0.36923076923076925 em | 0.2727272727272727 em  |
+ * |  5px | 0.6153846153846154 em  | 0.45454545454545453 em |
+ * |  7px | 0.8615384615384616 em  | 0.6363636363636362 em  |
+ * | 10px | 1.2307692307692308 em  | 0.9090909090909091 em  |
+ * +------+------------------------+------------------------+
+ */
+
+ .icn-hamburger {
+    position:relative;
+    padding:0.45454545454545453em 0px!important;
+    background-clip: content-box!important;
+    background-image:none!important;
+    box-sizing:content-box;
+    border-radius:0px!important;
+    border-width:0px;
+}
+.icn-hamburger,
+.icn-hamburger:before,
+.icn-hamburger:after {
+    cursor: pointer;
+    height:0.2727272727272727em!important;
+    display:block;
+}
+.icn-hamburger:before,
+.icn-hamburger:after {
+    content: "";
+    background:inherit;
+    border-radius:inherit;
+    box-shadow:inherit;
+    position:absolute;
+    width:100%;
+}
+.icn-hamburger:before { bottom:0.9090909090909091em; }
+.icn-hamburger:after { top:0.9090909090909091em; }
 
 /* ============================================== [group & set] ============================================== */
 
@@ -410,6 +461,23 @@ label.btn>input:disabled ~ *,
 	color: rgb(145,145,145);
 	fill:rgb(145,145,145);
 	stroke:rgb(145,145,145);
+}
+
+/* ============================================== [theme](hamburger) ============================================== */
+
+.icn-hamburger,
+.btn.selected:hover > .icn-hamburger,
+.btn.icn-hamburger.selected:hover,
+input.icn-hamburger:checked:hover {
+    background-color:#716b7a;
+}
+
+.btn.selected > .icn-hamburger,
+.btn.icn-hamburger.selected,
+input.icn-hamburger:checked,
+.btn:hover > .icn-hamburger,
+.icn-hamburger:hover {
+    background-color:#8164ad;
 }
 
 /* ============================================== [theme](tabs) ============================================== */
