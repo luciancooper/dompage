@@ -106,6 +106,11 @@
                     let panel = document.getElementById(event.target.value);
                     this.style.left = event.target.checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
                 }.bind(bar));
+                lctrl.addEventListener('resize',function(event) {
+                    if (!event.target.checked) return;
+                    let panel = document.getElementById(event.target.value);
+                    this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
+                }.bind(bar));
             } else {
                 document.getElementById(lctrl.value).style.top = main.style.top;
             }
@@ -123,7 +128,12 @@
                 bar.style.right = main.style.right;
                 rctrl.addEventListener('change',function(event) {
                     let panel = document.getElementById(event.target.value);
-                    this.style.right = event.target.checked ? (panel.offsetParent.offsetWidth - panel.offsetLeft) + 'px' : '';
+                    this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
+                }.bind(bar));
+                rctrl.addEventListener('resize',function(event) {
+                    if (!event.target.checked) return;
+                    let panel = document.getElementById(event.target.value);
+                    this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
                 }.bind(bar));
             } else {
                 document.getElementById(rctrl.value).style.top = main.style.top;
@@ -152,44 +162,48 @@
                 let panel = document.getElementById(event.target.value),checked = event.target.checked;
                 Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked))
                 panel.classList.toggle('hidden',!checked);
-                this.style.right = checked ? (panel.offsetParent.offsetWidth - panel.offsetLeft) + 'px' : '';
+                this.style.right = checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
             },
         };
-
-        function setupHideToggle(main,panel,side) {
-            let control = document.createElement("input");
-            control.type = 'checkbox';
-            control.value = panel.id;
-            control.name = side;
-            control.id = "pagectrl_"+side;
-            control.checked = !panel.classList.contains('hidden');
-            document.forms.pagecontrol.appendChild(control);
-            control.addEventListener('change',togglePanel[side].bind(main));
+        var resizePanel = {
+            left:function(event) {
+                // this is main panel
+                if (!event.target.checked) return;
+                let panel = document.getElementById(event.target.value);
+                this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
+            },
+            right:function(event) {
+                // this is main panel
+                if (!event.target.checked) return;
+                let panel = document.getElementById(event.target.value);
+                this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
+            },
+        };
+        
+        function setupHideToggle(main,panel,control) {
             let toggleid = panel.getAttribute('hide-toggle');
             if (!toggleid) return;
             var toggle = document.getElementById(toggleid);
             if (toggle===null) {
-                console.warn("Could not set up hide toggle button for "+side+" panel: element with id '" + toggleid + "' does not exist in document");
-                return control.checked;
+                console.warn(`Could not set up hide toggle button for ${control.name} panel: element with id '${toggleid}' does not exist in document`);
+                return;
             }
             if (toggle.tagName=='LABEL') {
                 if (toggle.control === null) {
                     toggle.htmlFor = control.id;
                     toggle.classList.toggle('selected',control.checked);
-                    return control.checked;
+                    return;
                 }
                 toggle = toggle.control;
             }
             if (toggle.tagName !== 'INPUT' || toggle.type !== 'checkbox') {
-                console.warn("Could not set up hide toggle button for "+side+" panel: element must be of type input[type='checkbox']");
-                return control.checked;
+                console.warn(`Could not set up hide toggle button for ${control.name} panel: element must be of type input[type='checkbox']`);
+                return;
             }
             toggle.addEventListener('change',function(event) {
                 var evt = new Event("change", {'bubbles':false, 'cancelable':false,'composed':false});
                 this.dispatchEvent(evt);
             }.bind(control));
-
-            return control.checked;
         };
 
         return function(main,panelid,side) {
@@ -204,14 +218,25 @@
                 console.warn("Invalid page-panel attribute '"+ptype+"', using default value 'fixed'")
                 ptype = 'fixed';
             }
-            var show = panel.hasAttribute('hide-toggle') ? setupHideToggle(main,panel,side) : true;
-            if (show === false) return
+            let control = document.createElement("input");
+            control.type = 'checkbox';
+            control.value = panelid;
+            control.name = side;
+            control.id = "pagectrl_"+side;
+            control.checked = !panel.classList.contains('hidden');
+            document.forms.pagecontrol.appendChild(control);
+            control.addEventListener('change',togglePanel[side].bind(main));
+            control.addEventListener('resize',resizePanel[side].bind(main));
+
+            if (panel.hasAttribute('hide-toggle')) setupHideToggle(main,panel,control);
+
+            if (control.checked === false) return true;
             switch (side) {
                 case 'left':
                     main.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
                     break;
                 case 'right':
-                    main.style.right = (panel.offsetParent.offsetWidth - panel.offsetLeft) + 'px';
+                    main.style.right = (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px';
                     break;
             }
             return true;
@@ -221,7 +246,7 @@
     document.addEventListener('readystatechange', (function() {
         var setup_complete = false;
         return function(event) {
-            console.log("readyState:",event.target.readyState,"setup complete:",setup_complete);
+            //console.log("readyState:",event.target.readyState,"setup complete:",setup_complete);
             if (setup_complete) return;
             if (!document.body.hasAttribute('page-main')) return;
             let mainid = document.body.getAttribute('page-main'),main = document.getElementById(mainid);
