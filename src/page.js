@@ -49,43 +49,49 @@
                 return;
             }
             navform.addEventListener('change',changeTab);
-            // Setup tabs, disabling the ones that don't exist
-            for (let i=0,n=tradio.length,tab; i<n;i++) {
-                tab = document.getElementById(tradio[i].value);
+            // Setup tabs, disabling the ones that don't exist, returning list of existing tab ids
+            let tabids = Array.prototype.map.call(tradio,(e) => {
+                let tab = document.getElementById(e.value);
                 if (tab===null) {
                     // Tab content does not exist in document
-                    tradio[i].disabled = true;
-                    tradio[i].checked = false;
-                    continue;
+                    e.disabled = true;
+                    e.checked = false;
+                    return;
                 }
                 tab.classList.add('tab');
-            }
-            // Determine active tab
+                return e.value;
+            }).filter(i => i !== undefined);
+            // Get active_tab form input, or create it if it does not exist
             var active_tab = navform.elements.namedItem("active_tab");
             if (active_tab===null) {
-                // create active_tab hidden input -> <input type='hidden' name='active_tab' value='tables'/>
                 active_tab = navform.appendChild(document.createElement('input'));
                 active_tab.setAttribute("type",'hidden');
                 active_tab.setAttribute("name","active_tab");
+            }
+            if (window.location.hash && tabids.includes(window.location.hash.slice(1))) {
+                active_tab.value = window.location.hash.slice(1);
+            }
+            if (!active_tab.value || !tabids.includes(active_tab.value)) {
                 if (!tradio.value) {
-                    // Find first elligible tab
-                    let x = Array.prototype.findIndex.call(tradio,e => !e.disabled);
-                    if (x < 0) return;
-                    tradio[x].checked = true;
-                }
-                active_tab.value = tradio.value;
-            } else if (!active_tab.value || Array.prototype.findIndex.call(tradio,e => (e.value==active_tab.value && !e.disabled)) < 0) {
-                if (!tradio.value) {
-                    // Find first elligible tab
-                    let x = Array.prototype.findIndex.call(tradio,e => !e.disabled);
-                    if (x < 0) return;
-                    tradio[x].checked = true;
+                    // Check if there are no eligible tabs
+                    if (!tabids.length) return;
+                    tradio.value = tabids[0]
                 }
                 active_tab.value = tradio.value;
             } else {
                 tradio.value = active_tab.value;
             }
             document.getElementById(tradio.value).classList.toggle('active',true);
+            // Setup hash change listener for intra tab hash links
+            window.addEventListener('hashchange',function(event) {
+                if (!window.location.hash || !tabids.includes(window.location.hash.slice(1))) return;
+                let hashtab = window.location.hash.slice(1);
+                if (active_tab.value === hashtab) return;
+                document.getElementById(active_tab.value).classList.toggle('active',false);
+                active_tab.value = hashtab;
+                tradio.value = hashtab;
+                document.getElementById(hashtab).classList.toggle('active',true);
+            });
         }
     }());
 

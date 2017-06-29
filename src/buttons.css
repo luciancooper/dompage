@@ -14,6 +14,11 @@ button,
 	line-height:1.4;
 	font-size:1em;
 	font-family:monospace;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .btn,
@@ -28,11 +33,6 @@ label.btn>input ~ *,
 	border-style: solid;
 	pointer-events:all;
 	box-sizing:border-box;
-}
-
-.tab-grp>*,
-.btn-grp>* {
-	background-clip:padding-box;
 }
 
 div.btn {
@@ -233,14 +233,14 @@ svg.btn>*,
  * +------+------------------------+------------------------+
  */
 
- .icn-hamburger {
+.icn-hamburger {
     position:relative;
     padding:0.45454545454545453em 0px!important;
     background-clip: content-box!important;
     background-image:none!important;
-    box-sizing:content-box;
+    box-sizing:content-box!important;
     border-radius:0px!important;
-    border-width:0px;
+    border-width:0px!important;
 }
 .icn-hamburger,
 .icn-hamburger:before,
