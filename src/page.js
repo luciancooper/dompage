@@ -1,4 +1,7 @@
-/* Guide:
+/* dompage v0.3
+ * Copyright (c) 2017 Lucian Cooper
+ *
+ * Guide:
  * 
  * body:
  *     page-main = #id of main content
@@ -29,68 +32,88 @@
 (function(){
 
     var setupTabbed = (function(){
-        function changeTab(event) {
-            if (event.target.name !== 'tab') return;
-            let active = event.target.form.elements.namedItem('active_tab');
-            document.getElementById(active.value).classList.toggle('active',false);
-            active.value = event.target.value;
-            document.getElementById(event.target.value).classList.toggle('active',true);
+        
+        function jumpUptreeId(e) {
+            while (e.parentElement && e.parentElement.tagName!=='BODY') {
+                if (e.parentElement.id) return e.parentElement;
+                e = e.parentElement;
+            }
+            return null;
+        }
+        function testTabContent(e,tabids) {
+            let p = jumpUptreeId(e);
+            while (p != null) {
+                if (tabids.includes(p.id)) return p.id;
+                p = jumpUptreeId(p);
+            }
         }
         return function(tabs) {
             // tabs must be container element for all tabs, and must have an attribute page-tabbed='#id_of_nav'
-            let navid = tabs.getAttribute('page-tabbed'),navform = document.forms[navid];
-            if (navform === undefined) {
-                console.warn("Could not set up tabs: tab nav form with id " + navid + " does not exist in document");
+            let navid = tabs.getAttribute('page-tabbed'),nav = document.getElementById(navid)
+            if (!nav) {
+                console.warn(`Could not set up tabs: element with id '${navid}' does not exist in document`);
                 return;
             }
-            let tradio = navform.elements.namedItem('tab');
-            if (tradio === null) {
-                console.warn("Could not set up tabs: nav form does not contain tradio element with name 'tab'");
-                return;
-            }
-            navform.addEventListener('change',changeTab);
+            // key value store of tabids : a tab elements
+            let atabs = {};
             // Setup tabs, disabling the ones that don't exist, returning list of existing tab ids
-            let tabids = Array.prototype.map.call(tradio,(e) => {
-                let tab = document.getElementById(e.value);
+            let tabids = Array.prototype.map.call(nav.querySelectorAll("a[href^='#']"),(a) => {
+                let tid = a.hash.slice(1);
+                let tab = document.getElementById(tid);
                 if (tab===null) {
                     // Tab content does not exist in document
-                    e.disabled = true;
-                    e.checked = false;
+                    a.classList.add('disabled');
                     return;
                 }
                 tab.classList.add('tab');
-                return e.value;
-            }).filter(i => i !== undefined);
-            // Get active_tab form input, or create it if it does not exist
-            var active_tab = navform.elements.namedItem("active_tab");
-            if (active_tab===null) {
-                active_tab = navform.appendChild(document.createElement('input'));
-                active_tab.setAttribute("type",'hidden');
-                active_tab.setAttribute("name","active_tab");
-            }
-            if (window.location.hash && tabids.includes(window.location.hash.slice(1))) {
-                active_tab.value = window.location.hash.slice(1);
-            }
-            if (!active_tab.value || !tabids.includes(active_tab.value)) {
-                if (!tradio.value) {
-                    // Check if there are no eligible tabs
-                    if (!tabids.length) return;
-                    tradio.value = tabids[0]
+                atabs[tid] = a;
+                return tid;
+            }).filter(i=>i!==undefined);
+            // Create active_tab form input
+            let control = document.forms.pagecontrol.appendChild(document.createElement('input'));
+            control.type = 'hidden';
+            control.name = 'active_tab';
+            // Element to scroll to if hash points to anchor within a tab
+            var scrollto;
+            if (window.location.hash) {
+                let hash = window.location.hash.slice(1);
+                prochash: {
+                    if (!tabids.includes(hash)) {
+                        // See if url hash points to anchor within a tab
+                        let anchor = document.getElementById(hash);
+                        if (!anchor) break prochash;
+                        let tab = testTabContent(anchor,tabids);
+                        if (!tab) break prochash;
+                        control.value = tab;
+                        scrollto = anchor;
+                    } else control.value = hash;
                 }
-                active_tab.value = tradio.value;
-            } else {
-                tradio.value = active_tab.value;
             }
-            document.getElementById(tradio.value).classList.toggle('active',true);
+            if (!control.value) {
+                // Check if there are no eligible tabs
+                if (!tabids.length) return;
+                control.value = tabids[0];
+            }
+            document.getElementById(control.value).classList.toggle('active',true);
+            atabs[control.value].classList.add('selected');
+            if (scrollto) scrollto.scrollIntoView();
             // Setup hash change listener for intra tab hash links
             window.addEventListener('hashchange',function(event) {
-                if (!window.location.hash || !tabids.includes(window.location.hash.slice(1))) return;
-                let hashtab = window.location.hash.slice(1);
-                if (active_tab.value === hashtab) return;
-                document.getElementById(active_tab.value).classList.toggle('active',false);
-                active_tab.value = hashtab;
-                tradio.value = hashtab;
+                if (!window.location.hash) return;
+                let hash = window.location.hash.slice(1),hashtab,anchor;
+                if (!tabids.includes(hash)) {
+                    // See if url hash points to anchor within a tab
+                    anchor = document.getElementById(hash);
+                    if (!anchor) return;
+                    hashtab = testTabContent(anchor,tabids);
+                    if (!hashtab) return;
+                } else hashtab = hash;
+                if (control.value === hashtab) return;
+                document.getElementById(control.value).classList.toggle('active',false);
                 document.getElementById(hashtab).classList.toggle('active',true);
+                atabs[control.value].classList.toggle('selected',false);
+                atabs[control.value = hashtab].classList.add('selected');
+                if (anchor) anchor.scrollIntoView();
             });
         }
     }());
