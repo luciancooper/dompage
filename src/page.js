@@ -29,6 +29,21 @@
 (function(){
 
     var setupTabbed = (function(){
+        
+        function jumpUptreeId(e) {
+            while (e.parentElement && e.parentElement.tagName!=='BODY') {
+                if (e.parentElement.id) return e.parentElement;
+                e = e.parentElement;
+            }
+            return null;
+        }
+        function testTabContent(e,tabids) {
+            let p = jumpUptreeId(e);
+            while (p != null) {
+                if (tabids.includes(p.id)) return p.id;
+                p = jumpUptreeId(p);
+            }
+        }
         function changeTab(event) {
             if (event.target.name !== 'tab') return;
             let active = event.target.form.elements.namedItem('active_tab');
@@ -68,8 +83,20 @@
                 active_tab.setAttribute("type",'hidden');
                 active_tab.setAttribute("name","active_tab");
             }
-            if (window.location.hash && tabids.includes(window.location.hash.slice(1))) {
-                active_tab.value = window.location.hash.slice(1);
+            var scrollto;
+            if (window.location.hash) {
+                let hash = window.location.hash.slice(1);
+                prochash: {
+                    if (!tabids.includes(hash)) {
+                        let anchor = document.getElementById(hash);
+                        console.log(anchor);
+                        if (!anchor) break prochash;
+                        let tab = testTabContent(anchor,tabids);
+                        if (!tab) break prochash;
+                        active_tab.value = tab;
+                        scrollto = anchor;
+                    } else active_tab.value = hash;
+                }
             }
             if (!active_tab.value || !tabids.includes(active_tab.value)) {
                 if (!tradio.value) {
@@ -82,15 +109,22 @@
                 tradio.value = active_tab.value;
             }
             document.getElementById(tradio.value).classList.toggle('active',true);
+            if (scrollto) scrollto.scrollIntoView();
             // Setup hash change listener for intra tab hash links
             window.addEventListener('hashchange',function(event) {
-                if (!window.location.hash || !tabids.includes(window.location.hash.slice(1))) return;
-                let hashtab = window.location.hash.slice(1);
+                if (!window.location.hash) return;
+                let hash = window.location.hash.slice(1),hashtab,anchor;
+                if (!tabids.includes(hash)) {
+                    anchor = document.getElementById(hash);
+                    if (!anchor) return;
+                    hashtab = testTabContent(anchor,tabids);
+                    if (!hashtab) return;
+                } else hashtab = hash;
                 if (active_tab.value === hashtab) return;
                 document.getElementById(active_tab.value).classList.toggle('active',false);
-                active_tab.value = hashtab;
-                tradio.value = hashtab;
+                active_tab.value = tradio.value = hashtab;
                 document.getElementById(hashtab).classList.toggle('active',true);
+                if (anchor) anchor.scrollIntoView();
             });
         }
     }());
