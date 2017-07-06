@@ -89,15 +89,20 @@
         opacity: 0.5;
     }
     .modal-window {
+        --modal-margin:1.75rem;
+        --modal-content-padding:0.75rem;
+        --modal-header-padding:0.5rem;
+        --modal-header-font:1.5rem;
+        --modal-body-padding:0.5rem;
         position: relative;
         z-index:2;
-        margin: 1.75rem auto;
+        margin: var(--modal-margin) auto;
         pointer-events: none;
         display: flex;
         align-items: center;
         justify-content:center;
         max-width: 75%;
-        height: calc(100% - 2 * 1.75rem);
+        height: calc(100% - 2 * var(--modal-margin));
         overflow:hidden;
     }
     .modal-content {
@@ -106,8 +111,9 @@
         background-color: #fff;
         background-clip: padding-box;
         border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 3px;
+        border-radius: 5px;
         outline: 0;
+        padding:var(--modal-content-padding);
         max-height:100%;
         overflow:hidden;
     }
@@ -123,8 +129,8 @@
         border-top-right-radius: inherit;
     }
     .modal-header>* {
-        padding: 0.5rem 1rem;
-        font-size: 1.5rem;
+        padding: var(--modal-header-padding) 1rem;
+        font-size: var(--modal-header-font);
         line-height: 1;
     }
     .modal-header>h5 {
@@ -142,15 +148,15 @@
         border-bottom-left-radius: inherit;
         border-bottom-right-radius: inherit;
         overflow:hidden;
-        padding:0rem 0.5rem 0.5rem 0.5rem;
+        padding:var(--modal-body-padding);
         box-sizing:border-box;
-        max-height:calc(100vh - 2 * 0.5rem - 2 * 1.75rem - 1.5rem);
+        max-height:calc(100vh - 2 * var(--modal-margin) - 2 * var(--modal-content-padding) - 2 * var(--modal-header-padding) - var(--modal-header-font));
         position:relative;
     }
     .modal-body>code {
         pointer-events:auto;
         margin:0px;
-        max-height:calc(100vh - 2 * 0.5rem - 2 * 1.75rem - 1.5rem - 0.5rem);
+        max-height:calc(100vh - 2 * var(--modal-margin) - 2 * var(--modal-content-padding) - 2 * var(--modal-header-padding) - var(--modal-header-font) - 2 * var(--modal-body-padding));
         position:relative;
     }
     
@@ -230,18 +236,19 @@
     <header id='topbar'>
         <label id='left-toggle' class='btn icon icn-hamburger'></label>
     </header>
-    <form id='nav' class='side-nav a-center' hide-toggle='left-toggle'>
+    <nav id='nav' class='side-nav a-center' hide-toggle='left-toggle'>
         <h3>Themes</h3>
-        <input type='hidden' name='active_tab' value='default'/>
-        <input type='radio' class='tab-item' name='tab' value='default' label='default'/>
-        <input type='radio' class='tab-item' name='tab' value='vib' label='ui-vib'/>
-        <input type='radio' class='tab-item' name='tab' value='flat' label='ui-flat'/>
-        <input type='radio' class='tab-item' name='tab' value='blue' label='ui-blue'/>
-        <input type='radio' class='tab-item' name='tab' value='red' label='ui-red'/>
-        <input type='radio' class='tab-item' name='tab' value='green' label='ui-green'/>
-        <input type='radio' class='tab-item' name='tab' value='dark' label='ui-dark'/>
-    </form>
-    <main id='main' page-tabbed='nav' class='tab-container'>
+        <section id='tabs'>
+            <a href='#default'>default</a>
+            <a href='#vib'>vib</a>
+            <a href='#flat'>flat</a>
+            <a href='#blue'>blue</a>
+            <a href='#red'>red</a>
+            <a href='#green'>green</a>
+            <a href='#dark'>dark</a>
+        </section>
+    </nav>
+    <main id='main' page-tabbed='tabs' class='tab-container'>
         <div class='tab' id='default'>
             <table>
                 <tr><th></th><th colspan='6'>&lt;span&gt;</th><th colspan='6'>&lt;button&gt;</th><th colspan='6'>&lt;label&gt;</th><th colspan='6'>&lt;input&gt;</th></tr>

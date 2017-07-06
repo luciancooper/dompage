@@ -76,16 +76,17 @@ Panel display toggling can be setup by adding the `hide-toggle` attribute to the
 
 #### Tabbed Content
 
-The content of the `page-main` element can be separated into distinct tabs by adding the `page-tabbed` attribute. It must be set to the `id` of a `<form>` containing a set of `<input type='radio' name='tab'>` elements. The `value` attribute of each `<input>` element must be set to the `id` of an existing child of the `page-main` element, or else that `<input>` will be disabled.
+The content of the `page-main` element can be separated into distinct tabs by adding the `page-tabbed` attribute. It must be set to the `id` of an element containing `<a>` child elements. The `href` attribute of each of these `<a>` elements should be set to the `#id` of an existing child of the `page-main` element, otherwise that `<a>` will be disabled.
 
 ```html
 <body page-main='main' page-panel-left='left'>
-    <section id='left'>
-        <form id='tabs' class='side-nav'>
-            <input type='radio' name='tab' value='tab1'>
-            <input type='radio' name='tab' value='tab2'>
-            <input type='radio' name='tab' value='tab3'>
-        </form>
+    <section id='left' class='side-nav a-center'>
+        <h3>Tabs</h3>
+        <section id='tabs'>
+            <a href='#tab1'>Tab 1</a>
+            <a href='#tab2'>Tab 2</a>
+            <a href='#tab3'>Tab 3</a>
+        </section>
     </section>
     <main id='main' page-tabbed='tabs'>
         <div id='tab1'> ... </div>
