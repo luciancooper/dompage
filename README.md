@@ -1,7 +1,107 @@
 # dompage
 
+## Page Guide
+
+This is a simple library for structuring basic webpages with minimial setup. It can be added to a webpage with the following:
+
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/luciancooper/dompage/dist/page.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/luciancooper/dompage/dist/page.min.js"></script>
+```
+
+### Basic Usage 
+
+These attributes are added to `<body>` to specify the `id` of particular components within the page:
+
+ * `page-main`
+ * `page-panel-left`
+ * `page-panel-right`
+ * `page-topbar`
+    
+The only requirement for this library to function is the `page-main` attribute must be specified to the `id` of an existing child element of the `<body>`. The following is a simple example:
+
+```html
+<body page-main='main'>
+    <main id='main'>
+        ...
+    </main>
+</body>
+```
+
+#### Top Bar
+
+A top bar can be added to a page using the `page-topbar` attribute like this:
+
+```html
+<body page-main='main' page-topbar='topbar'>
+    <header id='topbar'>
+        ...
+    </header>
+    <main id='main'>
+        ...
+    </main>
+</body>
+```
+
+#### Left/Right Panels
+
+Left and right panels can be specified using the `page-panel-left` and `page-panel-right` attributes. These elements must also be children of the `<body>`:
+
+```html
+<body page-main='main' page-panel-left='left' page-panel-right='right'>
+    <section id='left'>
+        ...
+    </section>
+    <section id='right'>
+        ...
+    </section>
+    <main id='main'>
+        ...
+    </main>
+</body>
+```
+
+Panel display toggling can be setup by adding the `hide-toggle` attribute to the panel element. It must be set to the `id` of either an `input[type='checkbox']` or `label` element elsewhere in the page:
+
+```html
+...
+<header id='topbar'>
+    <label id='left-toggle'>&#8801;</label>
+</header>
+<section id='left' hide-toggle='left-toggle'>
+    ...
+</section>
+...
+```
+
+#### Tabbed Content
+
+The content of the `page-main` element can be separated into distinct tabs by adding the `page-tabbed` attribute. It must be set to the `id` of a `<form>` containing a set of `<input type='radio' name='tab'>` elements. The `value` attribute of each `<input>` element must be set to the `id` of an existing child of the `page-main` element, or else that `<input>` will be disabled.
+
+```html
+<body page-main='main' page-panel-left='left'>
+    <section id='left'>
+        <form id='tabs' class='side-nav'>
+            <input type='radio' name='tab' value='tab1'>
+            <input type='radio' name='tab' value='tab2'>
+            <input type='radio' name='tab' value='tab3'>
+        </form>
+    </section>
+    <main id='main' page-tabbed='tabs'>
+        <div id='tab1'> ... </div>
+        <div id='tab2'> ... </div>
+        <div id='tab3'> ... </div>
+    </main>
+</body>
+```
 
 ## Buttons
+
+Include button styling in a page with this stylesheet:
+
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/luciancooper/dompage/dist/buttons.min.css">
+```
 
 Check out this [example page](https://luciancooper.github.io/dompage/)
 
@@ -90,9 +190,9 @@ The `tab-grp` class can be added to any element to give it the appearance of a g
 
 The following class attributes can be added to individual buttons, `btn-grp`, `tab-grp`, and `btn-set` elements to theme their appearance.
 
- * `ui-vib`
- * `ui-flat`
- * `ui-blue`
- * `ui-red`
- * `ui-green`
- * `ui-dark`
+ * [`ui-vib`](https://luciancooper.github.io/dompage/index.html#vib)
+ * [`ui-flat`](https://luciancooper.github.io/dompage/index.html#flat)
+ * [`ui-blue`](https://luciancooper.github.io/dompage/index.html#blue)
+ * [`ui-red`](https://luciancooper.github.io/dompage/index.html#red)
+ * [`ui-green`](https://luciancooper.github.io/dompage/index.html#green)
+ * [`ui-dark`](https://luciancooper.github.io/dompage/index.html#dark)

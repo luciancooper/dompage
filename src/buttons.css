@@ -25,9 +25,9 @@ button,
 button,
 .tab-grp>*,
 .btn-grp>*,
-label.btn>input ~ *,
-.btn-grp>label>input ~ *,
-.tab-grp>label>input ~ * {
+label.btn>*,
+.btn-grp>label>*,
+.tab-grp>label>* {
 	padding: 0.16em 0.32em;
 	border-width: 1px;
 	border-style: solid;
@@ -48,32 +48,36 @@ label.btn,
 	border-width:0px;
 }
 
-label.btn>input ~ *,
-.btn-grp>label>input ~ *,
-.tab-grp>label>input ~ * {
+label.btn>*,
+.btn-grp>label>*,
+.tab-grp>label>* {
 	display:flex;
 	flex-direction:inherit;
 	flex-wrap:inherit;
 	align-self:stretch;
 	align-items:inherit;
 	justify-content:inherit;
-}
-
-label.btn>input~*,
-.btn-grp>label>input~*,
-.tab-grp>label>input~* {
     flex-grow:1;
 	flex-shrink:1;
+}
+
+.btn:not(label)>*,
+button>*,
+.btn-grp>*:not(label)>*,
+.tab-grp>*:not(label)>*,
+label.btn>*>*,
+.btn-grp>label>*>*,
+.tab-grp>label>*>* {
+    pointer-events:none;
 }
 
 .btn>*,
 button>*,
 .btn-grp>*>*,
 .tab-grp>*>*,
-label.btn>input ~ *>*,
-.btn-grp>label>input ~ *>*,
-.tab-grp>label>input ~ *>* {
-	pointer-events:none;
+label.btn>*>*,
+.btn-grp>label>*>*,
+.tab-grp>label>*>* {
 	text-decoration:inherit;
 	font-weight:inherit;
 	font-style: inherit;
@@ -97,9 +101,9 @@ button[text]:after,
 button>*,
 .btn-grp>*>*,
 .tab-grp>*>*,
-label.btn>input ~ *>*,
-.btn-grp>label>input ~ *>*,
-.tab-grp>label>input ~ *>*,
+label.btn>*>*,
+.btn-grp>label>*>*,
+.tab-grp>label>*>*,
 .btn:after,
 button:after,
 .btn-grp>*:after,
@@ -113,9 +117,9 @@ button:after,
 button>*+*,
 .btn-grp>*>*+*,
 .tab-grp>*>*+*,
-label.btn>input ~ *>*+*,
-.btn-grp>label>input ~ *>*+*,
-.tab-grp>label>input ~ *>*+*,
+label.btn>*>*+*,
+.btn-grp>label>*>*+*,
+.tab-grp>label>*>*+*,
 .btn:not(:empty):after,
 button:not(:empty):after,
 .btn-grp>*:not(:empty):after,
@@ -167,9 +171,9 @@ a.btn,
 button.icon,
 .btn-grp>*.icon,
 .tab-grp>*.icon,
-label.btn>input ~ *.icon,
-.btn-grp>label>input ~ *.icon,
-.tab-grp>label>input ~ *.icon {
+label.btn>*.icon,
+.btn-grp>label>*.icon,
+.tab-grp>label>*.icon {
 	padding: 0.16em;
 	box-sizing:content-box;
 }
@@ -182,12 +186,12 @@ button.icon>i,
 .btn-grp>*.icon>i,
 .tab-grp>*.icon>svg,
 .tab-grp>*.icon>i,
-label.btn>input ~ *.icon>svg,
-label.btn>input ~ *.icon>i,
-.btn-grp>label>input ~ *.icon>svg,
-.btn-grp>label>input ~ *.icon>i,
-.tab-grp>label>input ~ *.icon>svg,
-.tab-grp>label>input ~ *.icon>i,
+label.btn>*.icon>svg,
+label.btn>*.icon>i,
+.btn-grp>label>*.icon>svg,
+.btn-grp>label>*.icon>i,
+.tab-grp>label>*.icon>svg,
+.tab-grp>label>*.icon>i,
 button.icon:empty,
 .btn.icon:empty,
 svg.icon,
@@ -196,29 +200,20 @@ i.icon {
 	height:1.6em;
 }
 
-.btn>svg,
+.btn:not(label)>svg,
 button>svg,
-.btn-grp>*>svg,
-.tab-grp>*>svg,
-label.btn>input ~ svg:not(:last-child),
-.btn-grp>label>input ~ svg:not(:last-child),
-.tab-grp>label>input ~ svg:not(:last-child),
-label.btn>input ~ *>svg,
-.btn-grp>label>input ~ *>svg,
-.tab-grp>label>input ~ *>svg {
+.btn-grp>*:not(label)>svg,
+.tab-grp>*:not(label)>svg,
+label.btn>svg:not(:last-child),
+.btn-grp>label>svg:not(:last-child),
+.tab-grp>label>svg:not(:last-child),
+label.btn>*>svg,
+.btn-grp>label>*>svg,
+.tab-grp>label>*>svg {
 	flex-grow:0;
 	flex-shrink:0;
 }
 
-.btn svg,
-button svg,
-svg.btn>*,
-.btn-grp>*>svg,
-.tab-grp>*>svg,
-.btn-grp>svg>*,
-.tab-grp>svg>* {
-    pointer-events:none;
-}
 
 /* ============================================== [icon](hamburger) ============================================== */
 /*
@@ -280,6 +275,7 @@ svg.btn>*,
 }
 
 .tab-grp {
+    flex-grow:1;
 	align-self:stretch;
 }
 
@@ -377,14 +373,17 @@ label.btn>*,
 label.btn>input+*,
 .btn-grp>label>input+*,
 .tab-grp>label>input+*,
+label.btn>*:first-child:not(input),
+.btn-grp>label>*:first-child:not(input),
+.tab-grp>label>*:first-child:not(input),
 .btn-grp>*:first-child {
     border-top-left-radius: inherit;
 	border-bottom-left-radius: inherit;
 }
 
-label.btn>input~*:last-child,
-.btn-grp>label>input~*:last-child,
-.tab-grp>label>input~*:last-child,
+label.btn>*:last-child,
+.btn-grp>label>*:last-child,
+.tab-grp>label>*:last-child,
 .btn-grp>*:last-child {
 	border-top-right-radius: inherit;
     border-bottom-right-radius: inherit;
@@ -421,46 +420,50 @@ label.btn>input:disabled ~ *,
 
 .btn,
 button,
-label.btn>input ~ *,
+label.btn>*,
 .btn-grp>*,
-.btn-grp>label>input ~ * {
-	color: rgb(85,85,85);
-	stroke:rgb(85,85,85);
-	fill:rgb(85,85,85);
+.btn-grp>label>* {
+	color: #555555;
+	stroke:#555555;
+	fill:#555555;
 	text-shadow: 0 1px rgba(255,255,255,0.8);
-    background-color:rgb(241,241,241);
+    background-color:#f1f1f1;
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.4),rgba(255,255,255,0) 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0.05));
-	border-color:rgb(204,204,204) rgb(197,197,197) rgb(187,187,187);
+	border-color:#cccccc #c5c5c5 #bbbbbb;
 }
 
 .btn.selected,
 button.selected,
 input.btn:checked,
 label.btn>input:checked ~ *,
+label.btn.selected>*,
 .btn-grp>*.selected,
 .btn-grp>input:checked,
-.btn-grp>label>input:checked ~ * {
+.btn-grp>label>input:checked ~ *,
+.btn-grp>label.selected>* {
 	color: #fafafa;
 	fill: #fafafa;
 	stroke: #fafafa;
 	text-shadow: 0 -1px rgba(0,0,0,0.5);
 	box-shadow: -1px -1px rgba(255,255,255,0);
-	background: rgb(107,107,107) linear-gradient(to bottom, rgb(163,163,163),rgb(204,204,204));
-	border-color: rgb(56,56,56) rgb(150,150,150) rgb(150,150,150) rgb(89,89,89);
+	background: #6b6b6b linear-gradient(to bottom, #a3a3a3,#cccccc);
+	border-color: #383838 #969696 #969696 #595959;
 }
 
 .btn.disabled,
 button:disabled,
 input.btn:disabled,
 label.btn>input:disabled ~ *,
+label.btn.disabled>*,
 .btn-grp>*.disabled,
 .btn-grp>*:disabled,
-.btn-grp>label>input:disabled ~ * {
-	background: rgb(241,241,241);
+.btn-grp>label>input:disabled ~ *,
+.btn-grp>label.disabled>* {
+	background: #f1f1f1;
 	box-shadow: none;
-	color: rgb(145,145,145);
-	fill:rgb(145,145,145);
-	stroke:rgb(145,145,145);
+	color: #919191;
+	fill:#919191;
+	stroke:#919191;
 }
 
 /* ============================================== [theme](hamburger) ============================================== */
@@ -469,7 +472,7 @@ label.btn>input:disabled ~ *,
 .btn.selected:hover > .icn-hamburger,
 .btn.icn-hamburger.selected:hover,
 input.icn-hamburger:checked:hover {
-    background-color:#716b7a;
+    background-color:#716b7a!important;
 }
 
 .btn.selected > .icn-hamburger,
@@ -477,46 +480,50 @@ input.icn-hamburger:checked:hover {
 input.icn-hamburger:checked,
 .btn:hover > .icn-hamburger,
 .icn-hamburger:hover {
-    background-color:#8164ad;
+    background-color:#8164ad!important;
 }
 
 /* ============================================== [theme](tabs) ============================================== */
 
 .tab-grp>*,
-.tab-grp>label>input ~ * {
-	color: rgb(153,153,153);
-	fill: rgb(153,153,153);
-	stroke:rgb(153,153,153);
-	border-color: rgb(187,187,187);
-    background: rgb(222,222,222);
+.tab-grp>label>* {
+	color: #999999;
+	fill: #999999;
+	stroke:#999999;
+	border-color: #bbbbbb;
+    background: #dedede;
 	text-shadow: 0 1px rgba(255,255,255,0.5);
-	box-shadow: inset 0 1px rgb(255,255,255),inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05);
+	box-shadow: inset 0 1px #ffffff,inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05);
 }
 
 .tab-grp>*.selected,
 .tab-grp>*:checked,
-.tab-grp>label>input:checked ~ * {
-	color: rgb(102,102,102);
-	fill: rgb(102,102,102);
-	stroke: rgb(102,102,102);
+.tab-grp>label>input:checked ~ *,
+.tab-grp>label.selected>* {
+	color: #666666;
+	fill: #666666;
+	stroke: #666666;
 	box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px rgba(255,255,255,0.1);
-	border-color: rgb(191,191,191) rgb(200,200,200) rgb(214,214,214);
+	border-color: #bfbfbf #c8c8c8 #d6d6d6;
 	text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
-	background: rgb(232,232,232) linear-gradient(to bottom, rgb(232,232,232),rgb(250,250,250));
+	background-color:#e8e8e8;
+	background-image:linear-gradient(to bottom, #e8e8e8,#fafafa);
 }
 
 .tab-grp>*:hover,
-.tab-grp>label:hover>input ~ * {
-	background:rgb(232,232,232);
+.tab-grp>label:hover>* {
+	background:#e8e8e8;
 }
 
 .tab-grp>*.disabled,
 .tab-grp>*:disabled,
-.tab-grp>label>input:disabled ~ * {
-	color: rgb(145,145,145);
-	fill:rgb(145,145,145);
-	stroke:rgb(145,145,145);
-	background: rgb(222,222,222);
+.tab-grp>label>input:disabled ~ *,
+.tab-grp>label.disabled>* {
+	color: #919191;
+	fill:#919191;
+	stroke:#919191;
+	background-color: #dedede;
+	background-image:none;
 	box-shadow: none;
 }
 
@@ -524,23 +531,24 @@ input.icn-hamburger:checked,
 
 .btn.ui-flat,
 button.ui-flat,
-label.btn.ui-flat>input ~ *,
+label.btn.ui-flat>*,
 .btn-grp.ui-flat>*,
 .tab-grp.ui-flat>*,
 .btn-set.ui-flat .btn,
 .btn-set.ui-flat button,
-.btn-set.ui-flat label.btn>input ~ *,
+.btn-set.ui-flat label.btn>*,
 .btn-set.ui-flat .btn-grp>*,
-.btn-set.ui-flat .btn-grp>label>input ~ *,
-.btn-grp.ui-flat>label>input ~ *,
-.tab-grp.ui-flat>label>input ~ * {
-	color: rgb(128,128,128);
-	fill: rgb(128,128,128);
-	stroke: rgb(128,128,128);
-	text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
-	background: rgb(236,238,244);
-    border-color:rgb(187,187,187);
-	box-shadow: none;
+.btn-set.ui-flat .btn-grp>label>*,
+.btn-grp.ui-flat>label>*,
+.tab-grp.ui-flat>label>* {
+	color: #808080!important;
+	fill: #808080!important;
+	stroke: #808080!important;
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.5)!important;
+	background-color:#eceef4!important;
+	background-image:none!important;
+    border-color:#bbbbbb!important;
+	box-shadow: none!important;
 }
 
 .btn.ui-flat,
@@ -550,467 +558,532 @@ button.ui-flat,
 .btn-set.ui-flat .btn,
 .btn-set.ui-flat button,
 .btn-set.ui-flat .btn-grp {
-    box-shadow:1px 1px rgb(213,215,221);
+    box-shadow:1px 1px #d5d7dd!important;
 }
 
 .btn.ui-flat.selected,
 button.ui-flat.selected,
 input.btn.ui-flat:checked,
 label.btn.ui-flat>input:checked ~ *,
+label.btn.ui-flat.selected>*,
 .btn-grp.ui-flat>*.selected,
 .tab-grp.ui-flat>*.selected,
 .btn-set.ui-flat .btn.selected,
 .btn-set.ui-flat .btn:checked,
 .btn-set.ui-flat button.selected,
 .btn-set.ui-flat label.btn>input:checked ~ *,
+.btn-set.ui-flat label.btn.selected>*,
 .btn-set.ui-flat .btn-grp>*.selected,
 .btn-set.ui-flat .btn-grp>*:checked,
 .btn-set.ui-flat .btn-grp>label>input:checked ~ *,
+.btn-set.ui-flat .btn-grp>label.selected>*,
 .btn-grp.ui-flat>input:checked,
 .tab-grp.ui-flat>input:checked,
 .btn-grp.ui-flat>label>input:checked ~ *,
-.tab-grp.ui-flat>label>input:checked ~ * {
-	color: rgb(128,128,128);
-	fill: rgb(128,128,128);
-	stroke: rgb(128,128,128);
-	text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
-	background: rgb(213,215,221);
-    border-color:rgb(187,187,187);
+.btn-grp.ui-flat>label.selected>*,
+.tab-grp.ui-flat>label>input:checked ~ *,
+.tab-grp.ui-flat>label.selected>* {
+	background-color: #d5d7dd!important;
 }
 
 .btn.ui-flat.disabled,
 button.ui-flat:disabled,
 input.btn.ui-flat:disabled,
 label.btn.ui-flat>input:disabled ~ *,
+label.btn.ui-flat.disabled>*,
 .btn-grp.ui-flat>*.disabled,
 .tab-grp.ui-flat>*.disabled,
 .btn-set.ui-flat .btn.disabled,
 .btn-set.ui-flat .btn:disabled,
 .btn-set.ui-flat button:disabled,
 .btn-set.ui-flat label.btn>input:disabled ~ *,
+.btn-set.ui-flat label.btn.disabled>*,
 .btn-set.ui-flat .btn-grp>*.disabled,
 .btn-set.ui-flat .btn-grp>*:disabled,
 .btn-set.ui-flat .btn-grp>label>input:disabled ~ *,
+.btn-set.ui-flat .btn-grp>label.disabled>*,
 .btn-grp.ui-flat>*:disabled,
 .tab-grp.ui-flat>*:disabled,
 .btn-grp.ui-flat>label>input:disabled ~ *,
-.tab-grp.ui-flat>label>input:disabled ~ * {
-	color: rgb(145,145,145);
-	background:rgb(239, 241, 246);
+.btn-grp.ui-flat>label.disabled>*,
+.tab-grp.ui-flat>label>input:disabled ~ *,
+.tab-grp.ui-flat>label.disabled>* {
+	color: #919191!important;
+	fill: #919191!important;
+	stroke: #919191!important;
+	background-color:#eff1f6!important;
 }
 
 /* ============================================== [theme - ui-dark] ============================================== */
 
 .btn.ui-dark,
 button.ui-dark,
-label.btn.ui-dark>input ~ *,
+label.btn.ui-dark>*,
 .btn-grp.ui-dark>*,
 .tab-grp.ui-dark>*,
 .btn-set.ui-dark .btn,
 .btn-set.ui-dark button,
-.btn-set.ui-dark label.btn>input ~ *,
+.btn-set.ui-dark label.btn>*,
 .btn-set.ui-dark .btn-grp>*,
-.btn-set.ui-dark .btn-grp>label>input ~ *,
-.btn-grp.ui-dark>label>input ~ *,
-.tab-grp.ui-dark>label>input ~ * {
-	color: #d4d4d4;
-	fill:#d4d4d4;
-	stroke:#d4d4d4;
-    text-shadow: none;
-    box-shadow: inset 0 1px rgba(255,255,255,.2);
-    background-color: #535353;
-	background-image: linear-gradient(to top,rgba(255,255,255,.08),rgba(255,255,255,0));
-    border-color: #282828;
+.btn-set.ui-dark .btn-grp>label>*,
+.btn-grp.ui-dark>label>*,
+.tab-grp.ui-dark>label>* {
+	color: #d4d4d4!important;
+	fill:#d4d4d4!important;
+	stroke:#d4d4d4!important;
+    text-shadow: none!important;
+    box-shadow: inset 0 1px rgba(255,255,255,.2)!important;
+    background-color: #535353!important;
+	background-image: linear-gradient(to top,rgba(255,255,255,.08),rgba(255,255,255,0))!important;
+    border-color: #282828!important;
 }
 
 .btn.ui-dark.selected,
 button.ui-dark.selected,
 input.btn.ui-dark:checked,
 label.btn.ui-dark>input:checked ~ *,
+label.btn.ui-dark.selected>*,
 .btn-grp.ui-dark>*.selected,
 .tab-grp.ui-dark>*.selected,
 .btn-set.ui-dark .btn.selected,
 .btn-set.ui-dark .btn:checked,
 .btn-set.ui-dark button.selected,
 .btn-set.ui-dark label.btn>input:checked ~ *,
+.btn-set.ui-dark label.btn.selected>*,
 .btn-set.ui-dark .btn-grp>*.selected,
 .btn-set.ui-dark .btn-grp>*:checked,
 .btn-set.ui-dark .btn-grp>label>input:checked ~ *,
+.btn-set.ui-dark .btn-grp>label.selected>*,
 .btn-grp.ui-dark>input:checked,
 .tab-grp.ui-dark>input:checked,
 .btn-grp.ui-dark>label>input:checked ~ *,
-.tab-grp.ui-dark>label>input:checked ~ * {
-	box-shadow:none;
-    background-color: #3a3a3a;
-	background-image: linear-gradient(to top,transparent,transparent);
+.btn-grp.ui-dark>label.selected>*,
+.tab-grp.ui-dark>label>input:checked ~ *,
+.tab-grp.ui-dark>label.selected>* {
+	box-shadow:none!important;
+    background-color: #3a3a3a!important;
+	background-image:none!important;
 }
 
 .btn.ui-dark:hover,
 button.ui-dark:hover,
-label.btn.ui-dark:hover>input ~ *,
+label.btn.ui-dark:hover>*,
 .btn-grp.ui-dark>*:hover,
 .tab-grp.ui-dark>*:hover,
-.btn-grp.ui-dark>label:hover>input ~ *,
-.tab-grp.ui-dark>label:hover>input ~ *,
+.btn-grp.ui-dark>label:hover>*,
+.tab-grp.ui-dark>label:hover>*,
 .btn-set.ui-dark .btn:hover,
 .btn-set.ui-dark button:hover,
-.btn-set.ui-dark label.btn:hover>input ~ *,
+.btn-set.ui-dark label.btn:hover>*,
 .btn-set.ui-dark .btn-grp>*:hover,
-.btn-set.ui-dark .btn-grp>label:hover>input ~ * {
-	background-color: #3a3a3a;
+.btn-set.ui-dark .btn-grp>label:hover>* {
+	background-color: #3a3a3a!important;
 }
 
 .btn.ui-dark.disabled,
 button.ui-dark:disabled,
 input.btn.ui-dark:disabled,
 label.btn.ui-dark>input:disabled ~ *,
+label.btn.ui-dark.disabled>*,
 .btn-grp.ui-dark>*.disabled,
 .tab-grp.ui-dark>*.disabled,
 .btn-set.ui-dark .btn.disabled,
 .btn-set.ui-dark .btn:disabled,
 .btn-set.ui-dark button:disabled,
 .btn-set.ui-dark label.btn>input:disabled ~ *,
+.btn-set.ui-dark label.btn.disabled>*,
 .btn-set.ui-dark .btn-grp>*.disabled,
 .btn-set.ui-dark .btn-grp>*:disabled,
 .btn-set.ui-dark .btn-grp>label>input:disabled ~ *,
+.btn-set.ui-dark .btn-grp>label.disabled>*,
 .btn-grp.ui-dark>*:disabled,
 .tab-grp.ui-dark>*:disabled,
 .btn-grp.ui-dark>label>input:disabled ~ *,
-.tab-grp.ui-dark>label>input:disabled ~ * {
-    box-shadow: none;
-    background: #535353;
+.btn-grp.ui-dark>label.disabled>*,
+.tab-grp.ui-dark>label>input:disabled ~ *,
+.tab-grp.ui-dark>label.disabled>* {
+    color: #919191!important;
+	fill:#919191!important;
+	stroke:#919191!important;
+    box-shadow: none!important;
+    background-color: #535353!important;
+    background-image:none!important;
 }
 
 /* ============================================== [theme](vib) ============================================== */
 
 .btn.ui-vib,
 button.ui-vib,
-label.btn.ui-vib>input ~ *,
+label.btn.ui-vib>*,
 .btn-grp.ui-vib>*,
 .tab-grp.ui-vib>*,
 .btn-set.ui-vib .btn,
 .btn-set.ui-vib button,
-.btn-set.ui-vib label.btn>input ~ *,
+.btn-set.ui-vib label.btn>*,
 .btn-set.ui-vib .btn-grp>*,
-.btn-set.ui-vib .btn-grp>label>input ~ *,
-.btn-grp.ui-vib>label>input ~ *,
-.tab-grp.ui-vib>label>input ~ * {
-	color: rgb(102,102,102);
-	fill: rgb(102,102,102);
-	stroke: rgb(102,102,102);
-	text-shadow: 0 1px rgba(255,255,255,0.5);
-	box-shadow: inset 0 1px rgb(255,255,255),inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05);
-	background: rgb(238,238,238) linear-gradient(to bottom, rgb(252,252,252),rgb(232,232,232));
-	border-color: rgb(207,207,207) rgb(204,204,204) rgb(198,198,198);
+.btn-set.ui-vib .btn-grp>label>*,
+.btn-grp.ui-vib>label>*,
+.tab-grp.ui-vib>label>* {
+	color: #666666!important;
+	fill: #666666!important;
+	stroke: #666666!important;
+	text-shadow: 0 1px rgba(255,255,255,0.5)!important;
+	box-shadow: inset 0 1px #ffffff,inset 0 0 0 1px rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.05)!important;
+	background-color: #eeeeee!important;
+	background-image:linear-gradient(to bottom, #fcfcfc,#e8e8e8)!important;
+	border-color: #cfcfcf #cccccc #c6c6c6!important;
 }
 
 .btn.ui-vib.selected,
 button.ui-vib.selected,
 input.btn.ui-vib:checked,
 label.btn.ui-vib>input:checked ~ *,
+label.btn.ui-vib.selected>*,
 .btn-grp.ui-vib>*.selected,
 .tab-grp.ui-vib>*.selected,
 .btn-set.ui-vib .btn.selected,
 .btn-set.ui-vib .btn:checked,
 .btn-set.ui-vib button.selected,
 .btn-set.ui-vib label.btn>input:checked ~ *,
+.btn-set.ui-vib label.btn.selected>*,
 .btn-set.ui-vib .btn-grp>*.selected,
 .btn-set.ui-vib .btn-grp>*:checked,
 .btn-set.ui-vib .btn-grp>label>input:checked ~ *,
+.btn-set.ui-vib .btn-grp>label.selected>*,
 .btn-grp.ui-vib>input:checked,
 .tab-grp.ui-vib>input:checked,
 .btn-grp.ui-vib>label>input:checked ~ *,
-.tab-grp.ui-vib>label>input:checked ~ * { 
-	color: rgb(102,102,102);
-	fill: rgb(102,102,102);
-	stroke: rgb(102,102,102);
-	text-shadow: 0 1px rgba(255,255,255,0.5);
-	box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px rgba(255,255,255,0.1);
-	background: rgb(232,232,232) linear-gradient(to bottom, rgb(232,232,232),rgb(250,250,250));
-	border-color: rgb(191,191,191) rgb(200,200,200) rgb(214,214,214);
+.btn-grp.ui-vib>label.selected>*,
+.tab-grp.ui-vib>label>input:checked ~ *,
+.tab-grp.ui-vib>label.selected>* {
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px rgba(255,255,255,0.1)!important;
+	background-color: #e8e8e8!important;
+	background-image:linear-gradient(to bottom, #e8e8e8,#fafafa)!important;
+	border-color: #bfbfbf #c8c8c8 #d6d6d6!important;
 }
 
 .btn.ui-vib.disabled,
 button.ui-vib:disabled,
 input.btn.ui-vib:disabled,
 label.btn.ui-vib>input:disabled ~ *,
+label.btn.ui-vib.disabled>*,
 .btn-grp.ui-vib>*.disabled,
 .tab-grp.ui-vib>*.disabled,
 .btn-set.ui-vib .btn.disabled,
 .btn-set.ui-vib .btn:disabled,
 .btn-set.ui-vib button:disabled,
 .btn-set.ui-vib label.btn>input:disabled ~ *,
+.btn-set.ui-vib label.btn.disabled>*,
 .btn-set.ui-vib .btn-grp>*.disabled,
 .btn-set.ui-vib .btn-grp>*:disabled,
 .btn-set.ui-vib .btn-grp>label>input:disabled ~ *,
+.btn-set.ui-vib .btn-grp>label.disabled>*,
 .btn-grp.ui-vib>*:disabled,
 .tab-grp.ui-vib>*:disabled,
 .btn-grp.ui-vib>label>input:disabled ~ *,
-.tab-grp.ui-vib>label>input:disabled ~ * {
-	color: rgb(145,145,145);
-	fill: rgb(145,145,145);
-	stroke: rgb(145,145,145);
+.btn-grp.ui-vib>label.disabled>*,
+.tab-grp.ui-vib>label>input:disabled ~ *,
+.tab-grp.ui-vib>label.disabled>* {
+	color: #919191!important;
+	fill: #919191!important;
+	stroke: #919191!important;
+	box-shadow: none!important;
+    background-color: #f4f4f4!important;
+    background-image: none!important;
 }
 
 /* ============================================== [theme](blue) ============================================== */
 
 .btn.ui-blue,
 button.ui-blue,
-label.btn.ui-blue>input ~ *,
+label.btn.ui-blue>*,
 .btn-grp.ui-blue>*,
 .tab-grp.ui-blue>*,
 .btn-set.ui-blue .btn,
 .btn-set.ui-blue button,
-.btn-set.ui-blue label.btn>input ~ *,
+.btn-set.ui-blue label.btn>*,
 .btn-set.ui-blue .btn-grp>*,
-.btn-set.ui-blue .btn-grp>label>input ~ *,
-.btn-grp.ui-blue>label>input ~ *,
-.tab-grp.ui-blue>label>input ~ * {
-	color: #FFF;
-	fill:#FFF;
-	stroke:#FFF;
-	text-shadow: 0 1px 0 rgba(0,0,0,0.2);
-	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
-    background: #337ab7;
-    border-color: #2e6da4;
+.btn-set.ui-blue .btn-grp>label>*,
+.btn-grp.ui-blue>label>*,
+.tab-grp.ui-blue>label>* {
+	color: #FFF!important;
+	fill:#FFF!important;
+	stroke:#FFF!important;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.2)!important;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2)!important;
+    background-color: #337ab7!important;
+    background-image:none!important;
+    border-color: #2e6da4!important;
 }
 
 .btn.ui-blue.selected,
 button.ui-blue.selected,
 input.btn.ui-blue:checked,
 label.btn.ui-blue>input:checked ~ *,
+label.btn.ui-blue.selected>*,
 .btn-grp.ui-blue>*.selected,
 .tab-grp.ui-blue>*.selected,
 .btn-set.ui-blue .btn.selected,
 .btn-set.ui-blue .btn:checked,
 .btn-set.ui-blue button.selected,
 .btn-set.ui-blue label.btn>input:checked ~ *,
+.btn-set.ui-blue label.btn.selected>*,
 .btn-set.ui-blue .btn-grp>*.selected,
 .btn-set.ui-blue .btn-grp>*:checked,
 .btn-set.ui-blue .btn-grp>label>input:checked ~ *,
+.btn-set.ui-blue .btn-grp>label.selected>*,
 .btn-grp.ui-blue>input:checked,
 .tab-grp.ui-blue>input:checked,
 .btn-grp.ui-blue>label>input:checked ~ *,
-.tab-grp.ui-blue>label>input:checked ~ * {
-	box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
-    background: #286090;
-    border-color: #204d74;
+.btn-grp.ui-blue>label.selected>*,
+.tab-grp.ui-blue>label>input:checked ~ *,
+.tab-grp.ui-blue>label.selected>* {
+	box-shadow: inset 0 3px 5px rgba(0,0,0,0.125)!important;
+    background-color: #286090!important;
+    border-color: #204d74!important;
 }
 
 .btn.ui-blue:hover,
 button.ui-blue:hover,
-label.btn.ui-blue:hover>input ~ *,
+label.btn.ui-blue:hover>*,
 .btn-grp.ui-blue>*:hover,
 .tab-grp.ui-blue>*:hover,
-.btn-grp.ui-blue>label:hover>input ~ *,
-.tab-grp.ui-blue>label:hover>input ~ *,
+.btn-grp.ui-blue>label:hover>*,
+.tab-grp.ui-blue>label:hover>*,
 .btn-set.ui-blue .btn:hover,
 .btn-set.ui-blue button:hover,
-.btn-set.ui-blue label.btn:hover>input ~ *,
+.btn-set.ui-blue label.btn:hover>*,
 .btn-set.ui-blue .btn-grp>*:hover,
-.btn-set.ui-blue .btn-grp>label:hover>input ~ * {
-	background: #286090;
-    border-color: #204d74;
+.btn-set.ui-blue .btn-grp>label:hover>* {
+	background-color: #286090!important;
+    border-color: #204d74!important;
 }
 
 .btn.ui-blue.disabled,
 button.ui-blue:disabled,
 input.btn.ui-blue:disabled,
 label.btn.ui-blue>input:disabled ~ *,
+label.btn.ui-blue.disabled>*,
 .btn-grp.ui-blue>*.disabled,
 .tab-grp.ui-blue>*.disabled,
 .btn-set.ui-blue .btn.disabled,
 .btn-set.ui-blue .btn:disabled,
-.btn-set.ui-blue .button:disabled,
+.btn-set.ui-blue button:disabled,
 .btn-set.ui-blue label.btn>input:disabled ~ *,
+.btn-set.ui-blue label.btn.disabled>*,
 .btn-set.ui-blue .btn-grp>*.disabled,
 .btn-set.ui-blue .btn-grp>*:disabled,
 .btn-set.ui-blue .btn-grp>label>input:disabled ~ *,
+.btn-set.ui-blue .btn-grp>label.disabled>*,
 .btn-grp.ui-blue>*:disabled,
 .tab-grp.ui-blue>*:disabled,
 .btn-grp.ui-blue>label>input:disabled ~ *,
-.tab-grp.ui-blue>label>input:disabled ~ * {
-	color:#d9d9d9;
-	fill:#d9d9d9;
-	stroke:#d9d9d9;
-	background: #337ab7;
-	border-color: #2e6da4;
-	text-shadow: none;
-	box-shadow: none;
+.btn-grp.ui-blue>label.disabled>*,
+.tab-grp.ui-blue>label>input:disabled ~ *,
+.tab-grp.ui-blue>label.disabled>* {
+	color:#d9d9d9!important;
+	fill:#d9d9d9!important;
+	stroke:#d9d9d9!important;
+	background-color: #337ab7!important;
+	border-color: #2e6da4!important;
+	text-shadow: none!important;
+	box-shadow: none!important;
 }
 
 /* ============================================== [theme](red) ============================================== */
 
 .btn.ui-red,
 button.ui-red,
-label.btn.ui-red>input ~ *,
+label.btn.ui-red>*,
 .btn-grp.ui-red>*,
 .tab-grp.ui-red>*,
 .btn-set.ui-red .btn,
 .btn-set.ui-red button,
-.btn-set.ui-red label.btn>input ~ *,
+.btn-set.ui-red label.btn>*,
 .btn-set.ui-red .btn-grp>*,
-.btn-set.ui-red .btn-grp>label>input ~ *,
-.btn-grp.ui-red>label>input ~ *,
-.tab-grp.ui-red>label>input ~ * {
-	color: #FFF;
-	fill:#FFF;
-	stroke:#FFF;
-	background: #d9534f;
-    border-color: #d43f3a;
-	text-shadow: 0 1px 0 rgba(0,0,0,0.2);
-	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+.btn-set.ui-red .btn-grp>label>*,
+.btn-grp.ui-red>label>*,
+.tab-grp.ui-red>label>* {
+	color: #FFF!important;
+	fill:#FFF!important;
+	stroke:#FFF!important;
+	background-color: #d9534f!important;
+	background-image: none!important;
+    border-color: #d43f3a!important;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.2)!important;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2)!important;
 }
 
 .btn.ui-red:hover,
 button.ui-red:hover,
-label.btn.ui-red:hover>input ~ *,
+label.btn.ui-red:hover>*,
 .btn-grp.ui-red>*:hover,
 .tab-grp.ui-red>*:hover,
-.btn-grp.ui-red>label:hover>input ~ *,
-.tab-grp.ui-red>label:hover>input ~ *,
+.btn-grp.ui-red>label:hover>*,
+.tab-grp.ui-red>label:hover>*,
 .btn-set.ui-red .btn:hover,
 .btn-set.ui-red button:hover,
-.btn-set.ui-red label.btn:hover>input ~ *,
+.btn-set.ui-red label.btn:hover>*,
 .btn-set.ui-red .btn-grp>*:hover,
-.btn-set.ui-red .btn-grp>label:hover>input ~ * {
-	background: #c9302c;
-    border-color: #ac2925;
+.btn-set.ui-red .btn-grp>label:hover>* {
+	background-color: #c9302c!important;
+    border-color: #ac2925!important;
 }
 
 .btn.ui-red.selected,
 button.ui-red.selected,
 input.btn.ui-red:checked,
 label.btn.ui-red>input:checked ~ *,
+label.btn.ui-red.selected>*,
 .btn-grp.ui-red>*.selected,
 .tab-grp.ui-red>*.selected,
 .btn-set.ui-red .btn.selected,
 .btn-set.ui-red .btn:checked,
 .btn-set.ui-red button.selected,
 .btn-set.ui-red label.btn>input:checked ~ *,
+.btn-set.ui-red label.btn.selected>*,
 .btn-set.ui-red .btn-grp>*.selected,
 .btn-set.ui-red .btn-grp>*:checked,
 .btn-set.ui-red .btn-grp>label>input:checked ~ *,
+.btn-set.ui-red .btn-grp>label.selected>*,
 .btn-grp.ui-red>input:checked,
 .tab-grp.ui-red>input:checked,
 .btn-grp.ui-red>label>input:checked ~ *,
-.tab-grp.ui-red>label>input:checked ~ * {
-	background: #c9302c;
-	border-color: #ac2925;
-	box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+.btn-grp.ui-red>label.selected>*,
+.tab-grp.ui-red>label>input:checked ~ *,
+.tab-grp.ui-red>label.selected>* {
+	background-color: #c9302c!important;
+	border-color: #ac2925!important;
+	box-shadow: inset 0 3px 5px rgba(0,0,0,0.125)!important;
 }
 
 .btn.ui-red.disabled,
 button.ui-red:disabled,
 input.btn.ui-red:disabled,
 label.btn.ui-red>input:disabled ~ *,
+label.btn.ui-red.disabled>*,
 .btn-grp.ui-red>*.disabled,
 .tab-grp.ui-red>*.disabled,
 .btn-set.ui-red .btn.disabled,
 .btn-set.ui-red .btn:disabled,
-.btn-set.ui-red .button:disabled,
+.btn-set.ui-red button:disabled,
 .btn-set.ui-red label.btn>input:disabled ~ *,
+.btn-set.ui-red label.btn.disabled>*,
 .btn-set.ui-red .btn-grp>*.disabled,
 .btn-set.ui-red .btn-grp>*:disabled,
 .btn-set.ui-red .btn-grp>label>input:disabled ~ *,
+.btn-set.ui-red .btn-grp>label.disabled>*,
 .btn-grp.ui-red>*:disabled,
 .tab-grp.ui-red>*:disabled,
 .btn-grp.ui-red>label>input:disabled ~ *,
-.tab-grp.ui-red>label>input:disabled ~ * {
-	color:#d9d9d9;
-	fill:#d9d9d9;
-	stroke:#d9d9d9;
-	background: #d9534f;
-    border-color: #d43f3a;
-	text-shadow: none;
-	box-shadow: none;
+.btn-grp.ui-red>label.disabled>*,
+.tab-grp.ui-red>label>input:disabled ~ *,
+.tab-grp.ui-red>label.disabled>* {
+	color:#d9d9d9!important;
+	fill:#d9d9d9!important;
+	stroke:#d9d9d9!important;
+	background-color: #d9534f!important;
+    border-color: #d43f3a!important;
+	text-shadow: none!important;
+	box-shadow: none!important;
 }
 
 /* ============================================== [theme](green) ============================================== */
 
 .btn.ui-green,
 button.ui-green,
-label.btn.ui-green>input ~ *,
+label.btn.ui-green>*,
 .btn-grp.ui-green>*,
 .tab-grp.ui-green>*,
 .btn-set.ui-green .btn,
 .btn-set.ui-green button,
-.btn-set.ui-green label.btn>input ~ *,
+.btn-set.ui-green label.btn>*,
 .btn-set.ui-green .btn-grp>*,
-.btn-set.ui-green .btn-grp>label>input ~ *,
-.btn-grp.ui-green>label>input ~ *,
-.tab-grp.ui-green>label>input ~ * {
-	color: #FFF;
-	fill:#FFF;
-	stroke:#FFF;
-    background: #1d9d74;
-    border-color: #198764;
-	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
-	text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+.btn-set.ui-green .btn-grp>label>*,
+.btn-grp.ui-green>label>*,
+.tab-grp.ui-green>label>* {
+	color: #FFF!important;
+	fill:#FFF!important;
+	stroke:#FFF!important;
+    background-color: #1d9d74!important;
+    background-image:none!important;
+    border-color: #198764!important;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2)!important;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.2)!important;
 }
 
 .btn.ui-green:hover,
 button.ui-green:hover,
-label.btn.ui-green:hover>input ~ *,
+label.btn.ui-green:hover>*,
 .btn-grp.ui-green>*:hover,
 .tab-grp.ui-green>*:hover,
-.btn-grp.ui-green>label:hover>input ~ *,
-.tab-grp.ui-green>label:hover>input ~ *,
+.btn-grp.ui-green>label:hover>*,
+.tab-grp.ui-green>label:hover>*,
 .btn-set.ui-green .btn:hover,
 .btn-set.ui-green button:hover,
-.btn-set.ui-green label.btn:hover>input ~ *,
+.btn-set.ui-green label.btn:hover>*,
 .btn-set.ui-green .btn-grp>*:hover,
-.btn-set.ui-green .btn-grp>label:hover>input ~ * {
-	background: #157254;
-    border-color: #0f543e;
+.btn-set.ui-green .btn-grp>label:hover>* {
+	background-color: #157254!important;
+    border-color: #0f543e!important;
 }
 
 .btn.ui-green.selected,
 button.ui-green.selected,
 input.btn.ui-green:checked,
 label.btn.ui-green>input:checked ~ *,
+label.btn.ui-green.selected>*,
 .btn-grp.ui-green>*.selected,
 .tab-grp.ui-green>*.selected,
 .btn-set.ui-green .btn.selected,
 .btn-set.ui-green .btn:checked,
 .btn-set.ui-green button.selected,
 .btn-set.ui-green label.btn>input:checked ~ *,
+.btn-set.ui-green label.btn.selected>*,
 .btn-set.ui-green .btn-grp>*.selected,
 .btn-set.ui-green .btn-grp>*:checked,
 .btn-set.ui-green .btn-grp>label>input:checked ~ *,
+.btn-set.ui-green .btn-grp>label.selected>*,
 .btn-grp.ui-green>input:checked,
 .tab-grp.ui-green>input:checked,
 .btn-grp.ui-green>label>input:checked ~ *,
-.tab-grp.ui-green>label>input:checked ~ * {
-    background: #157254;
-    border-color: #0f543e;
-	box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+.btn-grp.ui-green>label.selected>*,
+.tab-grp.ui-green>label>input:checked ~ *,
+.tab-grp.ui-green>label.selected>* {
+    background-color: #157254!important;
+    border-color: #0f543e!important;
+	box-shadow: inset 0 3px 5px rgba(0,0,0,0.125)!important;
 }
 
 .btn.ui-green.disabled,
 button.ui-green:disabled,
 input.btn.ui-green:disabled,
 label.btn.ui-green>input:disabled ~ *,
+label.btn.ui-green.disabled>*,
 .btn-grp.ui-green>*.disabled,
 .tab-grp.ui-green>*.disabled,
 .btn-set.ui-green .btn.disabled,
 .btn-set.ui-green .btn:disabled,
-.btn-set.ui-green .button:disabled,
+.btn-set.ui-green button:disabled,
 .btn-set.ui-green label.btn>input:disabled ~ *,
+.btn-set.ui-green label.btn.disabled>*,
 .btn-set.ui-green .btn-grp>*.disabled,
 .btn-set.ui-green .btn-grp>*:disabled,
 .btn-set.ui-green .btn-grp>label>input:disabled ~ *,
+.btn-set.ui-green .btn-grp>label.disabled>*,
 .btn-grp.ui-green>*:disabled,
 .tab-grp.ui-green>*:disabled,
 .btn-grp.ui-green>label>input:disabled ~ *,
-.tab-grp.ui-green>label>input:disabled ~ * {
-	color:#d9d9d9;
-	fill:#d9d9d9;
-	stroke:#d9d9d9;
-	background: #1d9d74;
-    border-color: #198764;
-	text-shadow: none;
-	box-shadow: none;
+.btn-grp.ui-green>label.disabled>*,
+.tab-grp.ui-green>label>input:disabled ~ *,
+.tab-grp.ui-green>label.disabled>* {
+	color:#d9d9d9!important;
+	fill:#d9d9d9!important;
+	stroke:#d9d9d9!important;
+	background-color: #1d9d74!important;
+    border-color: #198764!important;
+	text-shadow: none!important;
+	box-shadow: none!important;
 }
 
 /* ============================================== [toggle] ============================================== */

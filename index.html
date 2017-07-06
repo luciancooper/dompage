@@ -35,7 +35,7 @@
     }
     td > section {
         display:flex;
-        flex-flow:column nowrap;
+        flex-flow:row nowrap;
         justify-content: center;
         align-items:center;
         padding:5px;
@@ -251,57 +251,49 @@
                     <!-- <span> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <svg class="btn icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn icon selected" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn icon disabled" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                                </svg>
-                            </span>
+                            <svg class="btn icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn icon selected" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn icon disabled" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                            </svg>
                         </section>
                     </td>
                     <!-- <button> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='icon' onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
-                                <button class='icon' onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
-                                <button class='icon' class="selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
-                                <button class='icon' onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
-                                <button class='icon' disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                            </span>
+                            <button class='icon' onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
+                            <button class='icon' onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
+                            <button class='icon' class="selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
+                            <button class='icon' onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
+                            <button class='icon' disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
                         </section>
                     </td>
                     <!-- <label> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
-                                <label class='btn'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
-                                <label class='btn'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
-                                <label class='btn'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
-                                <label class='btn'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
-                            </span>
+                            <label class='btn'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
+                            <label class='btn'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
+                            <label class='btn'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
+                            <label class='btn'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
+                            <label class='btn'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
                         </section>
                     </td>
                     <!-- <input> (text) -->
                     <td rowspan='3' colspan='6'>
                         <section>
-                            <span>
-                                <input class='btn' type='checkbox' value='Button 1'/>
-                                <input class='btn' type='checkbox' value='Button 2' checked/>
-                                <input class='btn' type='checkbox' value='Disabled' disabled/>
-                            </span>
+                            <input class='btn' type='checkbox' value='Button 1'/>
+                            <input class='btn' type='checkbox' value='Button 2' checked/>
+                            <input class='btn' type='checkbox' value='Disabled' disabled/>
                         </section>
                     </td>
                 </tr>
@@ -309,31 +301,25 @@
                     <!-- <span> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn' onclick="toggle(event)">Button 1</span>
-                                <span class='btn selected' onclick="toggle(event)">Button 2</span>
-                                <span class='btn disabled' onclick="toggle(event)">Disabled</span>
-                            </span>
+                            <span class='btn' onclick="toggle(event)">Button 1</span>
+                            <span class='btn selected' onclick="toggle(event)">Button 2</span>
+                            <span class='btn disabled' onclick="toggle(event)">Disabled</span>
                         </section>
                     </td>
                     <!-- <button> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button onclick='toggle(event)'>Button 1</button>
-                                <button class='selected' onclick='toggle(event)'>Button 2</button>
-                                <button disabled onclick='toggle(event)'>Disabled</button>
-                            </span>
+                            <button onclick='toggle(event)'>Button 1</button>
+                            <button class='selected' onclick='toggle(event)'>Button 2</button>
+                            <button disabled onclick='toggle(event)'>Disabled</button>
                         </section>
                     </td>
                     <!-- <label> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn'><input type='checkbox'/><span>Button 1</span></label>
-                                <label class='btn'><input type='checkbox' checked/><span>Button 2</span></label>
-                                <label class='btn'><input type='checkbox' disabled/><span>Disabled</span></label>
-                            </span>
+                            <label class='btn'><input type='checkbox'/><span>Button 1</span></label>
+                            <label class='btn'><input type='checkbox' checked/><span>Button 2</span></label>
+                            <label class='btn'><input type='checkbox' disabled/><span>Disabled</span></label>
                         </section>
                     </td>
                 </tr>
@@ -341,31 +327,25 @@
                     <!-- <span> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
-                                <span class='btn selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
-                                <span class='btn disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
-                            </span>
+                            <span class='btn' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
+                            <span class='btn selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
+                            <span class='btn disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
                         </section>
                     </td>
                     <!-- <button> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
-                                <button class='selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                                <button disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
-                            </span>
+                            <button onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
+                            <button class='selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
+                            <button disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
                         </section>
                     </td>
                     <!-- <label> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
-                                <label class='btn'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
-                                <label class='btn'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
-                            </span>
+                            <label class='btn'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
+                            <label class='btn'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
+                            <label class='btn'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
                         </section>
                     </td>
                 </tr>
@@ -1139,57 +1119,49 @@
                     <!-- <span> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <svg class="btn ui-vib icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-vib icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-vib icon selected" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-vib icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-vib icon disabled" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                                </svg>
-                            </span>
+                            <svg class="btn ui-vib icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-vib icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-vib icon selected" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-vib icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-vib icon disabled" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                            </svg>
                         </section>
                     </td>
                     <!-- <button> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class="icon ui-vib" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-vib" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-vib selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-vib" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-vib" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                            </span>
+                            <button class="icon ui-vib" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-vib" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-vib selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-vib" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-vib" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
                         </section>
                     </td>
                     <!-- <label> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-vib'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-vib'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-vib'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-vib'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-vib'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
-                            </span>
+                            <label class='btn ui-vib'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-vib'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-vib'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-vib'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-vib'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
                         </section>
                     </td>
                     <!-- <input> (text) -->
                     <td rowspan='3' colspan='6'>
                         <section>
-                            <span>
-                                <input class='btn ui-vib' type='checkbox' value='Button 1'/>
-                                <input class='btn ui-vib' type='checkbox' value='Button 2' checked/>
-                                <input class='btn ui-vib' type='checkbox' value='Disabled' disabled/>
-                            </span>
+                            <input class='btn ui-vib' type='checkbox' value='Button 1'/>
+                            <input class='btn ui-vib' type='checkbox' value='Button 2' checked/>
+                            <input class='btn ui-vib' type='checkbox' value='Disabled' disabled/>
                         </section>
                     </td>
                 </tr>
@@ -1197,31 +1169,25 @@
                     <!-- <span> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-vib' onclick="toggle(event)">Button 1</span>
-                                <span class='btn ui-vib selected' onclick="toggle(event)">Button 2</span>
-                                <span class='btn ui-vib disabled' onclick="toggle(event)">Disabled</span>
-                            </span>
+                            <span class='btn ui-vib' onclick="toggle(event)">Button 1</span>
+                            <span class='btn ui-vib selected' onclick="toggle(event)">Button 2</span>
+                            <span class='btn ui-vib disabled' onclick="toggle(event)">Disabled</span>
                         </section>
                     </td>
                     <!-- <button> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-vib' onclick='toggle(event)'>Button 1</button>
-                                <button class='ui-vib selected' onclick='toggle(event)'>Button 2</button>
-                                <button class='ui-vib' disabled onclick='toggle(event)'>Disabled</button>
-                            </span>
+                            <button class='ui-vib' onclick='toggle(event)'>Button 1</button>
+                            <button class='ui-vib selected' onclick='toggle(event)'>Button 2</button>
+                            <button class='ui-vib' disabled onclick='toggle(event)'>Disabled</button>
                         </section>
                     </td>
                     <!-- <label> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-vib'><input type='checkbox'/><span>Button 1</span></label>
-                                <label class='btn ui-vib'><input type='checkbox' checked/><span>Button 2</span></label>
-                                <label class='btn ui-vib'><input type='checkbox' disabled/><span>Disabled</span></label>
-                            </span>
+                            <label class='btn ui-vib'><input type='checkbox'/><span>Button 1</span></label>
+                            <label class='btn ui-vib'><input type='checkbox' checked/><span>Button 2</span></label>
+                            <label class='btn ui-vib'><input type='checkbox' disabled/><span>Disabled</span></label>
                         </section>
                     </td>
                 </tr>
@@ -1229,31 +1195,25 @@
                     <!-- <span> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-vib' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
-                                <span class='btn ui-vib selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
-                                <span class='btn ui-vib disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
-                            </span>
+                            <span class='btn ui-vib' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
+                            <span class='btn ui-vib selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
+                            <span class='btn ui-vib disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
                         </section>
                     </td>
                     <!-- <button> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-vib' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
-                                <button class='ui-vib selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                                <button class='ui-vib' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
-                            </span>
+                            <button class='ui-vib' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
+                            <button class='ui-vib selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
+                            <button class='ui-vib' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
                         </section>
                     </td>
                     <!-- <label> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-vib'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
-                                <label class='btn ui-vib'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
-                                <label class='btn ui-vib'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
-                            </span>
+                            <label class='btn ui-vib'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
+                            <label class='btn ui-vib'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
+                            <label class='btn ui-vib'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
                         </section>
                     </td>
                 </tr>
@@ -2027,57 +1987,49 @@
                     <!-- <span> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <svg class="btn ui-flat icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-flat icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-flat icon selected" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-flat icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-flat icon disabled" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                                </svg>
-                            </span>
+                            <svg class="btn ui-flat icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-flat icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-flat icon selected" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-flat icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-flat icon disabled" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                            </svg>
                         </section>
                     </td>
                     <!-- <button> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class="icon ui-flat" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-flat" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-flat selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-flat" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-flat" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                            </span>
+                            <button class="icon ui-flat" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-flat" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-flat selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-flat" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-flat" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
                         </section>
                     </td>
                     <!-- <label> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-flat'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-flat'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-flat'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-flat'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-flat'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
-                            </span>
+                            <label class='btn ui-flat'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-flat'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-flat'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-flat'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-flat'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
                         </section>
                     </td>
                     <!-- <input> (text) -->
                     <td rowspan='3' colspan='6'>
                         <section>
-                            <span>
-                                <input class='btn ui-flat' type='checkbox' value='Button 1'/>
-                                <input class='btn ui-flat' type='checkbox' value='Button 2' checked/>
-                                <input class='btn ui-flat' type='checkbox' value='Disabled' disabled/>
-                            </span>
+                            <input class='btn ui-flat' type='checkbox' value='Button 1'/>
+                            <input class='btn ui-flat' type='checkbox' value='Button 2' checked/>
+                            <input class='btn ui-flat' type='checkbox' value='Disabled' disabled/>
                         </section>
                     </td>
                 </tr>
@@ -2085,31 +2037,25 @@
                     <!-- <span> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-flat' onclick="toggle(event)">Button 1</span>
-                                <span class='btn ui-flat selected' onclick="toggle(event)">Button 2</span>
-                                <span class='btn ui-flat disabled' onclick="toggle(event)">Disabled</span>
-                            </span>
+                            <span class='btn ui-flat' onclick="toggle(event)">Button 1</span>
+                            <span class='btn ui-flat selected' onclick="toggle(event)">Button 2</span>
+                            <span class='btn ui-flat disabled' onclick="toggle(event)">Disabled</span>
                         </section>
                     </td>
                     <!-- <button> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-flat' onclick='toggle(event)'>Button 1</button>
-                                <button class='ui-flat selected' onclick='toggle(event)'>Button 2</button>
-                                <button class='ui-flat' disabled onclick='toggle(event)'>Disabled</button>
-                            </span>
+                            <button class='ui-flat' onclick='toggle(event)'>Button 1</button>
+                            <button class='ui-flat selected' onclick='toggle(event)'>Button 2</button>
+                            <button class='ui-flat' disabled onclick='toggle(event)'>Disabled</button>
                         </section>
                     </td>
                     <!-- <label> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-flat'><input type='checkbox'/><span>Button 1</span></label>
-                                <label class='btn ui-flat'><input type='checkbox' checked/><span>Button 2</span></label>
-                                <label class='btn ui-flat'><input type='checkbox' disabled/><span>Disabled</span></label>
-                            </span>
+                            <label class='btn ui-flat'><input type='checkbox'/><span>Button 1</span></label>
+                            <label class='btn ui-flat'><input type='checkbox' checked/><span>Button 2</span></label>
+                            <label class='btn ui-flat'><input type='checkbox' disabled/><span>Disabled</span></label>
                         </section>
                     </td>
                 </tr>
@@ -2117,31 +2063,25 @@
                     <!-- <span> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-flat' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
-                                <span class='btn ui-flat selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
-                                <span class='btn ui-flat disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
-                            </span>
+                            <span class='btn ui-flat' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
+                            <span class='btn ui-flat selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
+                            <span class='btn ui-flat disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
                         </section>
                     </td>
                     <!-- <button> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-flat' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
-                                <button class='ui-flat selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                                <button class='ui-flat' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
-                            </span>
+                            <button class='ui-flat' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
+                            <button class='ui-flat selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
+                            <button class='ui-flat' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
                         </section>
                     </td>
                     <!-- <label> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-flat'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
-                                <label class='btn ui-flat'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
-                                <label class='btn ui-flat'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
-                            </span>
+                            <label class='btn ui-flat'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
+                            <label class='btn ui-flat'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
+                            <label class='btn ui-flat'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
                         </section>
                     </td>
                 </tr>
@@ -2915,57 +2855,49 @@
                     <!-- <span> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <svg class="btn ui-blue icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-blue icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-blue icon selected" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-blue icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-blue icon disabled" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                                </svg>
-                            </span>
+                            <svg class="btn ui-blue icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-blue icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-blue icon selected" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-blue icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-blue icon disabled" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                            </svg>
                         </section>
                     </td>
                     <!-- <button> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class="icon ui-blue" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-blue" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-blue selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-blue" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-blue" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                            </span>
+                            <button class="icon ui-blue" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-blue" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-blue selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-blue" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-blue" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
                         </section>
                     </td>
                     <!-- <label> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-blue'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-blue'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-blue'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-blue'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-blue'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
-                            </span>
+                            <label class='btn ui-blue'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-blue'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-blue'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-blue'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-blue'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
                         </section>
                     </td>
                     <!-- <input> (text) -->
                     <td rowspan='3' colspan='6'>
                         <section>
-                            <span>
-                                <input class='btn ui-blue' type='checkbox' value='Button 1'/>
-                                <input class='btn ui-blue' type='checkbox' value='Button 2' checked/>
-                                <input class='btn ui-blue' type='checkbox' value='Disabled' disabled/>
-                            </span>
+                            <input class='btn ui-blue' type='checkbox' value='Button 1'/>
+                            <input class='btn ui-blue' type='checkbox' value='Button 2' checked/>
+                            <input class='btn ui-blue' type='checkbox' value='Disabled' disabled/>
                         </section>
                     </td>
                 </tr>
@@ -2973,31 +2905,25 @@
                     <!-- <span> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-blue' onclick="toggle(event)">Button 1</span>
-                                <span class='btn ui-blue selected' onclick="toggle(event)">Button 2</span>
-                                <span class='btn ui-blue disabled' onclick="toggle(event)">Disabled</span>
-                            </span>
+                            <span class='btn ui-blue' onclick="toggle(event)">Button 1</span>
+                            <span class='btn ui-blue selected' onclick="toggle(event)">Button 2</span>
+                            <span class='btn ui-blue disabled' onclick="toggle(event)">Disabled</span>
                         </section>
                     </td>
                     <!-- <button> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-blue' onclick='toggle(event)'>Button 1</button>
-                                <button class='ui-blue selected' onclick='toggle(event)'>Button 2</button>
-                                <button class='ui-blue' disabled onclick='toggle(event)'>Disabled</button>
-                            </span>
+                            <button class='ui-blue' onclick='toggle(event)'>Button 1</button>
+                            <button class='ui-blue selected' onclick='toggle(event)'>Button 2</button>
+                            <button class='ui-blue' disabled onclick='toggle(event)'>Disabled</button>
                         </section>
                     </td>
                     <!-- <label> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-blue'><input type='checkbox'/><span>Button 1</span></label>
-                                <label class='btn ui-blue'><input type='checkbox' checked/><span>Button 2</span></label>
-                                <label class='btn ui-blue'><input type='checkbox' disabled/><span>Disabled</span></label>
-                            </span>
+                            <label class='btn ui-blue'><input type='checkbox'/><span>Button 1</span></label>
+                            <label class='btn ui-blue'><input type='checkbox' checked/><span>Button 2</span></label>
+                            <label class='btn ui-blue'><input type='checkbox' disabled/><span>Disabled</span></label>
                         </section>
                     </td>
                 </tr>
@@ -3005,31 +2931,25 @@
                     <!-- <span> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-blue' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
-                                <span class='btn ui-blue selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
-                                <span class='btn ui-blue disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
-                            </span>
+                            <span class='btn ui-blue' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
+                            <span class='btn ui-blue selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
+                            <span class='btn ui-blue disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
                         </section>
                     </td>
                     <!-- <button> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-blue' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
-                                <button class='ui-blue selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                                <button class='ui-blue' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
-                            </span>
+                            <button class='ui-blue' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
+                            <button class='ui-blue selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
+                            <button class='ui-blue' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
                         </section>
                     </td>
                     <!-- <label> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-blue'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
-                                <label class='btn ui-blue'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
-                                <label class='btn ui-blue'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
-                            </span>
+                            <label class='btn ui-blue'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
+                            <label class='btn ui-blue'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
+                            <label class='btn ui-blue'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
                         </section>
                     </td>
                 </tr>
@@ -3803,57 +3723,49 @@
                     <!-- <span> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <svg class="btn ui-red icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-red icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-red icon selected" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-red icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-red icon disabled" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                                </svg>
-                            </span>
+                            <svg class="btn ui-red icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-red icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-red icon selected" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-red icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-red icon disabled" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                            </svg>
                         </section>
                     </td>
                     <!-- <button> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class="icon ui-red" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-red" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-red selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-red" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-red" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                            </span>
+                            <button class="icon ui-red" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-red" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-red selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-red" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-red" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
                         </section>
                     </td>
                     <!-- <label> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-red'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-red'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-red'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-red'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-red'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
-                            </span>
+                            <label class='btn ui-red'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-red'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-red'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-red'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-red'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
                         </section>
                     </td>
                     <!-- <input> (text) -->
                     <td rowspan='3' colspan='6'>
                         <section>
-                            <span>
-                                <input class='btn ui-red' type='checkbox' value='Button 1'/>
-                                <input class='btn ui-red' type='checkbox' value='Button 2' checked/>
-                                <input class='btn ui-red' type='checkbox' value='Disabled' disabled/>
-                            </span>
+                            <input class='btn ui-red' type='checkbox' value='Button 1'/>
+                            <input class='btn ui-red' type='checkbox' value='Button 2' checked/>
+                            <input class='btn ui-red' type='checkbox' value='Disabled' disabled/>
                         </section>
                     </td>
                 </tr>
@@ -3861,31 +3773,25 @@
                     <!-- <span> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-red' onclick="toggle(event)">Button 1</span>
-                                <span class='btn ui-red selected' onclick="toggle(event)">Button 2</span>
-                                <span class='btn ui-red disabled' onclick="toggle(event)">Disabled</span>
-                            </span>
+                            <span class='btn ui-red' onclick="toggle(event)">Button 1</span>
+                            <span class='btn ui-red selected' onclick="toggle(event)">Button 2</span>
+                            <span class='btn ui-red disabled' onclick="toggle(event)">Disabled</span>
                         </section>
                     </td>
                     <!-- <button> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-red' onclick='toggle(event)'>Button 1</button>
-                                <button class='ui-red selected' onclick='toggle(event)'>Button 2</button>
-                                <button class='ui-red' disabled onclick='toggle(event)'>Disabled</button>
-                            </span>
+                            <button class='ui-red' onclick='toggle(event)'>Button 1</button>
+                            <button class='ui-red selected' onclick='toggle(event)'>Button 2</button>
+                            <button class='ui-red' disabled onclick='toggle(event)'>Disabled</button>
                         </section>
                     </td>
                     <!-- <label> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-red'><input type='checkbox'/><span>Button 1</span></label>
-                                <label class='btn ui-red'><input type='checkbox' checked/><span>Button 2</span></label>
-                                <label class='btn ui-red'><input type='checkbox' disabled/><span>Disabled</span></label>
-                            </span>
+                            <label class='btn ui-red'><input type='checkbox'/><span>Button 1</span></label>
+                            <label class='btn ui-red'><input type='checkbox' checked/><span>Button 2</span></label>
+                            <label class='btn ui-red'><input type='checkbox' disabled/><span>Disabled</span></label>
                         </section>
                     </td>
                 </tr>
@@ -3893,31 +3799,25 @@
                     <!-- <span> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-red' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
-                                <span class='btn ui-red selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
-                                <span class='btn ui-red disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
-                            </span>
+                            <span class='btn ui-red' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
+                            <span class='btn ui-red selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
+                            <span class='btn ui-red disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
                         </section>
                     </td>
                     <!-- <button> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-red' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
-                                <button class='ui-red selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                                <button class='ui-red' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
-                            </span>
+                            <button class='ui-red' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
+                            <button class='ui-red selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
+                            <button class='ui-red' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
                         </section>
                     </td>
                     <!-- <label> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-red'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
-                                <label class='btn ui-red'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
-                                <label class='btn ui-red'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
-                            </span>
+                            <label class='btn ui-red'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
+                            <label class='btn ui-red'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
+                            <label class='btn ui-red'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
                         </section>
                     </td>
                 </tr>
@@ -4691,57 +4591,49 @@
                     <!-- <span> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <svg class="btn ui-green icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-green icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-green icon selected" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-green icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-green icon disabled" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                                </svg>
-                            </span>
+                            <svg class="btn ui-green icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-green icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-green icon selected" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-green icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-green icon disabled" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                            </svg>
                         </section>
                     </td>
                     <!-- <button> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class="icon ui-green" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-green" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-green selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-green" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-green" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                            </span>
+                            <button class="icon ui-green" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-green" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-green selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-green" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-green" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
                         </section>
                     </td>
                     <!-- <label> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-green'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-green'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-green'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-green'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-green'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
-                            </span>
+                            <label class='btn ui-green'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-green'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-green'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-green'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-green'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
                         </section>
                     </td>
                     <!-- <input> (text) -->
                     <td rowspan='3' colspan='6'>
                         <section>
-                            <span>
-                                <input class='btn ui-green' type='checkbox' value='Button 1'/>
-                                <input class='btn ui-green' type='checkbox' value='Button 2' checked/>
-                                <input class='btn ui-green' type='checkbox' value='Disabled' disabled/>
-                            </span>
+                            <input class='btn ui-green' type='checkbox' value='Button 1'/>
+                            <input class='btn ui-green' type='checkbox' value='Button 2' checked/>
+                            <input class='btn ui-green' type='checkbox' value='Disabled' disabled/>
                         </section>
                     </td>
                 </tr>
@@ -4749,31 +4641,25 @@
                     <!-- <span> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-green' onclick="toggle(event)">Button 1</span>
-                                <span class='btn ui-green selected' onclick="toggle(event)">Button 2</span>
-                                <span class='btn ui-green disabled' onclick="toggle(event)">Disabled</span>
-                            </span>
+                            <span class='btn ui-green' onclick="toggle(event)">Button 1</span>
+                            <span class='btn ui-green selected' onclick="toggle(event)">Button 2</span>
+                            <span class='btn ui-green disabled' onclick="toggle(event)">Disabled</span>
                         </section>
                     </td>
                     <!-- <button> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-green' onclick='toggle(event)'>Button 1</button>
-                                <button class='ui-green selected' onclick='toggle(event)'>Button 2</button>
-                                <button class='ui-green' disabled onclick='toggle(event)'>Disabled</button>
-                            </span>
+                            <button class='ui-green' onclick='toggle(event)'>Button 1</button>
+                            <button class='ui-green selected' onclick='toggle(event)'>Button 2</button>
+                            <button class='ui-green' disabled onclick='toggle(event)'>Disabled</button>
                         </section>
                     </td>
                     <!-- <label> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-green'><input type='checkbox'/><span>Button 1</span></label>
-                                <label class='btn ui-green'><input type='checkbox' checked/><span>Button 2</span></label>
-                                <label class='btn ui-green'><input type='checkbox' disabled/><span>Disabled</span></label>
-                            </span>
+                            <label class='btn ui-green'><input type='checkbox'/><span>Button 1</span></label>
+                            <label class='btn ui-green'><input type='checkbox' checked/><span>Button 2</span></label>
+                            <label class='btn ui-green'><input type='checkbox' disabled/><span>Disabled</span></label>
                         </section>
                     </td>
                 </tr>
@@ -4781,31 +4667,25 @@
                     <!-- <span> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-green' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
-                                <span class='btn ui-green selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
-                                <span class='btn ui-green disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
-                            </span>
+                            <span class='btn ui-green' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
+                            <span class='btn ui-green selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
+                            <span class='btn ui-green disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
                         </section>
                     </td>
                     <!-- <button> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-green' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
-                                <button class='ui-green selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                                <button class='ui-green' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
-                            </span>
+                            <button class='ui-green' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
+                            <button class='ui-green selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
+                            <button class='ui-green' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
                         </section>
                     </td>
                     <!-- <label> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-green'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
-                                <label class='btn ui-green'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
-                                <label class='btn ui-green'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
-                            </span>
+                            <label class='btn ui-green'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
+                            <label class='btn ui-green'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
+                            <label class='btn ui-green'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
                         </section>
                     </td>
                 </tr>
@@ -5579,57 +5459,49 @@
                     <!-- <span> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <svg class="btn ui-dark icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-dark icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-dark icon selected" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-dark icon" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
-                                </svg>
-                                <svg class="btn ui-dark icon disabled" onclick="toggle(event)">
-                                    <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
-                                </svg>
-                            </span>
+                            <svg class="btn ui-dark icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-dark icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-dark icon selected" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-line' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-dark icon" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use>
+                            </svg>
+                            <svg class="btn ui-dark icon disabled" onclick="toggle(event)">
+                                <use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use>
+                            </svg>
                         </section>
                     </td>
                     <!-- <button> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class="icon ui-dark" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-dark" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-dark selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-dark" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
-                                <button class="icon ui-dark" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                            </span>
+                            <button class="icon ui-dark" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-dark" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-dark selected" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-dark" onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></button>
+                            <button class="icon ui-dark" disabled onclick="toggle(event)"><svg><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
                         </section>
                     </td>
                     <!-- <label> (icon) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-dark'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-dark'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-dark'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-dark'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
-                                <label class='btn ui-dark'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
-                            </span>
+                            <label class='btn ui-dark'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-tree' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-dark'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-parallel' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-dark'><input type='checkbox' checked/><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-dark'><input type='checkbox'/><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg></label>
+                            <label class='btn ui-dark'><input type='checkbox' disabled/><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></label>
                         </section>
                     </td>
                     <!-- <input> (text) -->
                     <td rowspan='3' colspan='6'>
                         <section>
-                            <span>
-                                <input class='btn ui-dark' type='checkbox' value='Button 1'/>
-                                <input class='btn ui-dark' type='checkbox' value='Button 2' checked/>
-                                <input class='btn ui-dark' type='checkbox' value='Disabled' disabled/>
-                            </span>
+                            <input class='btn ui-dark' type='checkbox' value='Button 1'/>
+                            <input class='btn ui-dark' type='checkbox' value='Button 2' checked/>
+                            <input class='btn ui-dark' type='checkbox' value='Disabled' disabled/>
                         </section>
                     </td>
                 </tr>
@@ -5637,31 +5509,25 @@
                     <!-- <span> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-dark' onclick="toggle(event)">Button 1</span>
-                                <span class='btn ui-dark selected' onclick="toggle(event)">Button 2</span>
-                                <span class='btn ui-dark disabled' onclick="toggle(event)">Disabled</span>
-                            </span>
+                            <span class='btn ui-dark' onclick="toggle(event)">Button 1</span>
+                            <span class='btn ui-dark selected' onclick="toggle(event)">Button 2</span>
+                            <span class='btn ui-dark disabled' onclick="toggle(event)">Disabled</span>
                         </section>
                     </td>
                     <!-- <button> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-dark' onclick='toggle(event)'>Button 1</button>
-                                <button class='ui-dark selected' onclick='toggle(event)'>Button 2</button>
-                                <button class='ui-dark' disabled onclick='toggle(event)'>Disabled</button>
-                            </span>
+                            <button class='ui-dark' onclick='toggle(event)'>Button 1</button>
+                            <button class='ui-dark selected' onclick='toggle(event)'>Button 2</button>
+                            <button class='ui-dark' disabled onclick='toggle(event)'>Disabled</button>
                         </section>
                     </td>
                     <!-- <label> (text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-dark'><input type='checkbox'/><span>Button 1</span></label>
-                                <label class='btn ui-dark'><input type='checkbox' checked/><span>Button 2</span></label>
-                                <label class='btn ui-dark'><input type='checkbox' disabled/><span>Disabled</span></label>
-                            </span>
+                            <label class='btn ui-dark'><input type='checkbox'/><span>Button 1</span></label>
+                            <label class='btn ui-dark'><input type='checkbox' checked/><span>Button 2</span></label>
+                            <label class='btn ui-dark'><input type='checkbox' disabled/><span>Disabled</span></label>
                         </section>
                     </td>
                 </tr>
@@ -5669,31 +5535,25 @@
                     <!-- <span> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <span class='btn ui-dark' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
-                                <span class='btn ui-dark selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
-                                <span class='btn ui-dark disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
-                            </span>
+                            <span class='btn ui-dark' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span>
+                            <span class='btn ui-dark selected' onclick="toggle(event)" text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></span>
+                            <span class='btn ui-dark disabled' onclick="toggle(event)"><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span>
                         </section>
                     </td>
                     <!-- <button> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <button class='ui-dark' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
-                                <button class='ui-dark selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
-                                <button class='ui-dark' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
-                            </span>
+                            <button class='ui-dark' onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></button>
+                            <button class='ui-dark selected' onclick='toggle(event)' text='Branch'><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg></button>
+                            <button class='ui-dark' disabled onclick='toggle(event)'><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></button>
                         </section>
                     </td>
                     <!-- <label> (icon & text) -->
                     <td colspan='6'>
                         <section>
-                            <span>
-                                <label class='btn ui-dark'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
-                                <label class='btn ui-dark'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
-                                <label class='btn ui-dark'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
-                            </span>
+                            <label class='btn ui-dark'><input type='checkbox'/><span><svg class="icon"><use href='dist/icons.svg#flow-line' width='100%' height='100%'></use></svg><u>Commit</u></span></label>
+                            <label class='btn ui-dark'><input type='checkbox' checked/><span><svg class="icon"><use href='dist/icons.svg#flow-branch' width='100%' height='100%'></use></svg><u>Branch</u></span></label>
+                            <label class='btn ui-dark'><input type='checkbox' disabled/><span><svg class="icon"><use href='dist/icons.svg#flow-cascade' width='100%' height='100%'></use></svg><u>Merge</u></span></label>
                         </section>
                     </td>
                 </tr>
