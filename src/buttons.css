@@ -206,6 +206,7 @@ label.btn>*>svg,
     box-sizing:content-box!important;
     border-radius:0px!important;
     border-width:0px!important;
+    background-color:#000;
 }
 .icn-hamburger,
 .icn-hamburger:before,
@@ -422,19 +423,30 @@ label.btn.disabled>*,
 
 /* ============================================== [theme](hamburger) ============================================== */
 
-.icn-hamburger,
-.btn.selected:hover > .icn-hamburger,
-.btn.icn-hamburger.selected:hover,
-input.icn-hamburger:checked:hover {
-    background-color:#716b7a!important;
+.icn-hamburger {
+    background-color:#969696!important;
 }
-
+.icn-hamburger.selected,
+.icn-hamburger:checked,
 .btn.selected > .icn-hamburger,
-.btn.icn-hamburger.selected,
-input.icn-hamburger:checked,
-.btn:hover > .icn-hamburger,
-.icn-hamburger:hover {
+button.selected > .icn-hamburger,
+label.btn>input:checked ~ *>.icn-hamburger,
+label.btn>input:checked ~ .icn-hamburger {
     background-color:#8164ad!important;
+}
+.icn-hamburger:hover,
+.btn:hover > .icn-hamburger,
+button:hover > .icn-hamburger,
+label.btn:hover>*>.icn-hamburger {
+    background-color:#737373!important;
+}
+.icn-hamburger.selected:hover,
+.icn-hamburger:checked:hover,
+.btn.selected:hover > .icn-hamburger,
+button.selected:hover > .icn-hamburger,
+label.btn:hover>input:checked ~ *>.icn-hamburger,
+label.btn:hover>input:checked ~ .icn-hamburger {
+    background-color:#604686!important;
 }
 
 /* ============================================== [theme](tabs) ============================================== */

@@ -209,29 +209,41 @@
             },
         };
         
-        function setupHideToggle(main,panel,control) {
+        function setupHideToggle(panel,control) {
             let toggleid = panel.getAttribute('hide-toggle');
-            if (!toggleid) return;
+            if (!toggleid) return void console.warn(`Could not set up hide toggle button for ${control.name} panel: no element id provided`);
             var toggle = document.getElementById(toggleid);
-            if (toggle===null) {
-                console.warn(`Could not set up hide toggle button for ${control.name} panel: element with id '${toggleid}' does not exist in document`);
-                return;
-            }
+            if (toggle===null) return void console.warn(`Could not set up hide toggle button for ${control.name} panel: element with id '${toggleid}' does not exist in document`);
             if (toggle.tagName=='LABEL') {
+                // Check if label is already connected to a control
                 if (toggle.control === null) {
                     toggle.htmlFor = control.id;
                     toggle.classList.toggle('selected',control.checked);
                     return;
                 }
-                toggle = toggle.control;
-            }
-            if (toggle.tagName !== 'INPUT' || toggle.type !== 'checkbox') {
-                console.warn(`Could not set up hide toggle button for ${control.name} panel: element must be of type input[type='checkbox']`);
+                // Check to ensure label is for an input[type='checkbox']
+                if (toggle.control.tagName !== 'INPUT' || toggle.control.type !== 'checkbox') {
+                    return void console.warn(`Could not set up hide toggle button for ${control.name} panel: label must be for an input[type='checkbox']`);
+                }
+                // Connect label & its input with the panel controller
+                toggle.control.checked = control.checked;
+                toggle.classList.toggle('selected',control.checked);
+                toggle.control.addEventListener('change',function(event) {
+                    Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',event.target.checked));
+                    this.checked = event.target.checked;
+                    this.dispatchEvent(new Event("change", {'bubbles':false, 'cancelable':false,'composed':false}));
+                }.bind(control));
                 return;
             }
+            // Check to ensure element is of a input[type='checkbox']
+            if (toggle.tagName !== 'INPUT' || toggle.type !== 'checkbox') {
+                return void console.warn(`Could not set up hide toggle button for ${control.name} panel: element must be of type input[type='checkbox']`);
+            }
+            // Connect input with the panel controller
+            toggle.checked = control.checked;
             toggle.addEventListener('change',function(event) {
-                var evt = new Event("change", {'bubbles':false, 'cancelable':false,'composed':false});
-                this.dispatchEvent(evt);
+                this.checked = event.target.checked;
+                this.dispatchEvent(new Event("change", {'bubbles':false, 'cancelable':false,'composed':false}));
             }.bind(control));
         };
 
@@ -257,7 +269,7 @@
             control.addEventListener('change',togglePanel[side].bind(main));
             control.addEventListener('resize',resizePanel[side].bind(main));
 
-            if (panel.hasAttribute('hide-toggle')) setupHideToggle(main,panel,control);
+            if (panel.hasAttribute('hide-toggle')) setupHideToggle(panel,control);
 
             if (control.checked === false) return true;
             switch (side) {
