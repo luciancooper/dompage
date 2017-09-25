@@ -1,4 +1,4 @@
-/* dompage v0.3
+/* dompage v0.4
  * Copyright (c) 2017 Lucian Cooper
  *
  * Guide:
@@ -23,10 +23,11 @@
  *     
  * panels:
  *     class:
- *         page-panel-left | page-panel-right
+ *         page-panel-left | page-panel-right | page-panel-bottom
  *     attrs:
  *         hide-toggle = #id of toggle element (either input[type='checkbox'] or label)
- *         page-panel = 'fixed'
+ *         page-panel = 'fixed' | 'flex'
+ *         pct = percentage value (only if page-panel='flex')
  */
 
 (function(){
@@ -118,97 +119,52 @@
         }
     }());
 
-    function setupTopBar(main,pagecontrol,barid) {
-        let bar = document.getElementById(barid);
-        if (bar === null) {
-            console.warn("Could not set up topbar: element with id '" + barid + "' does not exist in document");
-            return;
+    var setupTopBar = (function() {
+        function configureYieldLeft(main,bar,lctrl,lyield) {
+            if (lctrl === null) return;
+            let lpanel = document.getElementById(lctrl.value);
+            if (!lyield) {
+                lpanel.style.top = main.style.top;
+                return
+            }
+            bar.style.left = main.style.left;
+            lctrl.addEventListener('change',function(panel,event) {
+                this.style.left = event.target.checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
+            }.bind(bar,lpanel));
+            lctrl.addEventListener('resize',function(panel,event) {
+                if (!event.target.checked) return;
+                this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
+            }.bind(bar,lpanel));
         }
-        bar.classList.add('page-topbar');
-        main.style.top = (bar.offsetHeight+bar.offsetTop) + 'px';
-        let pyield = bar.hasAttribute('yield') ? bar.getAttribute('yield').split(',') : [];
-        let lctrl = pagecontrol.elements.namedItem('left');
-        if (lctrl !== null) {
-            if (pyield.includes('left')) {
-                bar.style.left = main.style.left;
-                lctrl.addEventListener('change',function(event) {
-                    let panel = document.getElementById(event.target.value);
-                    this.style.left = event.target.checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
-                }.bind(bar));
-                lctrl.addEventListener('resize',function(event) {
-                    if (!event.target.checked) return;
-                    let panel = document.getElementById(event.target.value);
-                    this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
-                }.bind(bar));
-            } else {
-                document.getElementById(lctrl.value).style.top = main.style.top;
+        function configureYieldRight(main,bar,rctrl,ryield) {
+            if (rctrl === null) return;
+            let rpanel = document.getElementById(rctrl.value);
+            if (!ryield) {
+                rpanel.style.top = main.style.top;
+                return
             }
-        } else if (document.body.hasAttribute("page-panel-left")) {
-            if (pyield.includes('left')) {
-                bar.style.left = main.style.left;
-            } else {
-                document.getElementById(document.body.getAttribute("page-panel-left")).style.top = main.style.top;
-            }
+            bar.style.right = main.style.right;
+            rctrl.addEventListener('change',function(panel,event) {
+                this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
+            }.bind(bar,rpanel));
+            rctrl.addEventListener('resize',function(panel,event) {
+                if (!event.target.checked) return;
+                this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
+            }.bind(bar,rpanel));
         }
-
-        let rctrl = pagecontrol.elements.namedItem('right');
-        if (rctrl !== null) {
-            if (pyield.includes('right')) {
-                bar.style.right = main.style.right;
-                rctrl.addEventListener('change',function(event) {
-                    let panel = document.getElementById(event.target.value);
-                    this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
-                }.bind(bar));
-                rctrl.addEventListener('resize',function(event) {
-                    if (!event.target.checked) return;
-                    let panel = document.getElementById(event.target.value);
-                    this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
-                }.bind(bar));
-            } else {
-                document.getElementById(rctrl.value).style.top = main.style.top;
-            }
-        } else if (document.body.hasAttribute("page-panel-right")) {
-            if (pyield.includes('right')) {
-                bar.style.right = main.style.right;
-            } else {
-                document.getElementById(document.body.getAttribute("page-panel-right")).style.top = main.style.top;
-            }
-        }
-    }
+        return function(main,pagecontrol,barid) {
+            let bar = document.getElementById(barid);
+            if (bar === null) return void console.warn(`Could not set up topbar: element with id '${barid}' does not exist in document`);
+            bar.classList.add('page-topbar');
+            main.style.top = (bar.offsetHeight+bar.offsetTop) + 'px';
+            let pyield = bar.hasAttribute('yield') ? bar.getAttribute('yield').split(',') : [];
+            configureYieldLeft(main,bar,pagecontrol.elements.namedItem('left'),pyield.includes('left'))
+            configureYieldRight(main,bar,pagecontrol.elements.namedItem('right'),pyield.includes('right'))
+        };
+    }());
 
     var setupSidePanel = (function() {
 
-        var togglePanel = {
-            left:function(event) {
-                // this is main panel
-                let panel = document.getElementById(event.target.value),checked = event.target.checked;
-                Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked))
-                panel.classList.toggle('hidden',!checked);
-                this.style.left = checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
-            },
-            right:function(event) {
-                // this is main panel
-                let panel = document.getElementById(event.target.value),checked = event.target.checked;
-                Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked))
-                panel.classList.toggle('hidden',!checked);
-                this.style.right = checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
-            },
-        };
-        var resizePanel = {
-            left:function(event) {
-                // this is main panel
-                if (!event.target.checked) return;
-                let panel = document.getElementById(event.target.value);
-                this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
-            },
-            right:function(event) {
-                // this is main panel
-                if (!event.target.checked) return;
-                let panel = document.getElementById(event.target.value);
-                this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
-            },
-        };
-        
         function setupHideToggle(panel,control) {
             let toggleid = panel.getAttribute('hide-toggle');
             if (!toggleid) return void console.warn(`Could not set up hide toggle button for ${control.name} panel: no element id provided`);
@@ -247,18 +203,249 @@
             }.bind(control));
         };
 
+        // Note: 'this' is main in all togglePanel & resizePanel functions
+        function configureYieldLeft(bpanel,lpanel,lctrl) {
+            switch (lpanel.getAttribute('page-panel')) {
+                case 'fixed':
+                    lctrl.addEventListener('change',function(panel,event) {
+                        this.style.left = event.target.checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
+                    }.bind(bpanel,lpanel));
+                    lctrl.addEventListener('resize',function(panel,event) {
+                        if (event.target.checked) this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
+                    }.bind(bpanel,lpanel));
+                    break;
+                case 'flex':
+                    lctrl.addEventListener('change',function(panel,event) {
+                        this.style.left = event.target.checked ? panel.getAttribute('pct') + '%' : '';
+                    }.bind(bpanel,lpanel));
+                    lctrl.addEventListener('resize',function(panel,event) {
+                        if (event.target.checked) this.style.left = panel.getAttribute('pct') + '%'
+                    }.bind(bpanel,lpanel));
+                    break;
+            }
+        }
+
+        function configureYieldRight(bpanel,rpanel,rctrl) {
+            switch (rpanel.getAttribute('page-panel')) {
+                case 'fixed':
+                    rctrl.addEventListener('change',function(panel,event) {
+                        this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
+                    }.bind(bpanel,rpanel));
+                    rctrl.addEventListener('resize',function(panel,event) {
+                        if (event.target.checked) this.style.right = (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px';
+                    }.bind(bpanel,rpanel));
+                    break;
+                case 'flex':
+                    rctrl.addEventListener('change',function(panel,event) {
+                        this.style.right = event.target.checked ? panel.getAttribute('pct') + '%' : '';
+                    }.bind(bpanel,rpanel));
+                    rctrl.addEventListener('resize',function(panel,event) {
+                        if (event.target.checked) this.style.right = panel.getAttribute('pct') + '%'
+                    }.bind(bpanel,rpanel));
+                    break;
+            }
+        }
+
+        var fixedPanel = (function() {
+            return {
+                left: (function() {
+                    function toggle(panel,event) {
+                        let checked = event.target.checked;
+                        Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked));
+                        panel.classList.toggle('hidden',!checked);
+                        this.style.left = checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
+                    }
+                    function resize(panel,event) {
+                        if (!event.target.checked) return;
+                        this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
+                    }
+                    return function(main,panel,control) {
+                        control.addEventListener('change',toggle.bind(main,panel));
+                        control.addEventListener('resize',resize.bind(main,panel));
+                        main.style.left = control.checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
+                    }
+                }()),
+                right: (function(){
+                    function toggle(panel,event) {
+                        let checked = event.target.checked;
+                        Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked))
+                        panel.classList.toggle('hidden',!checked);
+                        this.style.right = checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
+                    }
+                    function resize(panel,event) {
+                        if (!event.target.checked) return;
+                        this.style.right = (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px';
+                    }
+                    return function(main,panel,control) {
+                        control.addEventListener('change',toggle.bind(main,panel));
+                        control.addEventListener('resize',resize.bind(main,panel));
+                        main.style.right = control.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
+                    }
+                }()),
+                bottom: (function(){
+                    function toggle(panel,event) {
+                        let checked = event.target.checked;
+                        Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked))
+                        panel.classList.toggle('hidden',!checked);
+                        this.style.bottom = checked ? (panel.parentElement.offsetHeight - panel.offsetTop) + 'px' : '';
+                    }
+                    function resize(panel,event) {
+                        if (!event.target.checked) return;
+                        this.style.bottom = (panel.parentElement.offsetHeight - panel.offsetTop) + 'px';
+                    }
+                    function yieldToggle(panel,event) {
+                        this.style.bottom = event.target.checked ? (panel.parentElement.offsetHeight - panel.offsetTop) + 'px' : '';
+                    }
+                    function yieldResize(panel,event) {
+                        if (event.target.checked) this.style.bottom = (panel.parentElement.offsetHeight - panel.offsetTop) + 'px';
+                    }
+                    return function(main,panel,control) {
+                        control.addEventListener('change',toggle.bind(main,panel));
+                        control.addEventListener('resize',resize.bind(main,panel));
+                        main.style.bottom = control.checked ? (panel.parentElement.offsetHeight - panel.offsetTop) + 'px': '';
+                        let pyield = panel.hasAttribute('yield') ? panel.getAttribute('yield').split(',') : [];
+                        let lctrl = document.forms.pagecontrol.elements.namedItem('left');
+                        if (lctrl !== null) {
+                            let lpanel = document.getElementById(lctrl.value);
+                            if (!pyield.includes('left')) {
+                                lpanel.style.bottom = main.style.bottom;
+                                control.addEventListener('change',yieldToggle.bind(lpanel,panel));
+                                control.addEventListener('resize',yieldResize.bind(lpanel,panel));
+                            } else {
+                                panel.style.left = main.style.left;
+                                configureYieldLeft(panel,lpanel,lctrl);
+                            }
+                        }
+                        let rctrl = document.forms.pagecontrol.elements.namedItem('right');
+                        if (rctrl!==null) {
+                            let rpanel = document.getElementById(rctrl.value);
+                            if (!pyield.includes('right')) {
+                                rpanel.style.bottom = main.style.bottom;
+                                control.addEventListener('change',yieldToggle.bind(rpanel,panel));
+                                control.addEventListener('resize',yieldResize.bind(rpanel,panel));
+                            } else {
+                                panel.style.right = main.style.right;
+                                configureYieldRight(panel,rpanel,rctrl);
+                            }
+                        }
+                    };
+                }())
+            };
+        }());
+        
+        var flexPanel = (function(){
+
+            function pctAttr(panel,side) {
+                var pct = 20;
+                if (panel.hasAttribute('pct')) {
+                    pct = parseInt(panel.getAttribute('pct'));
+                    if (pct < 0 || pct > 100) {
+                        console.warn(`Invalid value '${pct}' provided for ${side} flex panel 'pct', must be number between 0 - 100, using default 20`);
+                        pct = 20;
+                    }
+                };
+                panel.setAttribute('pct',pct);
+                return pct;
+            }
+            return {
+                left: (function(){
+                    function toggle(panel,event) {
+                        let checked = event.target.checked;
+                        Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked))
+                        panel.classList.toggle('hidden',!checked);
+                        this.style.left = checked ? panel.getAttribute('pct') + '%' : '';
+                    }
+                    function resize(panel,event) {
+                        if (!event.target.checked) return;
+                        this.style.left = panel.getAttribute('pct') + '%';
+                    }
+                    return function(main,panel,control) {
+                        control.addEventListener('change',toggle.bind(main,panel));
+                        control.addEventListener('resize',resize.bind(main,panel));
+                        var pct = pctAttr(panel,'left');
+                        panel.style.right = (100-pct) + '%';
+                        main.style.left = control.checked ? (pct + '%') : '';
+                    }
+                }()),
+                right: (function(){
+                    function toggle(panel,event) {
+                        let checked = event.target.checked;
+                        Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked))
+                        panel.classList.toggle('hidden',!checked);
+                        this.style.right = checked ? panel.getAttribute('pct') + '%' : '';
+                    }
+                    function resize(panel,event) {
+                        if (!event.target.checked) return;
+                        this.style.right = panel.getAttribute('pct') + '%';
+                    }
+                    return function(main,panel,control) {
+                        control.addEventListener('change',toggle.bind(main,panel));
+                        control.addEventListener('resize',resize.bind(main,panel));
+                        var pct = pctAttr(panel,'right');
+                        panel.style.left = (100-pct) + '%';
+                        main.style.right = control.checked ? (pct + '%') : '';
+                    }
+                }()),
+                bottom: (function() {
+                    function toggle(panel,event) {
+                        let checked = event.target.checked;
+                        Array.prototype.forEach.call(event.target.labels,e => e.classList.toggle('selected',checked))
+                        panel.classList.toggle('hidden',!checked);
+                        this.style.bottom = checked ? panel.getAttribute('pct') + '%' : '';
+                    }
+                    function resize(panel,event) {
+                        if (!event.target.checked) return;
+                        this.style.bottom = panel.getAttribute('pct') + '%';
+                    }
+                    function yieldToggle(panel,event) {
+                        this.style.bottom = event.target.checked ? panel.getAttribute('pct') + '%' : '';
+                    }
+                    function yieldResize(panel,event) {
+                        if (event.target.checked) this.style.bottom = panel.getAttribute('pct') + '%';
+                    }
+                    return function(main,panel,control) {
+                        control.addEventListener('change',toggle.bind(main,panel));
+                        control.addEventListener('resize',resize.bind(main,panel));
+                        var pct = pctAttr(panel,'bottom');
+                        panel.style.top = (100-pct) + '%';
+                        main.style.bottom = control.checked ? (pct + '%') : '';
+                        let pyield = panel.hasAttribute('yield') ? panel.getAttribute('yield').split(',') : [];
+                        let lctrl = document.forms.pagecontrol.elements.namedItem('left');
+                        if (lctrl !== null) {
+                            let lpanel = document.getElementById(lctrl.value);
+                            if (!pyield.includes('left')) {
+                                lpanel.style.bottom = main.style.bottom;
+                                control.addEventListener('change',yieldToggle.bind(lpanel,panel));
+                                control.addEventListener('resize',yieldResize.bind(lpanel,panel));
+                            } else {
+                                panel.style.left = main.style.left;
+                                configureYieldLeft(panel,lpanel,lctrl);
+                            }
+                        }
+                        let rctrl = document.forms.pagecontrol.elements.namedItem('right');
+                        if (rctrl!==null) {
+                            let rpanel = document.getElementById(rctrl.value);
+                            if (!pyield.includes('right')) {
+                                rpanel.style.bottom = main.style.bottom;
+                                control.addEventListener('change',yieldToggle.bind(rpanel,panel));
+                                control.addEventListener('resize',yieldResize.bind(rpanel,panel));
+                            } else {
+                                panel.style.right = main.style.right;
+                                configureYieldRight(panel,rpanel,rctrl);
+                            }
+                        }
+                    }
+                }()),
+            }
+        }());
+        
         return function(main,panelid,side) {
             let panel = document.getElementById(panelid);
             if (panel === null) {
-                console.warn("Could not set up "+side+" panel: element with id '" + panelid + "' does not exist in document");
+                console.warn(`Could not set up ${side} panel: element with id '${panelid}' does not exist in document`);
                 return false;
             }
             panel.classList.add('page-panel-'+side);
-            var ptype = panel.hasAttribute('page-panel') ? panel.getAttribute('page-panel') : 'fixed';
-            if (ptype !== 'fixed') {
-                console.warn("Invalid page-panel attribute '"+ptype+"', using default value 'fixed'")
-                ptype = 'fixed';
-            }
             let control = document.createElement("input");
             control.type = 'checkbox';
             control.value = panelid;
@@ -266,20 +453,21 @@
             control.id = "pagectrl_"+side;
             control.checked = !panel.classList.contains('hidden');
             document.forms.pagecontrol.appendChild(control);
-            control.addEventListener('change',togglePanel[side].bind(main));
-            control.addEventListener('resize',resizePanel[side].bind(main));
-
-            if (panel.hasAttribute('hide-toggle')) setupHideToggle(panel,control);
-
-            if (control.checked === false) return true;
-            switch (side) {
-                case 'left':
-                    main.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
+            if (!panel.hasAttribute('page-panel')) panel.setAttribute('page-panel','fixed')
+            var ptype = panel.getAttribute('page-panel');
+            switch (ptype) {
+                case 'flex':
+                    flexPanel[side](main,panel,control);
                     break;
-                case 'right':
-                    main.style.right = (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px';
+                default:
+                    if (ptype !== 'fixed') {
+                        console.warn(`Invalid page-panel attribute '${ptype}', using default value 'fixed'`);
+                        panel.setAttribute('page-panel','fixed');
+                    }
+                    fixedPanel[side](main,panel,control);
                     break;
             }
+            if (panel.hasAttribute('hide-toggle')) setupHideToggle(panel,control);
             return true;
         }
     }());
@@ -293,7 +481,7 @@
             let mainid = document.body.getAttribute('page-main'),main = document.getElementById(mainid);
             if (main === null) {
                 if (event.target.readyState == 'complete') {
-                    console.warn("Could not set up page: element with id '" + mainid + "' does not exist in document");
+                    console.warn(`Could not set up page: element with id '${mainid}' does not exist in document`);
                     document.body.removeAttribute('page-main');
                 }
                 return;
@@ -311,6 +499,11 @@
             if (document.body.hasAttribute('page-panel-right')) {
                 if (!setupSidePanel(main,document.body.getAttribute('page-panel-right'),'right')) {
                     document.body.removeAttribute('page-panel-right');
+                }
+            }
+            if (document.body.hasAttribute('page-panel-bottom')) {
+                if (!setupSidePanel(main,document.body.getAttribute('page-panel-bottom'),'bottom')) {
+                    document.body.removeAttribute('page-panel-bottom');
                 }
             }
             if (document.body.hasAttribute('page-topbar')) {
