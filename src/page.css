@@ -23,9 +23,6 @@ body[page-main] {
 	margin: 0px;
 	padding: 0px;
 }
-body[page-main]:not([setup-complete]) {
-    visibility: hidden;
-}
 body[page-main] > .page-topbar {
     height: 25px;
     padding:0px 5px; 
@@ -226,4 +223,62 @@ body[page-main] > .page-main {
     border-right-color: #563d7c;
     text-decoration: none;
     background-color: #e5e3e9;
+}
+
+/* ================================================ [loading] ================================================ */
+
+.loading {
+    position:relative;
+}
+.loading:before,
+.loading:after {
+    content:'';
+    position:absolute;
+    display:block;
+}
+.loading:before {
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    background:#FFF;
+    z-index:1000;
+}
+.loading:after {
+    --spinner-radius:35px;
+    --spinner-color:#3498db;
+    --spinner-track:transparent;
+    --spinner-width:6px;
+    width: calc(2 * var(--spinner-radius));
+    height: calc(2 * var(--spinner-radius));
+    margin:calc(-1 * var(--spinner-radius)) 0px 0px calc(-1 * var(--spinner-radius));
+    top:50%;
+    left:50%;
+    border-style:solid;
+    border-width:var(--spinner-width);
+    border-color:var(--spinner-color) var(--spinner-track) var(--spinner-color) var(--spinner-track);
+    border-radius: 50%;
+    z-index:1001;
+    -webkit-animation: spin 1.1s infinite linear;
+    animation: spin 1.1s infinite linear;
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }

@@ -478,10 +478,12 @@
             //console.log("readyState:",event.target.readyState,"setup complete:",setup_complete);
             if (setup_complete) return;
             if (!document.body.hasAttribute('page-main')) return;
+            if (!document.body.classList.contains('loading')) document.body.classList.add('loading');
             let mainid = document.body.getAttribute('page-main'),main = document.getElementById(mainid);
             if (main === null) {
                 if (event.target.readyState == 'complete') {
                     console.warn(`Could not set up page: element with id '${mainid}' does not exist in document`);
+                    document.body.classList.remove('loading');
                     document.body.removeAttribute('page-main');
                 }
                 return;
@@ -513,6 +515,7 @@
                 setupTabbed(main);
             }
             setup_complete = true;
+            document.body.classList.remove('loading');
             document.body.setAttribute('setup-complete','');
         }
     }()));
