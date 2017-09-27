@@ -26,7 +26,6 @@ body[page-main] {
 body[page-main] > .page-topbar {
     height: 25px;
     padding:0px 5px; 
-    position:fixed;
     display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-start;
@@ -38,7 +37,6 @@ body[page-main] > .page-topbar {
     box-shadow:none;
     color: rgb(93,107,108);
 	text-shadow: 1px 1px rgba(255,255,255,.7);
-    background:rgb(240,241,242);
     background: rgb(247, 245, 250);
 }
 body[page-main] > .page-topbar > section {
@@ -67,48 +65,13 @@ body[page-main] > .page-main,
 body[page-main] > .page-panel-left,
 body[page-main] > .page-panel-right,
 body[page-main] > .page-panel-bottom {
-    position:fixed;
     border-width:1px;
     border-style:solid;
     border-color:rgba(0,0,0,0.2);
-    backface-visibility: hidden;
     overflow:scroll;
     margin:5px;
 }
-body[page-main] > .page-panel-left[page-panel='flex'] {
-    margin-right:0px;
-}
-body[page-main] > .page-panel-right[page-panel='flex'] {
-    margin-left:0px;
-}
-body[page-main] > .page-panel-bottom[page-panel='flex'] {
-    margin-top:0px;
-}
-body[page-main] > .page-topbar {
-    top:0px;
-    left:0px;
-    right:0px;
-}
-body[page-main] > .page-panel-left {
-    top:0px;
-    bottom:0px;
-    left:0px;
-}
-body[page-main] > .page-panel-right {
-    top:0px;
-    bottom:0px;
-    right:0px;
-}
-body[page-main] > .page-panel-bottom {
-    bottom:0px;
-    left:0px;
-    right:0px;
-}
 body[page-main] > .page-main {
-    top:0px;
-    bottom:0px;
-    left:0px;
-    right:0px;
     background:#FFF;
 }
 
