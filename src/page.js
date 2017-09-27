@@ -119,49 +119,67 @@
         }
     }());
 
-    var setupTopBar = (function() {
-        function configureYieldLeft(main,bar,lctrl,lyield) {
-            if (lctrl === null) return;
-            let lpanel = document.getElementById(lctrl.value);
-            if (!lyield) {
-                lpanel.style.top = main.style.top;
-                return
-            }
-            bar.style.left = main.style.left;
-            lctrl.addEventListener('change',function(panel,event) {
-                this.style.left = event.target.checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
-            }.bind(bar,lpanel));
-            lctrl.addEventListener('resize',function(panel,event) {
-                if (!event.target.checked) return;
-                this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
-            }.bind(bar,lpanel));
+    const configureYieldLeft = (function(){
+        function toggle(main) {
+            this.style.left = main.style.left;
         }
-        function configureYieldRight(main,bar,rctrl,ryield) {
-            if (rctrl === null) return;
-            let rpanel = document.getElementById(rctrl.value);
-            if (!ryield) {
-                rpanel.style.top = main.style.top;
-                return
-            }
-            bar.style.right = main.style.right;
-            rctrl.addEventListener('change',function(panel,event) {
-                this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
-            }.bind(bar,rpanel));
-            rctrl.addEventListener('resize',function(panel,event) {
-                if (!event.target.checked) return;
-                this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
-            }.bind(bar,rpanel));
+        function resize(main,event) {
+            if (event.target.checked) this.style.left = main.style.left;
         }
-        return function(main,pagecontrol,barid) {
-            let bar = document.getElementById(barid);
-            if (bar === null) return void console.warn(`Could not set up topbar: element with id '${barid}' does not exist in document`);
-            bar.classList.add('page-topbar');
-            main.style.top = (bar.offsetHeight+bar.offsetTop) + 'px';
-            let pyield = bar.hasAttribute('yield') ? bar.getAttribute('yield').split(',') : [];
-            configureYieldLeft(main,bar,pagecontrol.elements.namedItem('left'),pyield.includes('left'))
-            configureYieldRight(main,bar,pagecontrol.elements.namedItem('right'),pyield.includes('right'))
-        };
+        return function(e,main,ctrl) {
+            e.style.left = main.style.left;
+            ctrl.addEventListener('change',toggle.bind(e,main));
+            ctrl.addEventListener('resize',resize.bind(e,main));
+        }
     }());
+
+    const configureYieldRight = (function(){
+        function toggle(main) {
+            this.style.right = main.style.right;
+        }
+        function resize(main,event) {
+            if (event.target.checked) this.style.right = main.style.right;
+        }
+        return function(e,main,ctrl) {
+            e.style.right = main.style.right;
+            ctrl.addEventListener('change',toggle.bind(e,main));
+            ctrl.addEventListener('resize',resize.bind(e,main));
+        }
+    }());
+
+    const configureYieldBottom = (function(){
+        function toggle(main) {
+            this.style.bottom = main.style.bottom;
+        }
+        function resize(main,event) {
+            if (event.target.checked) this.style.bottom = main.style.bottom;
+        }
+        return function(e,main,ctrl) {
+            e.style.bottom = main.style.bottom;
+            ctrl.addEventListener('change',toggle.bind(e,main));
+            ctrl.addEventListener('resize',resize.bind(e,main));
+        }
+    }());
+
+    function setupTopBar(main,pagecontrol,barid) {
+        let bar = document.getElementById(barid);
+        if (bar === null) return void console.warn(`Could not set up topbar: element with id '${barid}' does not exist in document`);
+        bar.classList.add('page-topbar');
+        main.style.top = (bar.offsetHeight+bar.offsetTop) + 'px';
+        let pyield = bar.hasAttribute('yield') ? bar.getAttribute('yield').split(',') : [];
+        // Configure Yield Left
+        let lctrl = pagecontrol.elements.namedItem('left');
+        if (lctrl) {
+            if (pyield.includes('left')) configureYieldLeft(bar,main,lctrl);
+            else document.getElementById(lctrl.value).style.top = main.style.top;
+        }
+        // Configure Yield Right
+        let rctrl = pagecontrol.elements.namedItem('right');
+        if (rctrl) {
+            if (pyield.includes('right')) configureYieldRight(bar,main,rctrl);
+            else document.getElementById(rctrl.value).style.top = main.style.top;
+        }
+    }
 
     var setupSidePanel = (function() {
 
@@ -204,48 +222,6 @@
         };
 
         // Note: 'this' is main in all togglePanel & resizePanel functions
-        function configureYieldLeft(bpanel,lpanel,lctrl) {
-            switch (lpanel.getAttribute('page-panel')) {
-                case 'fixed':
-                    lctrl.addEventListener('change',function(panel,event) {
-                        this.style.left = event.target.checked ? (panel.offsetWidth+panel.offsetLeft) + 'px' : '';
-                    }.bind(bpanel,lpanel));
-                    lctrl.addEventListener('resize',function(panel,event) {
-                        if (event.target.checked) this.style.left = (panel.offsetWidth+panel.offsetLeft) + 'px';
-                    }.bind(bpanel,lpanel));
-                    break;
-                case 'flex':
-                    lctrl.addEventListener('change',function(panel,event) {
-                        this.style.left = event.target.checked ? panel.getAttribute('pct') + '%' : '';
-                    }.bind(bpanel,lpanel));
-                    lctrl.addEventListener('resize',function(panel,event) {
-                        if (event.target.checked) this.style.left = panel.getAttribute('pct') + '%'
-                    }.bind(bpanel,lpanel));
-                    break;
-            }
-        }
-
-        function configureYieldRight(bpanel,rpanel,rctrl) {
-            switch (rpanel.getAttribute('page-panel')) {
-                case 'fixed':
-                    rctrl.addEventListener('change',function(panel,event) {
-                        this.style.right = event.target.checked ? (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px' : '';
-                    }.bind(bpanel,rpanel));
-                    rctrl.addEventListener('resize',function(panel,event) {
-                        if (event.target.checked) this.style.right = (panel.parentElement.offsetWidth - panel.offsetLeft) + 'px';
-                    }.bind(bpanel,rpanel));
-                    break;
-                case 'flex':
-                    rctrl.addEventListener('change',function(panel,event) {
-                        this.style.right = event.target.checked ? panel.getAttribute('pct') + '%' : '';
-                    }.bind(bpanel,rpanel));
-                    rctrl.addEventListener('resize',function(panel,event) {
-                        if (event.target.checked) this.style.right = panel.getAttribute('pct') + '%'
-                    }.bind(bpanel,rpanel));
-                    break;
-            }
-        }
-
         var fixedPanel = (function() {
             return {
                 left: (function() {
@@ -293,41 +269,10 @@
                         if (!event.target.checked) return;
                         this.style.bottom = (panel.parentElement.offsetHeight - panel.offsetTop) + 'px';
                     }
-                    function yieldToggle(panel,event) {
-                        this.style.bottom = event.target.checked ? (panel.parentElement.offsetHeight - panel.offsetTop) + 'px' : '';
-                    }
-                    function yieldResize(panel,event) {
-                        if (event.target.checked) this.style.bottom = (panel.parentElement.offsetHeight - panel.offsetTop) + 'px';
-                    }
                     return function(main,panel,control) {
                         control.addEventListener('change',toggle.bind(main,panel));
                         control.addEventListener('resize',resize.bind(main,panel));
                         main.style.bottom = control.checked ? (panel.parentElement.offsetHeight - panel.offsetTop) + 'px': '';
-                        let pyield = panel.hasAttribute('yield') ? panel.getAttribute('yield').split(',') : [];
-                        let lctrl = document.forms.pagecontrol.elements.namedItem('left');
-                        if (lctrl !== null) {
-                            let lpanel = document.getElementById(lctrl.value);
-                            if (!pyield.includes('left')) {
-                                lpanel.style.bottom = main.style.bottom;
-                                control.addEventListener('change',yieldToggle.bind(lpanel,panel));
-                                control.addEventListener('resize',yieldResize.bind(lpanel,panel));
-                            } else {
-                                panel.style.left = main.style.left;
-                                configureYieldLeft(panel,lpanel,lctrl);
-                            }
-                        }
-                        let rctrl = document.forms.pagecontrol.elements.namedItem('right');
-                        if (rctrl!==null) {
-                            let rpanel = document.getElementById(rctrl.value);
-                            if (!pyield.includes('right')) {
-                                rpanel.style.bottom = main.style.bottom;
-                                control.addEventListener('change',yieldToggle.bind(rpanel,panel));
-                                control.addEventListener('resize',yieldResize.bind(rpanel,panel));
-                            } else {
-                                panel.style.right = main.style.right;
-                                configureYieldRight(panel,rpanel,rctrl);
-                            }
-                        }
                     };
                 }())
             };
@@ -397,43 +342,12 @@
                         if (!event.target.checked) return;
                         this.style.bottom = panel.getAttribute('pct') + '%';
                     }
-                    function yieldToggle(panel,event) {
-                        this.style.bottom = event.target.checked ? panel.getAttribute('pct') + '%' : '';
-                    }
-                    function yieldResize(panel,event) {
-                        if (event.target.checked) this.style.bottom = panel.getAttribute('pct') + '%';
-                    }
                     return function(main,panel,control) {
                         control.addEventListener('change',toggle.bind(main,panel));
                         control.addEventListener('resize',resize.bind(main,panel));
                         var pct = pctAttr(panel,'bottom');
                         panel.style.top = (100-pct) + '%';
                         main.style.bottom = control.checked ? (pct + '%') : '';
-                        let pyield = panel.hasAttribute('yield') ? panel.getAttribute('yield').split(',') : [];
-                        let lctrl = document.forms.pagecontrol.elements.namedItem('left');
-                        if (lctrl !== null) {
-                            let lpanel = document.getElementById(lctrl.value);
-                            if (!pyield.includes('left')) {
-                                lpanel.style.bottom = main.style.bottom;
-                                control.addEventListener('change',yieldToggle.bind(lpanel,panel));
-                                control.addEventListener('resize',yieldResize.bind(lpanel,panel));
-                            } else {
-                                panel.style.left = main.style.left;
-                                configureYieldLeft(panel,lpanel,lctrl);
-                            }
-                        }
-                        let rctrl = document.forms.pagecontrol.elements.namedItem('right');
-                        if (rctrl!==null) {
-                            let rpanel = document.getElementById(rctrl.value);
-                            if (!pyield.includes('right')) {
-                                rpanel.style.bottom = main.style.bottom;
-                                control.addEventListener('change',yieldToggle.bind(rpanel,panel));
-                                control.addEventListener('resize',yieldResize.bind(rpanel,panel));
-                            } else {
-                                panel.style.right = main.style.right;
-                                configureYieldRight(panel,rpanel,rctrl);
-                            }
-                        }
                     }
                 }()),
             }
@@ -468,6 +382,19 @@
                     break;
             }
             if (panel.hasAttribute('hide-toggle')) setupHideToggle(panel,control);
+            if (side==='bottom') {
+                let pyield = panel.hasAttribute('yield') ? panel.getAttribute('yield').split(',') : [];
+                let lctrl = document.forms.pagecontrol.elements.namedItem('left');
+                if (lctrl !== null) {
+                    if (pyield.includes('left')) configureYieldLeft(panel,main,lctrl);
+                    else configureYieldBottom(document.getElementById(lctrl.value),main,control);
+                }
+                let rctrl = document.forms.pagecontrol.elements.namedItem('right');
+                if (rctrl!==null) {
+                    if (pyield.includes('right')) configureYieldRight(panel,main,rctrl);
+                    else configureYieldBottom(document.getElementById(rctrl.value),main,control);
+                }
+            }
             return true;
         }
     }());
