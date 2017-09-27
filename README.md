@@ -1,12 +1,12 @@
 # dompage
 
-## Page Guide
+## Pages
 
 This is a simple library for structuring basic webpages with minimial setup. It can be added to a webpage with the following:
 
 ```html
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/luciancooper/dompage/dist/page.min.css">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/luciancooper/dompage/dist/page.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/luciancooper/dompage@0.4/dist/page.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/luciancooper/dompage@0.4/dist/page.min.js"></script>
 ```
 
 ### Basic Usage 
@@ -16,6 +16,7 @@ These attributes are added to `<body>` to specify the `id` of particular compone
  * `page-main`
  * `page-panel-left`
  * `page-panel-right`
+ * `page-panel-bottom`
  * `page-topbar`
     
 The only requirement for this library to function is the `page-main` attribute must be specified to the `id` of an existing child element of the `<body>`. The following is a simple example:
@@ -43,16 +44,18 @@ A top bar can be added to a page using the `page-topbar` attribute like this:
 </body>
 ```
 
-#### Left/Right Panels
+#### Left/Right/Bottom Panels
 
-Left and right panels can be specified using the `page-panel-left` and `page-panel-right` attributes. These elements must also be children of the `<body>`:
+Left, right, and bottom panels can be specified using the `page-panel-left`, `page-panel-right`, and `page-panel-bottom` attributes. These elements must also be children of the `<body>`.
+
+The `page-panel` attribute can be specified for any panel element, and must be given a value of either `auto` or `flex`. Panels that are `auto` (the default) will be sized based on their content, where as `flex` panels will be sized based on a percentage of the screen. This percentage can be specified using the `pct` attribute, and defaults to 20. 
 
 ```html
 <body page-main='main' page-panel-left='left' page-panel-right='right'>
     <section id='left'>
         ...
     </section>
-    <section id='right'>
+    <section id='right' page-panel='flex' pct='20'>
         ...
     </section>
     <main id='main'>
@@ -101,7 +104,7 @@ The content of the `page-main` element can be separated into distinct tabs by ad
 Include button styling in a page with this stylesheet:
 
 ```html
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/luciancooper/dompage/dist/buttons.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/luciancooper/dompage@0.4/dist/buttons.min.css">
 ```
 
 Check out this [example page](https://luciancooper.github.io/dompage/)
@@ -170,9 +173,9 @@ Optionally, `btn-grp` elements can be styled like tabs by adding the `tabs` clas
 
 The following class attributes can be added to individual buttons, `btn-grp`, and `btn-set` elements to theme their appearance.
 
- * [`ui-vib`](https://luciancooper.github.io/dompage/index.html#vib)
- * [`ui-flat`](https://luciancooper.github.io/dompage/index.html#flat)
- * [`ui-blue`](https://luciancooper.github.io/dompage/index.html#blue)
- * [`ui-red`](https://luciancooper.github.io/dompage/index.html#red)
- * [`ui-green`](https://luciancooper.github.io/dompage/index.html#green)
- * [`ui-dark`](https://luciancooper.github.io/dompage/index.html#dark)
+ * [`ui-vib`](https://luciancooper.github.io/dompage/index.html?theme=vib)
+ * [`ui-flat`](https://luciancooper.github.io/dompage/index.html?theme=flat)
+ * [`ui-blue`](https://luciancooper.github.io/dompage/index.html?theme=blue)
+ * [`ui-red`](https://luciancooper.github.io/dompage/index.html?theme=red)
+ * [`ui-green`](https://luciancooper.github.io/dompage/index.html?theme=green)
+ * [`ui-dark`](https://luciancooper.github.io/dompage/index.html?theme=dark)

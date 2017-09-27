@@ -146,10 +146,10 @@ a.btn,
 
 /* ============================================== [icons] ============================================== */
 
-.btn.icon,
-button.icon,
-.btn-grp>*.icon,
-label.btn>*.icon,
+.btn.icon:not(:empty),
+button.icon:not(:empty),
+.btn-grp>*.icon:not(:empty),
+label.btn>*.icon:not(:empty),
 .btn-grp>label>*.icon {
 	padding: 0.16em;
 	box-sizing:content-box;
@@ -206,6 +206,7 @@ label.btn>*>svg,
     box-sizing:content-box!important;
     border-radius:0px!important;
     border-width:0px!important;
+    background-color:#000;
 }
 .icn-hamburger,
 .icn-hamburger:before,
@@ -225,6 +226,149 @@ label.btn>*>svg,
 }
 .icn-hamburger:before { bottom:0.9090909090909091em; }
 .icn-hamburger:after { top:0.9090909090909091em; }
+
+/* ================================================ [icon](panes) ================================================ */
+
+.icn-pane-left,
+.icn-pane-right,
+.icn-pane-bottom {
+    position:relative;
+    display:inline-block;
+    width:1em;
+	height:1em;
+    border:2px solid #969696!important;
+    background:transparent!important;
+    border-radius:0px!important;
+}
+.icn-pane-left:after,
+.icn-pane-right:after,
+.icn-pane-bottom:after {
+    content: "";
+    position:absolute;
+    display:block;
+    background:inherit;
+    box-shadow:none;
+    border-width:0px;
+    border-style:solid;
+    border-color:inherit;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    top:0px;
+}
+.icn-pane-left:after {
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    right:60%;
+    border-right-width:inherit;
+}
+.icn-pane-right:after {
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    left:60%;
+    border-left-width:inherit;
+}
+.icn-pane-bottom:after {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    top:60%;
+    border-top-width:inherit;
+}
+
+.icn-pane-left.selected,
+.icn-pane-right.selected,
+.icn-pane-bottom.selected,
+.icn-pane-left:checked,
+.icn-pane-right:checked,
+.icn-pane-bottom:checked,
+.btn.selected > .icn-pane-left,
+.btn.selected > .icn-pane-right,
+.btn.selected > .icn-pane-bottom,
+button.selected > .icn-pane-left,
+button.selected > .icn-pane-right,
+button.selected > .icn-pane-bottom,
+label.btn>input:checked ~ *>.icn-pane-left,
+label.btn>input:checked ~ *>.icn-pane-right,
+label.btn>input:checked ~ *>.icn-pane-bottom,
+label.btn>input:checked ~ .icn-pane-left,
+label.btn>input:checked ~ .icn-pane-right,
+label.btn>input:checked ~ .icn-pane-bottom {
+    border-color:#8164ad!important;
+}
+.icn-pane-left:hover,
+.icn-pane-right:hover,
+.icn-pane-bottom:hover,
+.btn:hover > .icn-pane-left,
+.btn:hover > .icn-pane-right,
+.btn:hover > .icn-pane-bottom,
+button:hover > .icn-pane-left,
+button:hover > .icn-pane-right,
+button:hover > .icn-pane-bottom,
+label.btn:hover>*>.icn-pane-left,
+label.btn:hover>*>.icn-pane-right,
+label.btn:hover>*>.icn-pane-bottom {
+    border-color:#737373!important;
+}
+.icn-pane-left.selected:hover,
+.icn-pane-right.selected:hover,
+.icn-pane-bottom.selected:hover,
+.icn-pane-left:checked:hover,
+.icn-pane-right:checked:hover,
+.icn-pane-bottom:checked:hover,
+.btn.selected:hover > .icn-pane-left,
+.btn.selected:hover > .icn-pane-right,
+.btn.selected:hover > .icn-pane-bottom,
+button.selected:hover > .icn-pane-left,
+button.selected:hover > .icn-pane-right,
+button.selected:hover > .icn-pane-bottom,
+label.btn:hover>input:checked ~ *>.icn-pane-left,
+label.btn:hover>input:checked ~ *>.icn-pane-right,
+label.btn:hover>input:checked ~ *>.icn-pane-bottom,
+label.btn:hover>input:checked ~ .icn-pane-left,
+label.btn:hover>input:checked ~ .icn-pane-right,
+label.btn:hover>input:checked ~ .icn-pane-bottom {
+    border-color:#604686!important;
+}
+.icn-pane-left.selected:after,
+.icn-pane-right.selected:after,
+.icn-pane-bottom.selected:after,
+.icn-pane-left:checked:after,
+.icn-pane-right:checked:after,
+.icn-pane-bottom:checked:after,
+.btn.selected > .icn-pane-left:after,
+.btn.selected > .icn-pane-right:after,
+.btn.selected > .icn-pane-bottom:after,
+button.selected > .icn-pane-left:after,
+button.selected > .icn-pane-right:after,
+button.selected > .icn-pane-bottom:after,
+label.btn>input:checked ~ *>.icn-pane-left:after,
+label.btn>input:checked ~ *>.icn-pane-right:after,
+label.btn>input:checked ~ *>.icn-pane-bottom:after,
+label.btn>input:checked ~ .icn-pane-left:after,
+label.btn>input:checked ~ .icn-pane-right:after,
+label.btn>input:checked ~ .icn-pane-bottom:after {
+    background-color:#d6cde5;
+}
+.icn-pane-left.selected:hover:after,
+.icn-pane-right.selected:hover:after,
+.icn-pane-bottom.selected:hover:after,
+.icn-pane-left:checked:hover:after,
+.icn-pane-right:checked:hover:after,
+.icn-pane-bottom:checked:hover:after,
+.btn.selected:hover > .icn-pane-left:after,
+.btn.selected:hover > .icn-pane-right:after,
+.btn.selected:hover > .icn-pane-bottom:after,
+button.selected:hover > .icn-pane-left:after,
+button.selected:hover > .icn-pane-right:after,
+button.selected:hover > .icn-pane-bottom:after,
+label.btn:hover>input:checked ~ *>.icn-pane-left:after,
+label.btn:hover>input:checked ~ *>.icn-pane-right:after,
+label.btn:hover>input:checked ~ *>.icn-pane-bottom:after,
+label.btn:hover>input:checked ~ .icn-pane-left:after,
+label.btn:hover>input:checked ~ .icn-pane-right:after,
+label.btn:hover>input:checked ~ .icn-pane-bottom:after {
+    background-color:#ac9acb;
+}
 
 /* ============================================== [group & set] ============================================== */
 
@@ -422,19 +566,30 @@ label.btn.disabled>*,
 
 /* ============================================== [theme](hamburger) ============================================== */
 
-.icn-hamburger,
-.btn.selected:hover > .icn-hamburger,
-.btn.icn-hamburger.selected:hover,
-input.icn-hamburger:checked:hover {
-    background-color:#716b7a!important;
+.icn-hamburger {
+    background-color:#969696!important;
 }
-
+.icn-hamburger.selected,
+.icn-hamburger:checked,
 .btn.selected > .icn-hamburger,
-.btn.icn-hamburger.selected,
-input.icn-hamburger:checked,
-.btn:hover > .icn-hamburger,
-.icn-hamburger:hover {
+button.selected > .icn-hamburger,
+label.btn>input:checked ~ *>.icn-hamburger,
+label.btn>input:checked ~ .icn-hamburger {
     background-color:#8164ad!important;
+}
+.icn-hamburger:hover,
+.btn:hover > .icn-hamburger,
+button:hover > .icn-hamburger,
+label.btn:hover>*>.icn-hamburger {
+    background-color:#737373!important;
+}
+.icn-hamburger.selected:hover,
+.icn-hamburger:checked:hover,
+.btn.selected:hover > .icn-hamburger,
+button.selected:hover > .icn-hamburger,
+label.btn:hover>input:checked ~ *>.icn-hamburger,
+label.btn:hover>input:checked ~ .icn-hamburger {
+    background-color:#604686!important;
 }
 
 /* ============================================== [theme](tabs) ============================================== */
