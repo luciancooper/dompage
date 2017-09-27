@@ -7,6 +7,7 @@
  *     page-main = #id of main content
  *     page-panel-left = #id of left panel
  *     page-panel-right = #id of right panel
+ *     page-panel-bottom = #id of bottom panel
  *     page-topbar = #id of topbar
  * 
  * main:
@@ -26,13 +27,13 @@
  *         page-panel-left | page-panel-right | page-panel-bottom
  *     attrs:
  *         hide-toggle = #id of toggle element (either input[type='checkbox'] or label)
- *         page-panel = 'fixed' | 'flex'
+ *         page-panel = 'auto' | 'flex'
  *         pct = percentage value (only if page-panel='flex')
  */
 
 (function(){
 
-    var setupTabbed = (function(){
+    const setupTabbed = (function(){
         
         function jumpUptreeId(e) {
             while (e.parentElement && e.parentElement.tagName!=='BODY') {
@@ -183,7 +184,8 @@
         }
     }
 
-    var setupSidePanel = (function() {
+    // Setup 'left', 'right', and 'bottom' panels
+    const setupSidePanel = (function() {
 
         function setupHideToggle(panel,control) {
             let toggleid = panel.getAttribute('hide-toggle');
@@ -223,8 +225,8 @@
             }.bind(control));
         };
 
-        // Note: 'this' is main in all togglePanel & resizePanel functions
-        var fixedPanel = (function() {
+        // Setup 'auto' panel, which is sized based on its content
+        const autoPanel = (function(){
             return {
                 left: (function() {
                     function toggle(panel,event) {
@@ -283,8 +285,9 @@
             };
         }());
         
-        var flexPanel = (function(){
-
+        // Setup 'flex' Panel, which takes up percentage of screen
+        const flexPanel = (function(){
+            // Extract default 'pct' value from element
             function pctAttr(panel,side) {
                 var pct = 20;
                 if (panel.hasAttribute('pct')) {
@@ -306,16 +309,17 @@
                         this.style.left = checked ? panel.getAttribute('pct') + '%' : '0';
                     }
                     function resize(panel,event) {
-                        if (!event.target.checked) return;
-                        this.style.left = panel.getAttribute('pct') + '%';
+                        let pct = parseInt(panel.getAttribute('pct'));
+                        panel.style.right = `${100-pct}%`;
+                        if (event.target.checked) this.style.left = `${pct}%`;
                     }
                     return function(main,panel,control) {
                         control.addEventListener('change',toggle.bind(main,panel));
                         control.addEventListener('resize',resize.bind(main,panel));
                         panel.style.bottom = panel.style.top = panel.style.left = panel.style.marginRight = '0';
                         var pct = pctAttr(panel,'left');
-                        panel.style.right = (100-pct) + '%';
-                        main.style.left = control.checked ? (pct + '%') : '0';
+                        panel.style.right = `${100-pct}%`;
+                        main.style.left = control.checked ? `${pct}%` : '0';
                     }
                 }()),
                 right: (function(){
@@ -326,16 +330,17 @@
                         this.style.right = checked ? panel.getAttribute('pct') + '%' : '0';
                     }
                     function resize(panel,event) {
-                        if (!event.target.checked) return;
-                        this.style.right = panel.getAttribute('pct') + '%';
+                        let pct = parseInt(panel.getAttribute('pct'));
+                        panel.style.left = `${100-pct}%`;
+                        if (event.target.checked) this.style.right = `${pct}%`;
                     }
                     return function(main,panel,control) {
                         control.addEventListener('change',toggle.bind(main,panel));
                         control.addEventListener('resize',resize.bind(main,panel));
                         panel.style.bottom = panel.style.top = panel.style.right = panel.style.marginLeft = '0';
                         var pct = pctAttr(panel,'right');
-                        panel.style.left = (100-pct) + '%';
-                        main.style.right = control.checked ? (pct + '%') : '0';
+                        panel.style.left = `${100-pct}%`;
+                        main.style.right = control.checked ? `${pct}%` : '0';
                     }
                 }()),
                 bottom: (function() {
@@ -346,16 +351,17 @@
                         this.style.bottom = checked ? panel.getAttribute('pct') + '%' : '0';
                     }
                     function resize(panel,event) {
-                        if (!event.target.checked) return;
-                        this.style.bottom = panel.getAttribute('pct') + '%';
+                        let pct = parseInt(panel.getAttribute('pct'));
+                        panel.style.top = `${100-pct}%`;
+                        if (event.target.checked) this.style.bottom = `${pct}%`;
                     }
                     return function(main,panel,control) {
                         control.addEventListener('change',toggle.bind(main,panel));
                         control.addEventListener('resize',resize.bind(main,panel));
                         panel.style.left = panel.style.right = panel.style.bottom = panel.style.marginTop = '0';
                         var pct = pctAttr(panel,'bottom');
-                        panel.style.top = (100-pct) + '%';
-                        main.style.bottom = control.checked ? (pct + '%') : '0';
+                        panel.style.top = `${100-pct}%`;
+                        main.style.bottom = control.checked ? `${pct}%` : '0';
                     }
                 }()),
             }
@@ -384,18 +390,18 @@
             } else control.checked = true;
             document.forms.pagecontrol.appendChild(control);
             // 'page-panel' attribute
-            if (!panel.hasAttribute('page-panel')) panel.setAttribute('page-panel','fixed')
+            if (!panel.hasAttribute('page-panel')) panel.setAttribute('page-panel','auto')
             var ptype = panel.getAttribute('page-panel');
             switch (ptype) {
                 case 'flex':
                     flexPanel[side](main,panel,control);
                     break;
                 default:
-                    if (ptype !== 'fixed') {
-                        console.warn(`Invalid page-panel attribute '${ptype}', using default value 'fixed'`);
-                        panel.setAttribute('page-panel','fixed');
+                    if (ptype !== 'auto') {
+                        console.warn(`Invalid page-panel attribute '${ptype}', using default type 'auto'`);
+                        panel.setAttribute('page-panel','auto');
                     }
-                    fixedPanel[side](main,panel,control);
+                    autoPanel[side](main,panel,control);
                     break;
             }
             if (panel.hasAttribute('hide-toggle')) setupHideToggle(panel,control);
